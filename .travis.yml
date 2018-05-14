@@ -1,0 +1,13 @@
+language: node_js
+sudo: false
+cache:
+  directories:
+    - $HOME/.npm
+notifications:
+  email: false
+node_js:
+  - lts/*
+before_install:
+  - export TZ=America/Bogota
+script:
+  - npm test

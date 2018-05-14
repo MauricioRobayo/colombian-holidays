@@ -1,0 +1,16 @@
+# Normalizes editor configuration.
+# http://editorconfig.org
+root = true
+
+[src/**.js]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.md]
+# Two spaces in markdown is the same as a <br>.
+# Removing them changes the output of the markdown.
+trim_trailing_whitespace = false

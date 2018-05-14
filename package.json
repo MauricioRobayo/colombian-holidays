@@ -1,0 +1,64 @@
+{
+  "name": "pascua",
+  "version": "0.0.0-development",
+  "description": "Calculadora para los festivos en Colombia",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "test:watch": "npm test -- --watch",
+    "coverage": "coveralls <coverage/lcov.info",
+    "prebuild": "rimraf dist",
+    "build": "npm-run-all --parallel build:*",
+    "build:main": "babel --copy-files --out-dir dist --ignore __tests__ src",
+    "build:umd.dev": "webpack --output-filename pascua.umd.js --mode development",
+    "build:umd": "webpack --output-filename pascua.umd.min.js --mode production",
+    "prepublishOnly": "npm test && npm run build",
+    "commit": "commit"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && npm test",
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+    }
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/archemiro/pascua/issues"
+  },
+  "homepage": "https://github.com/archemiro/pascua#readme",
+  "author": "Mauricio Robayo <archemiro@gmail.com> (https://www.archemiro.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/archemiro/pascua.git"
+  },
+  "keywords": [
+    "Colombia",
+    "Festivos",
+    "Holidays"
+  ],
+  "devDependencies": {
+    "@commitlint/cli": "6.2.0",
+    "@commitlint/config-conventional": "6.1.3",
+    "@commitlint/prompt-cli": "6.1.3",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.0",
+    "eslint-config-airbnb-base": "12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "2.11.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "husky": "1.0.0-rc.4",
+    "jest": "^22.4.3",
+    "npm-run-all": "^4.1.2",
+    "prettier": "^1.12.1",
+    "pretty-quick": "^1.4.1",
+    "rimraf": "^2.6.2",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15"
+  },
+  "dependencies": {},
+  "files": [
+    "dist"
+  ]
+}
