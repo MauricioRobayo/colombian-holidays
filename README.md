@@ -1,5 +1,7 @@
 # Pascua 🎆 ![Bandera de Colombia](https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/25px-Flag_of_Colombia.svg.png)
 
+[![Build Status](https://travis-ci.com/archemiro/pascua.svg?branch=master)](https://travis-ci.com/archemiro/pascua) [![codecov](https://codecov.io/gh/archemiro/pascua/branch/master/graph/badge.svg)](https://codecov.io/gh/archemiro/pascua)
+
 ![Colombia](https://media.giphy.com/media/sOQ7iOadT6gaQ/giphy.gif)
 
 Calcula los días festivos en Colombia.
