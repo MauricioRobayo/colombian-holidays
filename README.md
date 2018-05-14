@@ -1,6 +1,6 @@
 # Pascua 🎆 ![Bandera de Colombia](https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/25px-Flag_of_Colombia.svg.png)
 
-[![Build Status](https://travis-ci.com/archemiro/pascua.svg?branch=master)](https://travis-ci.com/archemiro/pascua) [![codecov](https://codecov.io/gh/archemiro/pascua/branch/master/graph/badge.svg)](https://codecov.io/gh/archemiro/pascua)
+[![npm version](https://badge.fury.io/js/pascua.svg)](https://badge.fury.io/js/pascua) [![Build Status](https://travis-ci.com/archemiro/pascua.svg?branch=master)](https://travis-ci.com/archemiro/pascua) [![codecov](https://codecov.io/gh/archemiro/pascua/branch/master/graph/badge.svg)](https://codecov.io/gh/archemiro/pascua) [![Greenkeeper badge](https://badges.greenkeeper.io/archemiro/pascua.svg)](https://greenkeeper.io/)
 
 ![Colombia](https://media.giphy.com/media/sOQ7iOadT6gaQ/giphy.gif)
 
@@ -111,6 +111,13 @@ El contenido de `holidays2010` será el siguiente array:
   { date: '2010-06-07T00:00:00.000-05:00', type: 3, name: 'Corpus Christi' },
   { date: '2010-06-14T00:00:00.000-05:00', type: 3, name: 'Sagrado Corazón de Jesús' },
 ],
+```
+
+Si se usa el script en el navegador el objecto `pascua` estará disponible de manera global con las
+funciones `getHoliday` y `getAllHolidays`:
+
+```js
+console.table(pascua.getAllHolidays(2017));
 ```
 
 ## Licencia
