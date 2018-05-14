@@ -1,6 +1,34 @@
 import holidays from "./holidays.json";
 
 /**
+ * Valida si el año pasado como argumento es un número entero mayor a 1983. En 1983 se expide la ley
+ * por la cual se corren algunos festivos al próximo lunes:
+ * http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
+ * @param {number} year El año para el cual se desea obtener los días festivos. Mayor a 1983.
+ */
+function validateYear(year) {
+  const int = Number.parseInt(year, 10);
+  if (!Number.isNaN(int) && int > 1983) {
+    return int;
+  }
+  throw new Error("Invalid year. Should be an integer > 1983");
+}
+
+/**
+ * Devuelve verdadero si el argumento pasado corresponde a un objeto de tipo fecha de JavaScript y
+ * si el año de esa fecha es mayor a 1983, que es el año en el que se establece el decreto que rige
+ * los festivos actuales:
+ * http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
+ * @param {any} date La fecha que se desea validar.
+ */
+function isValidDate(date) {
+  return (
+    Object.prototype.toString.call(date) === "[object Date]" &&
+    validateYear(date.getFullYear())
+  );
+}
+
+/**
  * Devuelve una cadena de texto en formato ISO 8601 que representa la fecha local correspondiente a
  * la fecha almacenada en el objeto Date pasado como argumento. El formato devuelto es el siguiente:
  *   YYYY-MM-DDThh:mm:ss.sssTZD (eg 1997-07-16T19:20:30.453+01:00)
@@ -141,7 +169,10 @@ function getPascua(year, timeOffset = "-05:00") {
  * @param {object} date Objeto tipo fecha para el cual se desea saber si es festivo.
  * @param {string} timeOffset Desplazamiento de la zona horaria. Por defecto es '-05:00'.
  */
-function getHoliday(date, timeOffset = "-05:00") {
+function getHoliday(date = new Date(), timeOffset = "-05:00") {
+  if (!isValidDate(date)) {
+    throw new Error("Invalid date.");
+  }
   const year = date.getFullYear();
   for (let i = 0; i < holidays.length; i += 1) {
     if (holidays[i].type === 1) {
@@ -204,21 +235,22 @@ function getHoliday(date, timeOffset = "-05:00") {
  *   ]
  * @param {number} year El año para el cual deseamos saber los festivos
  */
-function getAllHolidays(year) {
+function getAllHolidays(year = new Date().getFullYear()) {
+  const validYear = validateYear(year);
   const yearHolidays = [];
   for (let i = 0; i < holidays.length; i += 1) {
     let holidayDate;
     if (holidays[i].type === 1) {
-      holidayDate = getISODate(year, holidays[i].month, holidays[i].day);
+      holidayDate = getISODate(validYear, holidays[i].month, holidays[i].day);
     }
     if (holidays[i].type === 2) {
       holidayDate = getNextDayOfWeek(
-        getISODate(year, holidays[i].month, holidays[i].day),
+        getISODate(validYear, holidays[i].month, holidays[i].day),
         1
       );
     }
     if (holidays[i].type === 3) {
-      holidayDate = addDays(getPascua(year), holidays[i].offset);
+      holidayDate = addDays(getPascua(validYear), holidays[i].offset);
     }
     yearHolidays.push({
       date: toISOString(holidayDate),
