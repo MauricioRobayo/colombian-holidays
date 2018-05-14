@@ -7,7 +7,10 @@ notifications:
   email: false
 node_js:
   - lts/*
-before_install:
+before_script:
   - export TZ=America/Bogota
 script:
   - npm test
+  - npx codecov
+after_success:
+  - npx semantic-release
