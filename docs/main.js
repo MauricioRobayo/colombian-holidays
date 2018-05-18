@@ -1,5 +1,4 @@
 (function(global) {
-  var isHoliday = false;
   var holidays = pascua.getAllHolidays().sort(function(a, b) {
     return b.date.localeCompare(a.date);
   });
@@ -9,7 +8,6 @@
     month: "long",
     day: "numeric"
   };
-  console.table(holidays);
   var date = new Date();
   var table = document.getElementById("festivos-colombia");
   for (var i = 0; i < holidays.length; i++) {
@@ -19,7 +17,6 @@
     if (date.toISOString().localeCompare(holidays[i].date) === 1) {
       if (date.toISOString().slice(0, 10) === holidays[i].date.slice(0, 10)) {
         festivoName.classList.add("is-selected");
-        isHoliday = true;
       } else {
         festivoName.classList.add("has-background-light");
         festivoName.classList.add("has-text-grey-light");
@@ -34,21 +31,12 @@
       ) +
       "</p>";
   }
-  h1(date.getFullYear());
-  function h1(year) {
-    var h1 = document.createElement("h1");
-    if (isHoliday) {
-      h1.appendChild(document.createTextNode("Hoy es festivo en Colombia"));
-      document.getElementById("hero").classList.add("is-primary");
-    } else {
-      h1.appendChild(
-        document.createTextNode(
-          "Hoy <span class=''>NO</span> es festivo en Colombia"
-        )
-      );
-      document.getElementById("hero").classList.add("is-light");
-    }
-    h1.classList.add("title", "has-text-centered", "is-size-1");
-    document.getElementById("main").appendChild(h1);
-  }
+  var h1 = document.createElement("h1");
+  var text = document.createTextNode(
+    "Festivo en Colombia " + new Date().getFullYear()
+  );
+  h1.appendChild(text);
+  document.getElementById("hero").classList.add("is-light");
+  h1.classList.add("title", "has-text-centered", "is-size-1");
+  document.getElementById("main").appendChild(h1);
 })(window);
