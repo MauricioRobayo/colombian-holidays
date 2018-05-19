@@ -31,7 +31,7 @@
     // obtenemos todos los festivos para el año deseado y los ordenamos
     // de menor a mayor por fecha
     var holidays = pascua.getAllHolidays(selectList.value).sort(function(a, b) {
-      return b.date.localeCompare(a.date);
+      return a.date.localeCompare(b.date);
     });
 
     // opciones de formato para la fecha
@@ -41,19 +41,32 @@
       month: "long",
       day: "numeric"
     };
+    var dateFormat = new Intl.DateTimeFormat("es", dateOptions);
 
+    // la fecha actual para contrastar si un festivo ya pasó aún no ha pasado
     var date = new Date();
+
+    // la tabla en donde vamos a insertar los festivos para el año seleccionado
     var table = document.getElementById("festivos-colombia");
+
+    // limpiamos el contenido de la tabla antes de insertar los resultados.
     table.innerHTML = "";
+
+    // recorremos cada uno de los festivos obtenidos para generar una columna
+    // con la información de cada festivo
     for (var i = 0; i < holidays.length; i++) {
+      // creamos un fecha de JS para poder realizar los cálculos y conversiones
+      var holidayDate = new Date(holidays[i].date);
+      // agregamos una nueva fila a la tabla
       var row = table.insertRow();
+      // agregamos una nueva celda a la fila que acabamos de crear
       var festivoName = row.insertCell(0);
+      // damos el formato de acuerdo a lo que deseamos
       festivoName.classList.add("has-text-centered");
-      if (date.toISOString().localeCompare(holidays[i].date) === 1) {
-        if (date.toISOString().slice(0, 10) === holidays[i].date.slice(0, 10)) {
+      if (holidayDate <= date) {
+        if (date.toISOString() === holidayDate.toISOString()) {
           festivoName.classList.add("is-selected");
         } else {
-          festivoName.classList.add("has-background-light");
           festivoName.classList.add("has-text-grey-light");
         }
       }
@@ -61,10 +74,7 @@
         "<p class='is-size-3'>" +
         holidays[i].name +
         "</p><p class='is-size-6'>" +
-        new Intl.DateTimeFormat("es", dateOptions).format(
-          new Date(holidays[i].date)
-        ) +
-        "</p>";
+        dateFormat.format(holidayDate) + "</p>";
     }
   }
 

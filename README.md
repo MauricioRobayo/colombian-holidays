@@ -2,11 +2,9 @@
 
 [![npm version](https://badge.fury.io/js/pascua.svg)](https://badge.fury.io/js/pascua) [![Build Status](https://travis-ci.com/archemiro/pascua.svg?branch=master)](https://travis-ci.com/archemiro/pascua) [![codecov](https://codecov.io/gh/archemiro/pascua/branch/master/graph/badge.svg)](https://codecov.io/gh/archemiro/pascua) [![Greenkeeper badge](https://badges.greenkeeper.io/archemiro/pascua.svg)](https://greenkeeper.io/)
 
-![Colombia](https://media.giphy.com/media/sOQ7iOadT6gaQ/giphy.gif)
+Este es un módulo **sin dependencias** para calcular los [días festivos en Colombia](https://festivosencolombia.archemiro.com) a partir de 1984 año a partir del cual entre en vigencia la (Ley 51 de 1983)[http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954], que establece los días festivos para Colombia de la forma en que se celebran actualmente.
 
-Calcula los [días festivos en Colombia](https://festivosencolombia.archemiro.com).
-
-Colombia tiene 18 días festivos que se dividen en tres categorías:
+Para su cálculo, los días feriados en Colombia se dividen en tres categorías y son 18 días festivos en total:
 
 1.  **Festivos de fecha fija**: Siempre se celebra el día correspondiente a esa fecha sin importar qué día cae. Ej. 25 de diciembre.
 2.  **Festivos de próximo lunes**: Se celebra el lunes siguiente a la fecha en que cae el festivo. Ej. 6 de enero. Si ese día es lunes, se celebra ese mismo día.
