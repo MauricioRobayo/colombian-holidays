@@ -4,7 +4,7 @@
 
 ![Colombia](https://media.giphy.com/media/sOQ7iOadT6gaQ/giphy.gif)
 
-Calcula los [días festivos en Colombia](https://pascua.archemiro.com).
+Calcula los [días festivos en Colombia](https://festivosencolombia.archemiro.com).
 
 Colombia tiene 18 días festivos que se dividen en tres categorías:
 
