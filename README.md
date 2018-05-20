@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/pascua.svg)](https://badge.fury.io/js/pascua) [![Build Status](https://travis-ci.com/archemiro/pascua.svg?branch=master)](https://travis-ci.com/archemiro/pascua) [![codecov](https://codecov.io/gh/archemiro/pascua/branch/master/graph/badge.svg)](https://codecov.io/gh/archemiro/pascua) [![Greenkeeper badge](https://badges.greenkeeper.io/archemiro/pascua.svg)](https://greenkeeper.io/)
 
-Este es un módulo **sin dependencias** para calcular los [días festivos en Colombia](https://festivosencolombia.archemiro.com) a partir de 1984 año a partir del cual entre en vigencia la [Ley 51 de 1983](http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954), que establece los días festivos para Colombia de la forma en que se celebran actualmente.
+Este es un módulo **sin dependencias** para calcular los [días festivos en Colombia](https://festivosencolombia.archemiro.com) a partir de 1984 año a partir del cual entra en vigencia la [Ley 51 de 1983](http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954), que establece los días festivos para Colombia de la forma en que se celebran actualmente.
 
 Para su cálculo, los días feriados en Colombia se dividen en tres categorías y son 18 días festivos en total:
 
@@ -60,7 +60,7 @@ a continuación, en donde se indica '-05:00' como el desplazamiento horario de
 la fecha:
 
 ```js
-const pascua = require("pascua");
+const { getHoliday } = require("pascua");
 
 // Especificamos la fecha en formato ISO 8601 para que sea interpretada como UTC
 // y no como hora local para evitar saltos inesperados de fechas que producirían
@@ -68,22 +68,24 @@ const pascua = require("pascua");
 // el offset de la zona horaria correspondiente a Colombia ('America/Bogota'):
 // -05:00 UTC.
 const holidayDate = new Date("2017-04-13T00:00:00-05:00");
-const holiday = pascua.getHoliday(holidayDate);
+const holiday = getHoliday(holidayDate);
 console.log(holiday); // 'Jueves Santo'
 
 const noHolidayDate = new Date("2017-04-12T00:00:00-05:00");
-const noHoliday = pascua.getHoliday(noHolidayDate);
+const noHoliday = getHoliday(noHolidayDate);
 console.log(noHoliday); // false
 ```
+
+Si se omite la fecha como argumento, por defecto se usará la fecha actual.
 
 También podemos consultar los festivos correspondientes a cualquier año con la
 función `getAllHolidays(year)`, que arrojará como resultado un array con los
 festivos para el año solicitado. Por ejemplo:
 
 ```js
-const pascua.getAllHolidays = require("pascua");
+const { getAllHolidays } = require("pascua");
 
-const holidays2010 = pascua.getAllHolidays(2010);
+const holidays2010 = getAllHolidays(2010);
 ```
 
 El contenido de `holidays2010` será el siguiente array:
@@ -111,11 +113,13 @@ El contenido de `holidays2010` será el siguiente array:
 ],
 ```
 
+Si se omite el año como argumento, por defecto se usará el año actual.
+
 Si se usa el script en el navegador el objecto `pascua` estará disponible de manera global con las
 funciones `getHoliday` y `getAllHolidays`:
 
 ```js
-console.table(pascua.getAllHolidays(2017));
+console.table(getAllHolidays(2017));
 ```
 
 ## Licencia
