@@ -5,6 +5,7 @@ import holidays from "./holidays.json";
  * por la cual se corren algunos festivos al próximo lunes:
  * http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
  * @param {number} year El año para el cual se desea obtener los días festivos. Mayor a 1983.
+ * @returns {int} El año convertido a un número entero mayor a 1983.
  */
 function validateYear(year) {
   const int = Number.parseInt(year, 10);
@@ -15,11 +16,12 @@ function validateYear(year) {
 }
 
 /**
- * Devuelve verdadero si el argumento pasado corresponde a un objeto de tipo fecha de JavaScript y
- * si el año de esa fecha es mayor a 1983, que es el año en el que se establece el decreto que rige
- * los festivos actuales:
+ * Valida si el argumento pasado corresponde a un objeto de tipo fecha de JavaScript y si el año de
+ * esa fecha es mayor a 1983, que es el año en el que se establece el decreto que rige los festivos
+ * actuales:
  * http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
  * @param {any} date La fecha que se desea validar.
+ * @returns {boolean} Verdadero si es una fecha válida falso de lo contrario.
  */
 function isValidDate(date) {
   return (
@@ -29,8 +31,9 @@ function isValidDate(date) {
 }
 
 /**
- * Devuelve una cadena de texto en formato ISO 8601 que representa la fecha local correspondiente a
- * la fecha almacenada en el objeto Date pasado como argumento. El formato devuelto es el siguiente:
+ * Crea una cadena de texto en formato ISO 8601 que representa la fecha local correspondiente a
+ * la fecha almacenada en el objeto Date pasado como argumento. El formato devuelto es el siguiente.
+ * El timeOffset por defecto corresponde a America/Bogota.
  *   YYYY-MM-DDThh:mm:ss.sssTZD (eg 1997-07-16T19:20:30.453+01:00)
  * En donde:
  *  YYYY = four-digit year
@@ -43,6 +46,7 @@ function isValidDate(date) {
  *  TZD  = time zone designator (Z or +hh:mm or -hh:mm)
  * @param {object} date Objeto tipo Date de JavaScript
  * @param {string} timeOffset Desplazamiento horario por defecto '05:00' = 'America/Bogota'
+ * @returns {string} Cadena de texto de fecha en formato ISO 8601.
  */
 function toISOString(date, timeOffset = "-05:00") {
   const year = date.getFullYear();
@@ -54,7 +58,7 @@ function toISOString(date, timeOffset = "-05:00") {
 }
 
 /**
- * Devuelve un objecto Date creado a partir de una fecha en formato ISO 8601. Al crear un objecto
+ * Crea un objecto Date creado a partir de una fecha usando el formato ISO 8601. Al crear un objecto
  * Date con un texto en formato ISO 8601 JavaScript lo interpreta como UTC y no como hora local, lo
  * que permite mantener una sistema estándarizado dentro del módulo usando siempre UTC. Por ello,
  * las fechas en el módulo se crean con esta función y así se preservan en UTC y hay menos
@@ -65,6 +69,7 @@ function toISOString(date, timeOffset = "-05:00") {
  * @param {number} month Mes correspondiente a la fecha. 1 = Enero.
  * @param {number} day Día correspondiente a la fecha.
  * @param {number} timeOffset El desplazamiento de la zona horaria. Por defecto = '-05:00'.
+ * @returns {date} Objecto fecha creado usando formato ISO 8601.
  */
 function getISODate(year, month, day, timeOffset = "-05:00") {
   const sMonth = month < 10 ? `0${month}` : month;
@@ -73,10 +78,10 @@ function getISODate(year, month, day, timeOffset = "-05:00") {
 }
 
 /**
- * Devuelve una nueva fecha sin mutar la fecha original pasada como argumento, a la que se le han
- * sumado los días especificados en el argumento amount.
+ * Crea una nueva fecha a la que se le han sumado los días especificados en el argumento amount.
  * @param {object} date Fecha tipo JavaScript.
  * @param {number} amount Días que se desean sumar.
+ * @returns {date} Nueva fecha resultante tras sumarle la cantidad de días especificados.
  */
 function addDays(date, amount) {
   const resultDate = new Date(date.getTime());
@@ -85,23 +90,18 @@ function addDays(date, amount) {
 }
 
 /**
- * Devuelve true o false según dos fechas sean las mismas. La comparación se hace a nivel de día,
- * por lo que no se tiene en cuenta las horas sino sólo si son o no el mismo día del mismo mes del
- * mismo año.
+ * Compara si dos fechas son la misma a nivel de día y mes, no se tiene en cuenta las horas sino
+ * sólo si son o no el mismo día del mismo mes. Es irrelevante verificar el año ya que el festivo
+ * siempre lo creamos a partir del año de la fecha que se pasó como argumento inicial, por lo tanto
+ * siempre estamos comparando fechas del mismo año y sólo necesitamos verificar el mes y el día.
  * @param {object} date1 Objeto fecha de JavaScript
  * @param {object} date2 Objeto fecha de JavaScript
+ * @returns {boolean} Verdadero si el mes y el día son el mismo de lo contrario devuelve falso.
  */
 function isSameDate(date1, date2) {
-  if (date1.getDate() !== date2.getDate()) {
-    return false;
-  }
-  if (date1.getMonth() !== date2.getMonth()) {
-    return false;
-  }
-  // No necesitamos comparar el año ya que el festivo siempre lo creamos a partir del año de la
-  // fecha que se pasó como argumento inicial, por lo tanto siempre estamos comparando fechas del
-  // mismo año.
-  return true;
+  return (
+    date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth()
+  );
 }
 
 /**
@@ -114,6 +114,7 @@ function isSameDate(date1, date2) {
  * Basado en:  https://codereview.stackexchange.com/a/33532/146118
  * @param {object} date Objeto fecha de JavaScript
  * @param {number} dayOfWeek Día de la semana que se desea. 0 = Domingo.
+ * @returns {date} La fecha correspondiente al siguiente día de la semana que se ha solicitado.
  */
 function getNextDayOfWeek(date, dayOfWeek) {
   const resultDate = new Date(date.getTime());
@@ -136,6 +137,7 @@ function getNextDayOfWeek(date, dayOfWeek) {
  * Ni el 'Domingo de Pascua' como tal, ni el 'Domingo de Ramos' se consideran días festivos.
  * @param {number} year Año para el cual se desea saber el Domingo de Pascua.
  * @param {string} timeOffset Desplazamiento de la zona horaria. Por defecto es '-05:00'.
+ * @returns {date} La fecha correspondiente al domingo de Pascua.
  */
 function getPascua(year, timeOffset = "-05:00") {
   const A = year % 19;
@@ -168,6 +170,7 @@ function getPascua(year, timeOffset = "-05:00") {
  *      ese año. Ej. Domingo de Pascua +45 días (Ascensión de Jesús).
  * @param {object} date Objeto tipo fecha para el cual se desea saber si es festivo.
  * @param {string} timeOffset Desplazamiento de la zona horaria. Por defecto es '-05:00'.
+ * @returns {string} El nombre del festivo o una cadena de texto vacia.
  */
 function getHoliday(date = new Date(), timeOffset = "-05:00") {
   if (!isValidDate(date)) {
@@ -234,6 +237,7 @@ function getHoliday(date = new Date(), timeOffset = "-05:00") {
  *     { date: '2010-06-14T00:00:00.000-05:00', type: '3', name: 'Sagrado Corazón de Jesús' },
  *   ]
  * @param {number} year El año para el cual deseamos saber los festivos
+ * @returns {array} Los festivos para el año solicitado.
  */
 function getAllHolidays(year = new Date().getFullYear()) {
   const validYear = validateYear(year);
