@@ -35,8 +35,8 @@
     "Holidays"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^6.2.0",
     "@commitlint/config-conventional": "^7.0.0",
+    "@commitlint/cli": "^7.0.0",
     "babel-cli": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
