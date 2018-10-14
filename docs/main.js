@@ -1,5 +1,4 @@
-(function(global) {
-
+(function() {
   // el año actual sobre el que se va a cargar la página
   var year = new Date().getFullYear();
 
@@ -18,16 +17,15 @@
   // el año actual.
   for (var i = 1984; i <= year + 5; i++) {
     var option = document.createElement("option");
-      option.value = i;
-      option.text = i;
-      if (i === year) {
-        option.selected = true;
-      }
-      selectList.appendChild(option);
+    option.value = i;
+    option.text = i;
+    if (i === year) {
+      option.selected = true;
+    }
+    selectList.appendChild(option);
   }
 
   function loadHolidays() {
-
     // obtenemos todos los festivos para el año deseado y los ordenamos
     // de menor a mayor por fecha
     var holidays = pascua.getAllHolidays(selectList.value).sort(function(a, b) {
@@ -74,12 +72,12 @@
         "<p class='is-size-3'>" +
         holidays[i].name +
         "</p><p class='is-size-6'>" +
-        dateFormat.format(holidayDate) + "</p>";
+        dateFormat.format(holidayDate) +
+        "</p>";
     }
   }
 
   loadHolidays();
 
   selectList.addEventListener("change", loadHolidays);
-
-})(window);
+})();
