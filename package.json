@@ -7,7 +7,6 @@
     "format": "prettier --write **/*.{js,ts,css,less,scss,vue,json,gql,md,yml,yaml}",
     "docs:serve": "browser-sync start --server --startPath docs --files docs",
     "test": "jest --coverage",
-    "lint-staged": "lint-staged",
     "test:watch": "npm test -- --watch",
     "prebuild": "rimraf dist",
     "build": "npm-run-all --parallel build:*",
@@ -17,7 +16,10 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm-run-all lint-staged test",
+      "pre-commit": [
+        "lint-staged",
+        "npm t"
+      ],
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
