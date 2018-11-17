@@ -6,38 +6,38 @@ Este es un módulo **sin dependencias** para calcular los [días festivos en Col
 
 Para su cálculo, los días feriados en Colombia se dividen en tres categorías y son 18 días festivos en total:
 
-1.  **Festivos de fecha fija**: Siempre se celebra el día correspondiente a esa fecha sin importar qué día cae. Ej. 25 de diciembre.
-2.  **Festivos de próximo lunes**: Se celebra el lunes siguiente a la fecha en que cae el festivo. Ej. 6 de enero. Si ese día es lunes, se celebra ese mismo día.
-3.  **Festivos respecto a la Pascua**: Se celebran según la diferencia con respecto al domingo de Pascua para ese año. Ej. Domingo de Pascua +45 días (Ascensión de Jesús).
+1. **Festivos de fecha fija**: Siempre se celebra el día correspondiente a esa fecha sin importar qué día cae. Ej. 25 de diciembre.
+2. **Festivos de próximo lunes**: Se celebra el lunes siguiente a la fecha en que cae el festivo. Ej. 6 de enero. Si ese día es lunes, se celebra ese mismo día.
+3. **Festivos respecto a la Pascua**: Se celebran según la diferencia con respecto al domingo de Pascua para ese año. Ej. Domingo de Pascua +45 días (Ascensión de Jesús).
 
 Los siguientes son los festivos de **fecha fija**:
 
-* 1 de enero: Año Nuevo.
-* 8 de diciembre: Inmaculada Concepción.
-* 25 de diciembre: Navidad.
-* 1 de mayo: Día del Trabajo.
-* 20 de julio: Grito de la Independencia.
-* 7 de agosto: Batalla de Boyacá.
+- 1 de enero: Año Nuevo.
+- 8 de diciembre: Inmaculada Concepción.
+- 25 de diciembre: Navidad.
+- 1 de mayo: Día del Trabajo.
+- 20 de julio: Grito de la Independencia.
+- 7 de agosto: Batalla de Boyacá.
 
 Los siguientes son los festivos de **próximo lunes**:
 
-* 6 de enero: Reyes Magos.
-* 19 de marzo: San José.
-* 29 de junio: San Pedro y San Pablo.
-* 15 de agosto: Asunción de la Virgen.
-* 1 de noviembre: Todos los Santos.
-* 12 de octubre: Día de la Raza.
-* 11 de noviembre: Independencia de Cartagena.
+- 6 de enero: Reyes Magos.
+- 19 de marzo: San José.
+- 29 de junio: San Pedro y San Pablo.
+- 15 de agosto: Asunción de la Virgen.
+- 1 de noviembre: Todos los Santos.
+- 12 de octubre: Día de la Raza.
+- 11 de noviembre: Independencia de Cartagena.
 
 Los siguientes son los festivos **respecto a la Pascua**:
 
-* Pascua -7 días: Domingo de Ramos (no se considera festivo como tal por caer en Domingo).
-* Pascua -3 días: Jueves Santo.
-* Pascua -2 días: Viernes Santo.
-* Pascua: Domingo de Pascua (no se considera festivo como tal por caer en Domingo).
-* Pascua 43 días: Ascensión de Jesús.
-* Pascua 64 días: Corpus Christi.
-* Pascua 71 días: Sagrado Corazón de Jesús.
+- Pascua -7 días: Domingo de Ramos (no se considera festivo como tal por caer en Domingo).
+- Pascua -3 días: Jueves Santo.
+- Pascua -2 días: Viernes Santo.
+- Pascua: Domingo de Pascua (no se considera festivo como tal por caer en Domingo).
+- Pascua 43 días: Ascensión de Jesús.
+- Pascua 64 días: Corpus Christi.
+- Pascua 71 días: Sagrado Corazón de Jesús.
 
 ## Instalación
 
