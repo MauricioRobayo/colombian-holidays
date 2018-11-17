@@ -10,6 +10,7 @@ node_js:
 before_script:
   - export TZ=America/Bogota
 script:
+  - npm run build
   - npm test
   - npx codecov
 after_success:
