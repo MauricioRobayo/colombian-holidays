@@ -6,7 +6,6 @@
   "scripts": {
     "examples:serve": "browser-sync start --server --startPath examples --files examples",
     "test": "jest --coverage",
-    "test:watch": "npm test -- --watch",
     "build": "babel src/pascua.js --delete-dir-on-start --out-dir dist",
     "prepublishOnly": "npm-run-all test build"
   },
