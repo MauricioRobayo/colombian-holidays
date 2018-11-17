@@ -5,9 +5,10 @@
   "main": "dist/pascua.js",
   "scripts": {
     "examples:serve": "browser-sync start --server --startPath examples --files examples",
+    "lint": "eslint src",
     "test": "jest --coverage",
     "build": "babel src/pascua.js --delete-dir-on-start --out-dir dist",
-    "prepublishOnly": "npm-run-all test build"
+    "prepublishOnly": "npm-run-all lint test build"
   },
   "husky": {
     "hooks": {

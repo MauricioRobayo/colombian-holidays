@@ -11,6 +11,7 @@ before_script:
   - export TZ=America/Bogota
 script:
   - npm run build
+  - npm run lint
   - npm test
   - npx codecov
 after_success:
