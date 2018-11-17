@@ -3,7 +3,7 @@ const { join } = require("path");
 module.exports = [
   {
     mode: "development",
-    entry: "./src/index.js",
+    entry: "./src/pascua.js",
     output: {
       path: join(__dirname, "dist"),
       filename: "pascua.umd.js",
@@ -17,7 +17,7 @@ module.exports = [
   },
   {
     mode: "production",
-    entry: "./src/index.js",
+    entry: "./src/pascua.js",
     output: {
       path: join(__dirname, "dist"),
       filename: "pascua.umd.min.js",

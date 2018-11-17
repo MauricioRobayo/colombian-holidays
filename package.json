@@ -2,7 +2,7 @@
   "name": "pascua",
   "version": "0.0.0-development",
   "description": "Calculadora para los festivos en Colombia",
-  "main": "dist/index.js",
+  "main": "dist/pascua.js",
   "scripts": {
     "docs:serve": "browser-sync start --server --startPath docs --files docs",
     "test": "jest --coverage",

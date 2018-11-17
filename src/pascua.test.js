@@ -1,4 +1,4 @@
-import { getAllHolidays, getHoliday } from "./index";
+import { getAllHolidays, getHoliday } from "./pascua";
 
 // America/Bogota
 const timeOffset = "-05:00";
