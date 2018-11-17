@@ -4,7 +4,6 @@
   "description": "Calculadora para los festivos en Colombia",
   "main": "dist/index.js",
   "scripts": {
-    "format": "prettier --write **/*.{js,ts,css,less,scss,vue,json,gql,md,yml,yaml}",
     "docs:serve": "browser-sync start --server --startPath docs --files docs",
     "test": "jest --coverage",
     "test:watch": "npm test -- --watch",
