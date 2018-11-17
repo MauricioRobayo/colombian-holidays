@@ -1,4 +1,23 @@
-import holidays from "./holidays.json";
+const holidays = [
+  { type: 1, name: "Año Nuevo", day: 1, month: 1 },
+  { type: 1, name: "Día del Trabajo", day: 1, month: 5 },
+  { type: 1, name: "Grito de la Independencia", day: 20, month: 7 },
+  { type: 1, name: "Batalla de Boyacá", day: 7, month: 8 },
+  { type: 1, name: "Inmaculada Concepción", day: 8, month: 12 },
+  { type: 1, name: "Navidad", day: 25, month: 12 },
+  { type: 2, name: "Reyes Magos", day: 6, month: 1 },
+  { type: 2, name: "San José", day: 19, month: 3 },
+  { type: 2, name: "San Pedro y San Pablo", day: 29, month: 6 },
+  { type: 2, name: "Asunción de la Virgen", day: 15, month: 8 },
+  { type: 2, name: "Día de la Raza", day: 12, month: 10 },
+  { type: 2, name: "Todos los Santos", day: 1, month: 11 },
+  { type: 2, name: "Independencia de Cartagena", day: 11, month: 11 },
+  { type: 3, name: "Jueves Santo", offset: -3 },
+  { type: 3, name: "Viernes Santo", offset: -2 },
+  { type: 3, name: "Ascensión de Jesús", offset: 43 },
+  { type: 3, name: "Corpus Christi", offset: 64 },
+  { type: 3, name: "Sagrado Corazón de Jesús", offset: 71 }
+];
 
 /**
  * Valida si el año pasado como argumento es un número entero mayor a 1983. En 1983 se expide la ley
@@ -118,7 +137,7 @@ function isSameDate(date1, date2) {
  */
 function getNextDayOfWeek(date, dayOfWeek) {
   const resultDate = new Date(date.getTime());
-  resultDate.setDate(date.getDate() + (7 + dayOfWeek - date.getDay()) % 7);
+  resultDate.setDate(date.getDate() + ((7 + dayOfWeek - date.getDay()) % 7));
   return resultDate;
 }
 
@@ -154,7 +173,7 @@ function getPascua(year, timeOffset = "-05:00") {
   const M = Math.floor((A + 11 * H + 22 * L) / 451);
   const N = H + L - 7 * M + 114;
   const month = Math.floor(N / 31);
-  const day = 1 + N % 31;
+  const day = 1 + (N % 31);
   const pascua = getISODate(year, month, day, timeOffset);
   return pascua;
 }
