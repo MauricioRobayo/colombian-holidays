@@ -1,8 +1,18 @@
-# Pascua 🎆 ![Bandera de Colombia](https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/25px-Flag_of_Colombia.svg.png)
+# Pascua 🎆
 
-[![npm version](https://badge.fury.io/js/pascua.svg)](https://badge.fury.io/js/pascua) [![Build Status](https://travis-ci.com/archemiro/pascua.svg?branch=master)](https://travis-ci.com/archemiro/pascua) [![codecov](https://codecov.io/gh/archemiro/pascua/branch/master/graph/badge.svg)](https://codecov.io/gh/archemiro/pascua) [![Greenkeeper badge](https://badges.greenkeeper.io/archemiro/pascua.svg)](https://greenkeeper.io/)
+[![install size](https://packagephobia.now.sh/badge?p=pascua)](https://packagephobia.now.sh/result?p=pascua)
+[![gzip size](https://img.badgesize.io/https://unpkg.com/pascua/dist/pascua.js?compression=gzip)](https://unpkg.com/pascua/dist/pascua.js)
 
-Este es un módulo **sin dependencias** para calcular los [días festivos en Colombia](https://www.archemiro.com/pascua/) a partir de 1984 año a partir del cual entra en vigencia la [Ley 51 de 1983](http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954), que establece los días festivos para Colombia de la forma en que se celebran actualmente.
+[![npm version](https://badge.fury.io/js/pascua.svg)](https://badge.fury.io/js/pascua)
+[![Build Status](https://travis-ci.com/archemiro/pascua.svg?branch=master)](https://travis-ci.com/archemiro/pascua)
+[![codecov](https://codecov.io/gh/archemiro/pascua/branch/master/graph/badge.svg)](https://codecov.io/gh/archemiro/pascua)
+[![Greenkeeper badge](https://badges.greenkeeper.io/archemiro/pascua.svg)](https://greenkeeper.io/)
+
+🔥 Módulo **extraligero** y **sin dependencias** para calcular los [días festivos en Colombia ![Bandera de Colombia](https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/25px-Flag_of_Colombia.svg.png)](https://www.archemiro.com/pascua/).
+
+---
+
+Pascua permite obtener los días festivos a partir de 1984 año en que entra en vigencia la [Ley 51 de 1983](http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954), que establece los días festivos para Colombia de la forma en que se celebran actualmente.
 
 Para su cálculo, los días feriados en Colombia se dividen en tres categorías y son 18 días festivos en total:
 
@@ -48,39 +58,29 @@ npm install pascua
 ```
 
 Para usar este módulo en el navegador se puede cargar por medio de [`unpkg`](http://unpkg.org/)
-usando el siguiente enlace: https://unpkg.com/pascua/dist/pascua.umd.min.js.
+usando el siguiente [enlace](https://unpkg.com/pascua/dist/pascua.js). El objeto `pascua` estará disponible de manera global.
 
 ## Uso
 
-Para su uso es importante tener en cuenta que la zona horaria esté configurada
-para 'America/Bogota' en el sistema, de lo contrario se pueden tener resultados
-inesperados. Si no se tiene la zona horaria correctamente configurada, lo ideal
-es especificar una fecha en el formato ISO-8601 como en los ejemplos que se dan
-a continuación, en donde se indica '-05:00' como el desplazamiento horario de
-la fecha:
+Pascua incluye dos funciones: `getHoliday` y `getAllHolidays`.
+
+### Determinar si un día dado es festivo
+
+La función `getHoliday` permite saber si un día determinado es festivo o no. Recibe como argumento opcional una fecha de JavaScript y devuelve el nombre del festivo que aplica para la fecha o una cadena de texto vacía (`""`) si la fecha no corresponde con un festivo:
 
 ```js
 const { getHoliday } = require("pascua");
 
-// Especificamos la fecha en formato ISO 8601 para que sea interpretada como UTC
-// y no como hora local para evitar saltos inesperados de fechas que producirían
-//  resultados erroneos. Por ellos, el módulo procura trabajar siempre con UTC y
-// el offset de la zona horaria correspondiente a Colombia ('America/Bogota'):
-// -05:00 UTC.
-const holidayDate = new Date("2017-04-13T00:00:00-05:00");
-const holiday = getHoliday(holidayDate);
+const date = new Date("2017-04-13");
+const holiday = getHoliday(date);
 console.log(holiday); // 'Jueves Santo'
-
-const noHolidayDate = new Date("2017-04-12T00:00:00-05:00");
-const noHoliday = getHoliday(noHolidayDate);
-console.log(noHoliday); // false
 ```
 
 Si se omite la fecha como argumento, por defecto se usará la fecha actual.
 
-También podemos consultar los festivos correspondientes a cualquier año con la
-función `getAllHolidays(year)`, que arrojará como resultado un array con los
-festivos para el año solicitado. Por ejemplo:
+### Obtener todos los días festivos para un año determinado
+
+La la función `getAllHolidays(year)` permite consultar los festivos correspondientes a cualquier año, devolviendo un array con los festivos para el año solicitado. Por ejemplo:
 
 ```js
 const { getAllHolidays } = require("pascua");
@@ -114,13 +114,6 @@ El contenido de `holidays2010` será el siguiente array:
 ```
 
 Si se omite el año como argumento, por defecto se usará el año actual.
-
-Si se usa el script en el navegador el objecto `pascua` estará disponible de manera global con las
-funciones `getHoliday` y `getAllHolidays`:
-
-```js
-console.table(getAllHolidays(2017));
-```
 
 ## Licencia
 
