@@ -8,10 +8,9 @@
     "lint": "eslint src",
     "test": "jest --coverage",
     "prebuild:docs": "rimraf docs",
-    "prebuild:dist": "rimraf dist",
     "build:dist": "babel src/pascua.js --delete-dir-on-start --out-dir dist",
-    "build:docs": "parcel build ./examples/index.html --out-dir docs --no-source-maps",
-    "prepublishOnly": "npm-run-all lint test build"
+    "build:docs": "parcel build ./examples/index.html --out-dir docs --public-url ./ --no-source-maps",
+    "prepublishOnly": "npm-run-all lint test build:dist"
   },
   "husky": {
     "hooks": {
