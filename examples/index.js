@@ -1,3 +1,5 @@
+import { getAllHolidays } from "../dist/pascua";
+
 (function() {
   // el año actual sobre el que se va a cargar la página
   var year = new Date().getFullYear();
@@ -28,7 +30,7 @@
   function loadHolidays() {
     // obtenemos todos los festivos para el año deseado y los ordenamos
     // de menor a mayor por fecha
-    var holidays = pascua.getAllHolidays(selectList.value).sort(function(a, b) {
+    var holidays = getAllHolidays(selectList.value).sort(function(a, b) {
       return a.date.localeCompare(b.date);
     });
 

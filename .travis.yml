@@ -10,7 +10,8 @@ node_js:
 before_script:
   - export TZ=America/Bogota
 script:
-  - npm run build
+  - npm run build:dist
+  - npm run build:docs
   - npm run lint
   - npm test
   - npx codecov

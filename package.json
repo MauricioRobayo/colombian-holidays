@@ -4,10 +4,13 @@
   "description": "Calculadora para los festivos en Colombia",
   "main": "dist/pascua.js",
   "scripts": {
-    "examples:serve": "browser-sync start --server --startPath examples --files examples",
+    "docs:serve": "parcel serve ./examples/index.html --out-dir docs",
     "lint": "eslint src",
     "test": "jest --coverage",
-    "build": "babel src/pascua.js --delete-dir-on-start --out-dir dist",
+    "prebuild:docs": "rimraf docs",
+    "prebuild:dist": "rimraf dist",
+    "build:dist": "babel src/pascua.js --delete-dir-on-start --out-dir dist",
+    "build:docs": "parcel build ./examples/index.html --out-dir docs --no-source-maps",
     "prepublishOnly": "npm-run-all lint test build"
   },
   "husky": {
@@ -39,7 +42,6 @@
     "@commitlint/config-conventional": "^7.1.2",
     "babel-core": "^7.0.0-bridge.0",
     "babel-preset-minify": "^0.5.0",
-    "browser-sync": "^2.26.3",
     "codecov": "^3.1.0",
     "eslint": "^5.7.0",
     "eslint-config-airbnb-base": "^13.1.0",
@@ -49,7 +51,9 @@
     "jest": "^23.6.0",
     "lint-staged": "^8.0.0",
     "npm-run-all": "^4.1.3",
+    "parcel-bundler": "^1.10.3",
     "prettier": "^1.14.3",
+    "rimraf": "^2.6.2",
     "semantic-release": "^15.9.17"
   },
   "dependencies": {},
