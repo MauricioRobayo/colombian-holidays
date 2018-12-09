@@ -10,7 +10,9 @@
     "prebuild:docs": "rimraf docs",
     "build:dist": "babel src/pascua.js --delete-dir-on-start --out-dir dist",
     "build:docs": "parcel build ./examples/index.html --out-dir docs --public-url ./ --no-source-maps",
-    "prepublishOnly": "npm-run-all lint test build:dist"
+    "prepublishOnly": "npm-run-all lint test build:dist",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
   },
   "license": "MIT",
   "bugs": {
@@ -18,10 +20,6 @@
   },
   "homepage": "https://github.com/archemiro/pascua#readme",
   "author": "Mauricio Robayo <archemiro@gmail.com> (https://www.archemiro.com)",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:archemiro/pascua.git"
-  },
   "keywords": [
     "Colombia",
     "Festivos",
@@ -35,7 +33,7 @@
     "@commitlint/config-conventional": "^7.1.2",
     "babel-preset-minify": "^0.5.0",
     "codecov": "^3.1.0",
-    "eslint": "^5.7.0",
+    "eslint": "^5.10.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -46,10 +44,18 @@
     "parcel-bundler": "^1.10.3",
     "prettier": "^1.15.3",
     "rimraf": "^2.6.2",
-    "semantic-release": "^15.9.17"
+    "semantic-release": "^15.12.4"
   },
   "dependencies": {},
   "files": [
     "dist"
-  ]
+  ],
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/archemiro/pascua.git"
+  }
 }

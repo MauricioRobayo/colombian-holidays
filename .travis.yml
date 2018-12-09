@@ -4,9 +4,12 @@ cache:
   directories:
     - $HOME/.npm
 notifications:
-  email: false
+  email:
+    on_failure: always
 node_js:
-  - "8.10"
+  - "10"
+  - "8"
+  - "6"
 before_script:
   - export TZ=America/Bogota
 script:
@@ -16,4 +19,8 @@ script:
   - npm test
   - npx codecov
 after_success:
-  - npx semantic-release
+  - npm run travis-deploy-once "npm run semantic-release"
+  - npm run deploy
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
