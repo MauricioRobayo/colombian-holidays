@@ -20,9 +20,7 @@ const holidays = [
 ];
 
 /**
- * Valida si el año pasado como argumento es un número entero mayor a 1983. En 1983 se expide la ley
- * por la cual se corren algunos festivos al próximo lunes:
- * http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
+ * Valida si el año pasado como argumento es un número entero mayor a 1983. En 1983 se expide la ley por la cual se corren algunos festivos al próximo lunes: http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
  * @param {number} year El año para el cual se desea obtener los días festivos. Mayor a 1983.
  * @returns {int} El año convertido a un número entero mayor a 1983.
  */
@@ -35,10 +33,7 @@ function validateYear(year) {
 }
 
 /**
- * Valida si el argumento pasado corresponde a un objeto de tipo fecha de JavaScript y si el año de
- * esa fecha es mayor a 1983, que es el año en el que se establece el decreto que rige los festivos
- * actuales:
- * http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
+ * Valida si el argumento pasado corresponde a un objeto de tipo fecha de JavaScript y si el año de esa fecha es mayor a 1983, que es el año en el que se establece el decreto que rige los festivos actuales: http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
  * @param {any} date La fecha que se desea validar.
  * @returns {boolean} Verdadero si es una fecha válida falso de lo contrario.
  */
@@ -50,8 +45,7 @@ function isValidDate(date) {
 }
 
 /**
- * Crea una cadena de texto en formato ISO 8601 que representa la fecha local correspondiente a
- * la fecha almacenada en el objeto Date pasado como argumento. El formato devuelto es el siguiente.
+ * Crea una cadena de texto en formato ISO 8601 que representa la fecha local correspondiente a la fecha almacenada en el objeto Date pasado como argumento. El formato devuelto es el siguiente.
  * El timeOffset por defecto corresponde a America/Bogota.
  *   YYYY-MM-DDThh:mm:ss.sssTZD (eg 1997-07-16T19:20:30.453+01:00)
  * En donde:
@@ -77,13 +71,7 @@ function toISOString(date, timeOffset = "-05:00") {
 }
 
 /**
- * Crea un objecto Date creado a partir de una fecha usando el formato ISO 8601. Al crear un objecto
- * Date con un texto en formato ISO 8601 JavaScript lo interpreta como UTC y no como hora local, lo
- * que permite mantener una sistema estándarizado dentro del módulo usando siempre UTC. Por ello,
- * las fechas en el módulo se crean con esta función y así se preservan en UTC y hay menos
- * probabilidad de tener conflictos entre fechas por saltos de zona horaria.
- * Leer este artículo para entender un poco mejor el problema de la interpretación de las fechas
- * en JavaScript: https://codeofmatt.com/2015/06/17/javascript-date-parsing-changes-in-es6/
+ * Crea un objecto Date a partir de una fecha usando el formato ISO 8601. Al crear un objecto Date con un texto en formato ISO 8601 JavaScript lo interpreta como UTC y no como hora local, lo que permite mantener una sistema estándarizado dentro del módulo usando siempre UTC. Por ello, las fechas en el módulo se crean con esta función y así se preservan en UTC y hay menos probabilidad de tener conflictos entre fechas por saltos de zona horaria. Leer este artículo para entender un poco mejor el problema de la interpretación de las fechas en JavaScript: https://codeofmatt.com/2015/06/17/javascript-date-parsing-changes-in-es6/
  * @param {number} year Año correspondiente a la fecha.
  * @param {number} month Mes correspondiente a la fecha. 1 = Enero.
  * @param {number} day Día correspondiente a la fecha.
@@ -109,10 +97,7 @@ function addDays(date, amount) {
 }
 
 /**
- * Compara si dos fechas son la misma a nivel de día y mes, no se tiene en cuenta las horas sino
- * sólo si son o no el mismo día del mismo mes. Es irrelevante verificar el año ya que el festivo
- * siempre lo creamos a partir del año de la fecha que se pasó como argumento inicial, por lo tanto
- * siempre estamos comparando fechas del mismo año y sólo necesitamos verificar el mes y el día.
+ * Compara si dos fechas son la misma a nivel de día y mes, no se tiene en cuenta las horas sino sólo si son o no el mismo día del mismo mes. Es irrelevante verificar el año ya que el festivo siempre lo creamos a partir del año de la fecha que se pasó como argumento inicial, por lo tanto siempre estamos comparando fechas del mismo año y sólo necesitamos verificar el mes y el día.
  * @param {object} date1 Objeto fecha de JavaScript
  * @param {object} date2 Objeto fecha de JavaScript
  * @returns {boolean} Verdadero si el mes y el día son el mismo de lo contrario devuelve falso.
@@ -124,16 +109,13 @@ function isSameDate(date1, date2) {
 }
 
 /**
- * Devuelve el próximo día de la semana especificado en el argumento 'dayOfWeek' a partir de la
- * fecha especificada. Por ejemplo, para obtener el lunes siguiente a una fecha especificada se
- * usaría:
+ * Devuelve el próximo día de la semana especificado en el argumento 'dayOfWeek' a partir de la fecha especificada. Por ejemplo, para obtener el lunes siguiente a una fecha especificada se usaría:
  *    const nextMonday = getNextDayOfWeek(fecha, 1);
- * Si la fecha corresponde al mismo día solicitado se devuelve la misma fecha. En el caso anterior
- * si la 'fecha' pasada como argumento es lunes, entonces la función devolverá la misma fecha.
+ * Si la fecha corresponde al mismo día solicitado se devuelve la misma fecha. En el caso anterior si la 'fecha' pasada como argumento es lunes, entonces la función devolverá la misma fecha.
  * Basado en:  https://codereview.stackexchange.com/a/33532/146118
- * @param {object} date Objeto fecha de JavaScript
+ * @param {object} date Fecha a evaluar
  * @param {number} dayOfWeek Día de la semana que se desea. 0 = Domingo.
- * @returns {date} La fecha correspondiente al siguiente día de la semana que se ha solicitado.
+ * @returns {object} Fecha correspondiente al siguiente día de la semana que se ha solicitado.
  */
 function getNextDayOfWeek(date, dayOfWeek) {
   const resultDate = new Date(date.getTime());
@@ -142,10 +124,8 @@ function getNextDayOfWeek(date, dayOfWeek) {
 }
 
 /**
- * Devuelve la fecha que corresponde al domingo de Pascua para el año indicado usando el algoritmo
- * de Butcher: https://es.wikipedia.org/wiki/Computus#C.C3.A1lculo
- * Las fiestas correspondientes a la Pascua se calculan con referencia a esta fecha de la siguiente
- * forma:
+ * Devuelve la fecha que corresponde al domingo de Pascua para el año indicado usando el algoritmo de Butcher: https://es.wikipedia.org/wiki/Computus#C.C3.A1lculo
+ * Las fiestas correspondientes a la Pascua se calculan con referencia a esta fecha de la siguiente forma:
  *   Pascua -7  :  Domingo de Ramos
  *   Pascua -3  :  Jueves Santo
  *   Pascua -2  :  Viernes Santo
@@ -179,14 +159,10 @@ function getPascua(year, timeOffset = "-05:00") {
 }
 
 /**
- * Devuelve el nombre del festivo correspondiente a la fecha indicada si la fecha indicada es
- * festivo, de lo contrario devuelve false.
- * Exiten tres tipos de festivos en Colombia:
+ * Devuelve el nombre del festivo correspondiente a la fecha indicada si la fecha indicada es festivo, de lo contrario devuelve false. Exiten tres tipos de festivos en Colombia:
  *   1. De fecha fija: Siempre se celebra el día correspondiente a ese fecha. Ej. 25 de diciembre.
- *   2. Próximo lunes: Se celebra el lunes siguiente a la fecha en que cae el festivo. Ej. 6 de
- *      enero. Si cae en lunes, se celebra ese mismo día.
- *   3. Respecto a la Pascua: Se celebran según la diferencia con respecto al domingo de Pascua para
- *      ese año. Ej. Domingo de Pascua +45 días (Ascensión de Jesús).
+ *   2. Próximo lunes: Se celebra el lunes siguiente a la fecha en que cae el festivo. Ej. 6 de enero. Si cae en lunes, se celebra ese mismo día.
+ *   3. Respecto a la Pascua: Se celebran según la diferencia con respecto al domingo de Pascua para ese año. Ej. Domingo de Pascua +45 días (Ascensión de Jesús).
  * @param {object} date Objeto tipo fecha para el cual se desea saber si es festivo.
  * @param {string} timeOffset Desplazamiento de la zona horaria. Por defecto es '-05:00'.
  * @returns {string} El nombre del festivo o una cadena de texto vacia.
@@ -232,29 +208,10 @@ function getHoliday(date = new Date(), timeOffset = "-05:00") {
 }
 
 /**
- * Devuelve un array de objectos con todos los festivos del año indicado, en donde cada objeto
- * contiene la información de un día festivo. Por ejemplo, para el 2010 devolverá el siguiente
- * array:
- *   [
- *     { date: '2010-01-01T00:00:00.000-05:00', type: '1', name: 'Año Nuevo' },
- *     { date: '2010-05-01T00:00:00.000-05:00', type: '1', name: 'Día del Trabajo' },
- *     { date: '2010-07-20T00:00:00.000-05:00', type: '1', name: 'Grito de la Independencia' },
- *     { date: '2010-08-07T00:00:00.000-05:00', type: '1', name: 'Batalla de Boyacá' },
- *     { date: '2010-12-08T00:00:00.000-05:00', type: '1', name: 'Inmaculada Concepción' },
- *     { date: '2010-12-25T00:00:00.000-05:00', type: '1', name: 'Navidad' },
- *     { date: '2010-01-11T00:00:00.000-05:00', type: '2', name: 'Reyes Magos' },
- *     { date: '2010-03-22T00:00:00.000-05:00', type: '2', name: 'San José' },
- *     { date: '2010-07-05T00:00:00.000-05:00', type: '2', name: 'San Pedro y San Pablo' },
- *     { date: '2010-08-16T00:00:00.000-05:00', type: '2', name: 'Asunción de la Virgen' },
- *     { date: '2010-10-18T00:00:00.000-05:00', type: '2', name: 'Día de la Raza' },
- *     { date: '2010-11-01T00:00:00.000-05:00', type: '2', name: 'Todos los Santos' },
- *     { date: '2010-11-15T00:00:00.000-05:00', type: '2', name: 'Independencia de Cartagena' },
- *     { date: '2010-04-01T00:00:00.000-05:00', type: '3', name: 'Jueves Santo' },
- *     { date: '2010-04-02T00:00:00.000-05:00', type: '3', name: 'Viernes Santo' },
- *     { date: '2010-05-17T00:00:00.000-05:00', type: '3', name: 'Ascensión de Jesús' },
- *     { date: '2010-06-07T00:00:00.000-05:00', type: '3', name: 'Corpus Christi' },
- *     { date: '2010-06-14T00:00:00.000-05:00', type: '3', name: 'Sagrado Corazón de Jesús' },
- *   ]
+ * Devuelve un array de objectos con todos los festivos del año indicado, en donde cada objeto contiene la información de un día festivo. Este es un ejemplo del primer elemento del array devuelto para el año 2010:
+ *  { date: '2010-01-01T00:00:00.000-05:00',
+ *    type: '1',
+ *    name: 'Año Nuevo' }
  * @param {number} year El año para el cual deseamos saber los festivos
  * @returns {array} Los festivos para el año solicitado.
  */
