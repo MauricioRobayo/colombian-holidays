@@ -26,10 +26,10 @@ const holidays = [
  */
 function validateYear(year) {
   const int = Number.parseInt(year, 10);
-  if (!Number.isNaN(int) && int > 1983) {
-    return int;
+  if (Number.isNaN(int) || int < 1984) {
+    throw new Error("Invalid year. Should be an integer > 1983");
   }
-  throw new Error("Invalid year. Should be an integer > 1983");
+  return int;
 }
 
 /**
@@ -42,46 +42,6 @@ function isValidDate(date) {
     Object.prototype.toString.call(date) === "[object Date]" &&
     validateYear(date.getFullYear())
   );
-}
-
-/**
- * Crea una cadena de texto en formato ISO 8601 que representa la fecha local correspondiente a la fecha almacenada en el objeto Date pasado como argumento. El formato devuelto es el siguiente.
- * El timeOffset por defecto corresponde a America/Bogota.
- *   YYYY-MM-DDThh:mm:ss.sssTZD (eg 1997-07-16T19:20:30.453+01:00)
- * En donde:
- *  YYYY = four-digit year
- *  MM   = two-digit month (01=January, etc.)
- *  DD   = two-digit day of month (01 through 31)
- *  hh   = two digits of hour (00 through 23) (am/pm NOT allowed)
- *  mm   = two digits of minute (00 through 59)
- *  ss   = two digits of second (00 through 59)
- *  s    = one or more digits representing a decimal fraction of a second
- *  TZD  = time zone designator (Z or +hh:mm or -hh:mm)
- * @param {object} date Objeto tipo Date de JavaScript
- * @param {string} timeOffset Desplazamiento horario por defecto '05:00' = 'America/Bogota'
- * @returns {string} Cadena de texto de fecha en formato ISO 8601.
- */
-function toISOString(date, timeOffset = "-05:00") {
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  const sMonth = month < 10 ? `0${month}` : month;
-  const sDay = day < 10 ? `0${day}` : day;
-  return `${year}-${sMonth}-${sDay}T00:00:00.000${timeOffset}`;
-}
-
-/**
- * Crea un objecto Date a partir de una fecha usando el formato ISO 8601. Al crear un objecto Date con un texto en formato ISO 8601 JavaScript lo interpreta como UTC y no como hora local, lo que permite mantener una sistema estándarizado dentro del módulo usando siempre UTC. Por ello, las fechas en el módulo se crean con esta función y así se preservan en UTC y hay menos probabilidad de tener conflictos entre fechas por saltos de zona horaria. Leer este artículo para entender un poco mejor el problema de la interpretación de las fechas en JavaScript: https://codeofmatt.com/2015/06/17/javascript-date-parsing-changes-in-es6/
- * @param {number} year Año correspondiente a la fecha.
- * @param {number} month Mes correspondiente a la fecha. 1 = Enero.
- * @param {number} day Día correspondiente a la fecha.
- * @param {number} timeOffset El desplazamiento de la zona horaria. Por defecto = '-05:00'.
- * @returns {date} Objecto fecha creado usando formato ISO 8601.
- */
-function getISODate(year, month, day, timeOffset = "-05:00") {
-  const sMonth = month < 10 ? `0${month}` : month;
-  const sDay = day < 10 ? `0${day}` : day;
-  return new Date(`${year}-${sMonth}-${sDay}T00:00:00.000${timeOffset}`);
 }
 
 /**
@@ -138,7 +98,7 @@ function getNextDayOfWeek(date, dayOfWeek) {
  * @param {string} timeOffset Desplazamiento de la zona horaria. Por defecto es '-05:00'.
  * @returns {date} La fecha correspondiente al domingo de Pascua.
  */
-function getPascua(year, timeOffset = "-05:00") {
+function getPascua(year) {
   const A = year % 19;
   const B = Math.floor(year / 100);
   const C = year % 100;
@@ -154,7 +114,7 @@ function getPascua(year, timeOffset = "-05:00") {
   const N = H + L - 7 * M + 114;
   const month = Math.floor(N / 31);
   const day = 1 + (N % 31);
-  const pascua = getISODate(year, month, day, timeOffset);
+  const pascua = new Date(year, month - 1, day);
   return pascua;
 }
 
@@ -167,37 +127,27 @@ function getPascua(year, timeOffset = "-05:00") {
  * @param {string} timeOffset Desplazamiento de la zona horaria. Por defecto es '-05:00'.
  * @returns {string} El nombre del festivo o una cadena de texto vacia.
  */
-function getHoliday(date = new Date(), timeOffset = "-05:00") {
+function getHoliday(date = new Date()) {
   if (!isValidDate(date)) {
     throw new Error("Invalid date.");
   }
   const year = date.getFullYear();
   for (let i = 0; i < holidays.length; i += 1) {
     if (holidays[i].type === 1) {
-      const holiday = getISODate(
-        year,
-        holidays[i].month,
-        holidays[i].day,
-        timeOffset
-      );
+      const holiday = new Date(year, holidays[i].month - 1, holidays[i].day);
       if (isSameDate(date, holiday)) {
         return holidays[i].name;
       }
     }
     if (holidays[i].type === 2) {
-      const holiday = getISODate(
-        year,
-        holidays[i].month,
-        holidays[i].day,
-        timeOffset
-      );
+      const holiday = new Date(year, holidays[i].month - 1, holidays[i].day);
       const nextMonday = getNextDayOfWeek(holiday, 1);
       if (isSameDate(date, nextMonday)) {
         return holidays[i].name;
       }
     }
     if (holidays[i].type === 3) {
-      const pascua = getPascua(year, timeOffset);
+      const pascua = getPascua(year);
       const pascuaHoliday = addDays(pascua, holidays[i].offset);
       if (isSameDate(date, pascuaHoliday)) {
         return holidays[i].name;
@@ -221,11 +171,11 @@ function getAllHolidays(year = new Date().getFullYear()) {
   for (let i = 0; i < holidays.length; i += 1) {
     let holidayDate;
     if (holidays[i].type === 1) {
-      holidayDate = getISODate(validYear, holidays[i].month, holidays[i].day);
+      holidayDate = new Date(validYear, holidays[i].month - 1, holidays[i].day);
     }
     if (holidays[i].type === 2) {
       holidayDate = getNextDayOfWeek(
-        getISODate(validYear, holidays[i].month, holidays[i].day),
+        new Date(validYear, holidays[i].month - 1, holidays[i].day),
         1
       );
     }
@@ -233,7 +183,7 @@ function getAllHolidays(year = new Date().getFullYear()) {
       holidayDate = addDays(getPascua(validYear), holidays[i].offset);
     }
     yearHolidays.push({
-      date: toISOString(holidayDate),
+      date: holidayDate.toISOString().substring(0, 10),
       type: holidays[i].type,
       name: holidays[i].name
     });
