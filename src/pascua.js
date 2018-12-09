@@ -241,4 +241,4 @@ function getAllHolidays(year = new Date().getFullYear()) {
   return yearHolidays;
 }
 
-export { getHoliday, getAllHolidays };
+module.exports = { getHoliday, getAllHolidays };

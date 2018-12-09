@@ -8,5 +8,6 @@ module.exports = {
       statements: 100
     }
   },
+  transform: {}, // no need to use babel
   collectCoverageFrom: ["src/**/*.js"]
 };

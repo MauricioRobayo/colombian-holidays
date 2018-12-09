@@ -1,4 +1,4 @@
-import { getAllHolidays, getHoliday } from "./pascua";
+const { getAllHolidays, getHoliday } = require("./pascua");
 
 // America/Bogota
 const timeOffset = "-05:00";
