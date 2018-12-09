@@ -7,20 +7,15 @@ notifications:
   email:
     on_failure: always
 node_js:
-  - "10"
-  - "8"
-  - "6"
-before_script:
-  - export TZ=America/Bogota
+  - "8.10"
 script:
   - npm run build:dist
   - npm run build:docs
   - npm run lint
   - npm test
-  - npx codecov
 after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
-  - npm run deploy
+  - npx codecov
+  - npx semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
