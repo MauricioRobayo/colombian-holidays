@@ -9,7 +9,7 @@
 [![codecov](https://codecov.io/gh/archemiro/pascua/branch/master/graph/badge.svg)](https://codecov.io/gh/archemiro/pascua)
 [![Greenkeeper badge](https://badges.greenkeeper.io/archemiro/pascua.svg)](https://greenkeeper.io/)
 
-![Bandera de Colombia](https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/16px-Flag_of_Colombia.svg.png) Módulo **extraligero** y **sin dependencias** para calcular los [días festivos en Colombia](https://www.archemiro.com/pascua/).
+Módulo **extraligero** y **sin dependencias** para calcular los [días festivos en Colombia](https://www.archemiro.com/pascua/).
 
 ---
 
@@ -119,3 +119,5 @@ Si se omite el año como argumento, por defecto se usará el año actual.
 ## Licencia
 
 [MIT](LICENSE).
+
+Hecho en ![Bandera de Colombia](https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/16px-Flag_of_Colombia.svg.png) con mucho ☕.
