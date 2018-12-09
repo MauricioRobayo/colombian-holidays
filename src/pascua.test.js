@@ -32,9 +32,10 @@ describe("get the name of a given holiday date", () => {
     { date: "2010-10-18", name: "Día de la Raza" }
   ];
   holidayCases.forEach(holiday => {
-    it(`should return '${holiday.name}' for ${holiday.date}`, () => {
-      times.forEach(time => {
-        const date = new Date(holiday.date + time + timeOffset);
+    times.forEach(time => {
+      const datetime = `${holiday.date}${time}${timeOffset}`;
+      it(`should return '${holiday.name}' for ${datetime}`, () => {
+        const date = new Date(datetime);
         expect(getHoliday(date)).toBe(holiday.name);
       });
     });
