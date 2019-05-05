@@ -10,9 +10,7 @@
     "prebuild:docs": "rimraf docs",
     "build:dist": "babel src/pascua.js --delete-dir-on-start --out-dir dist",
     "build:docs": "parcel build ./examples/index.html --out-dir docs --public-url ./ --no-source-maps",
-    "prepublishOnly": "npm-run-all lint test build:dist",
-    "travis-deploy-once": "travis-deploy-once",
-    "semantic-release": "semantic-release"
+    "prepublishOnly": "npm-run-all lint test build:dist"
   },
   "license": "MIT",
   "bugs": {
