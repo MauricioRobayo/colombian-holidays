@@ -19,24 +19,16 @@ const holidays = [
   { type: 3, name: "Sagrado Corazón de Jesús", offset: 71 }
 ];
 
-/**
- * Valida si el año pasado como argumento es un número entero mayor a 1983. En 1983 se expide la ley por la cual se corren algunos festivos al próximo lunes: http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
- * @param {number} year El año para el cual se desea obtener los días festivos. Mayor a 1983.
- * @returns {int} El año convertido a un número entero mayor a 1983.
- */
 function validateYear(year) {
   const int = Number.parseInt(year, 10);
+  // En 1983 se expide la ley por la cual se corren algunos festivos al próximo lunes
+  // http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
   if (Number.isNaN(int) || int < 1984) {
     throw new Error("Invalid year. Should be an integer > 1983");
   }
   return int;
 }
 
-/**
- * Valida si el argumento pasado corresponde a un objeto de tipo fecha de JavaScript y si el año de esa fecha es mayor a 1983, que es el año en el que se establece el decreto que rige los festivos actuales: http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
- * @param {any} date La fecha que se desea validar.
- * @returns {boolean} Verdadero si es una fecha válida falso de lo contrario.
- */
 function isValidDate(date) {
   return (
     Object.prototype.toString.call(date) === "[object Date]" &&
@@ -44,39 +36,19 @@ function isValidDate(date) {
   );
 }
 
-/**
- * Crea una nueva fecha a la que se le han sumado los días especificados en el argumento amount.
- * @param {object} date Fecha tipo JavaScript.
- * @param {number} amount Días que se desean sumar.
- * @returns {date} Nueva fecha resultante tras sumarle la cantidad de días especificados.
- */
 function addDays(date, amount) {
   const resultDate = new Date(date.getTime());
   resultDate.setDate(resultDate.getDate() + amount);
   return resultDate;
 }
 
-/**
- * Compara si dos fechas son la misma a nivel de día y mes, no se tiene en cuenta las horas sino sólo si son o no el mismo día del mismo mes. Es irrelevante verificar el año ya que el festivo siempre lo creamos a partir del año de la fecha que se pasó como argumento inicial, por lo tanto siempre estamos comparando fechas del mismo año y sólo necesitamos verificar el mes y el día.
- * @param {object} date1 Objeto fecha de JavaScript
- * @param {object} date2 Objeto fecha de JavaScript
- * @returns {boolean} Verdadero si el mes y el día son el mismo de lo contrario devuelve falso.
- */
 function isSameDate(date1, date2) {
+  // Es irrelevante verificar el año ya que el festivo siempre lo creamos a partir del año de la fecha que se pasó como argumento inicial, por lo tanto siempre estamos comparando fechas del mismo año y sólo necesitamos verificar el mes y el día.
   return (
     date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth()
   );
 }
 
-/**
- * Devuelve el próximo día de la semana especificado en el argumento 'dayOfWeek' a partir de la fecha especificada. Por ejemplo, para obtener el lunes siguiente a una fecha especificada se usaría:
- *    const nextMonday = getNextDayOfWeek(fecha, 1);
- * Si la fecha corresponde al mismo día solicitado se devuelve la misma fecha. En el caso anterior si la 'fecha' pasada como argumento es lunes, entonces la función devolverá la misma fecha.
- * Basado en:  https://codereview.stackexchange.com/a/33532/146118
- * @param {object} date Fecha a evaluar
- * @param {number} dayOfWeek Día de la semana que se desea. 0 = Domingo.
- * @returns {object} Fecha correspondiente al siguiente día de la semana que se ha solicitado.
- */
 function getNextDayOfWeek(date, dayOfWeek) {
   const resultDate = new Date(date.getTime());
   resultDate.setDate(date.getDate() + ((7 + dayOfWeek - date.getDay()) % 7));
@@ -93,10 +65,6 @@ function getNextDayOfWeek(date, dayOfWeek) {
  *   Pascua +43 :  Ascensión de Jesús
  *   Pascua +64 :  Corpus Christi
  *   Pascua +71 :  Sagrado Corazón de Jesús
- * Ni el 'Domingo de Pascua' como tal, ni el 'Domingo de Ramos' se consideran días festivos.
- * @param {number} year Año para el cual se desea saber el Domingo de Pascua.
- * @param {string} timeOffset Desplazamiento de la zona horaria. Por defecto es '-05:00'.
- * @returns {date} La fecha correspondiente al domingo de Pascua.
  */
 function getPascua(year) {
   const A = year % 19;
@@ -118,15 +86,6 @@ function getPascua(year) {
   return pascua;
 }
 
-/**
- * Devuelve el nombre del festivo correspondiente a la fecha indicada si la fecha indicada es festivo, de lo contrario devuelve false. Exiten tres tipos de festivos en Colombia:
- *   1. De fecha fija: Siempre se celebra el día correspondiente a ese fecha. Ej. 25 de diciembre.
- *   2. Próximo lunes: Se celebra el lunes siguiente a la fecha en que cae el festivo. Ej. 6 de enero. Si cae en lunes, se celebra ese mismo día.
- *   3. Respecto a la Pascua: Se celebran según la diferencia con respecto al domingo de Pascua para ese año. Ej. Domingo de Pascua +45 días (Ascensión de Jesús).
- * @param {object} date Objeto tipo fecha para el cual se desea saber si es festivo.
- * @param {string} timeOffset Desplazamiento de la zona horaria. Por defecto es '-05:00'.
- * @returns {string} El nombre del festivo o una cadena de texto vacia.
- */
 function getHoliday(date = new Date()) {
   if (!isValidDate(date)) {
     throw new Error("Invalid date.");
@@ -157,14 +116,6 @@ function getHoliday(date = new Date()) {
   return "";
 }
 
-/**
- * Devuelve un array de objectos con todos los festivos del año indicado, en donde cada objeto contiene la información de un día festivo. Este es un ejemplo del primer elemento del array devuelto para el año 2010:
- *  { date: '2010-01-01T00:00:00.000-05:00',
- *    type: '1',
- *    name: 'Año Nuevo' }
- * @param {number} year El año para el cual deseamos saber los festivos
- * @returns {array} Los festivos para el año solicitado.
- */
 function getAllHolidays(year = new Date().getFullYear()) {
   const validYear = validateYear(year);
   const yearHolidays = [];
