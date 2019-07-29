@@ -5,11 +5,11 @@
 [![Blazing Fast](https://img.shields.io/badge/speed-blazing%20%F0%9F%94%A5-brightgreen.svg?style=flat-square)](https://twitter.com/acdlite/status/974390255393505280)
 
 [![npm version](https://badge.fury.io/js/pascua.svg)](https://badge.fury.io/js/pascua)
-[![Build Status](https://travis-ci.com/archemiro/pascua.svg?branch=master)](https://travis-ci.com/archemiro/pascua)
-[![codecov](https://codecov.io/gh/archemiro/pascua/branch/master/graph/badge.svg)](https://codecov.io/gh/archemiro/pascua)
-[![Greenkeeper badge](https://badges.greenkeeper.io/archemiro/pascua.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.com/MauricioRobayo/pascua.svg?branch=master)](https://travis-ci.com/MauricioRobayo/pascua)
+[![codecov](https://codecov.io/gh/MauricioRobayo/pascua/branch/master/graph/badge.svg)](https://codecov.io/gh/MauricioRobayo/pascua)
+[![Greenkeeper badge](https://badges.greenkeeper.io/MauricioRobayo/pascua.svg)](https://greenkeeper.io/)
 
-Módulo **extraligero** y **sin dependencias** para calcular los [días festivos en Colombia](https://www.archemiro.com/pascua/).
+Módulo **extraligero** y **sin dependencias** para calcular los [días festivos en Colombia](https://www.feriadoscolombia.com)
 
 ---
 
