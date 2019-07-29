@@ -11,10 +11,10 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/archemiro/pascua/issues"
+    "url": "https://github.com/MauricioRobayo/pascua/issues"
   },
-  "homepage": "https://github.com/archemiro/pascua#readme",
-  "author": "Mauricio Robayo <archemiro@gmail.com> (https://www.archemiro.com)",
+  "homepage": "https://github.com/MauricioRobayo/pascua#readme",
+  "author": "Mauricio Robayo <rfmajo@gmail.com> (https://www.archemiro.com)",
   "keywords": [
     "Colombia",
     "Festivos",
@@ -45,6 +45,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/archemiro/pascua.git"
+    "url": "https://github.com/MauricioRobayo/pascua.git"
   }
 }
