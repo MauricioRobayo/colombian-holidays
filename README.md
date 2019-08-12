@@ -7,6 +7,7 @@
 [![npm version](https://badge.fury.io/js/pascua.svg)](https://badge.fury.io/js/pascua)
 [![Build Status](https://travis-ci.com/MauricioRobayo/pascua.svg?branch=master)](https://travis-ci.com/MauricioRobayo/pascua)
 [![codecov](https://codecov.io/gh/MauricioRobayo/pascua/branch/master/graph/badge.svg)](https://codecov.io/gh/MauricioRobayo/pascua)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a64471b907c44f7587aea4e3aab9d442)](https://www.codacy.com/app/MauricioRobayo/pascua?utm_source=github.com&utm_medium=referral&utm_content=MauricioRobayo/pascua&utm_campaign=Badge_Grade)
 [![Greenkeeper badge](https://badges.greenkeeper.io/MauricioRobayo/pascua.svg)](https://greenkeeper.io/)
 
 Módulo **extraligero** y **sin dependencias** para calcular los [días festivos en Colombia](https://www.feriadoscolombia.com)
