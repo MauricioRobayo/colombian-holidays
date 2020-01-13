@@ -40,6 +40,7 @@ jobs:
 
       - name: Test
         run: |
+          npm run lint
           npm test
           npx codecov
 
