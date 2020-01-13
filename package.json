@@ -48,5 +48,22 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/MauricioRobayo/pascua.git"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "eslint --fix",
+      "git add",
+      "jest --bail --findRelatedTests"
+    ],
+    "**/*.{js,css,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
