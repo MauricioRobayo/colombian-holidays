@@ -5,7 +5,7 @@
 [![Blazing Fast](https://img.shields.io/badge/speed-blazing%20%F0%9F%94%A5-brightgreen.svg?style=flat-square)](https://twitter.com/acdlite/status/974390255393505280)
 
 [![npm version](https://badge.fury.io/js/pascua.svg)](https://badge.fury.io/js/pascua)
-[![Build Status](https://travis-ci.com/MauricioRobayo/pascua.svg?branch=master)](https://travis-ci.com/MauricioRobayo/pascua)
+[![Build Status](https://github.com/MauricioRobayo/Pascua/workflows/Build-and-Release/badge.svg)](https://github.com/MauricioRobayo/pascua/actions?query=workflow%3A%22Build+and+Release%22)
 [![codecov](https://codecov.io/gh/MauricioRobayo/pascua/branch/master/graph/badge.svg)](https://codecov.io/gh/MauricioRobayo/pascua)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a64471b907c44f7587aea4e3aab9d442)](https://www.codacy.com/app/MauricioRobayo/pascua?utm_source=github.com&utm_medium=referral&utm_content=MauricioRobayo/pascua&utm_campaign=Badge_Grade)
 [![Greenkeeper badge](https://badges.greenkeeper.io/MauricioRobayo/pascua.svg)](https://greenkeeper.io/)
@@ -39,11 +39,11 @@ Pascua include two functions: `getHoliday` y `getAllHolidays`.
 The `getHoliday` function allows to check if a given date is a holiday. It takes as an optional argument a JavaScript date and returns the name of the holiday in case the date is a holiday, or an empty string (`""`)if it isn't.
 
 ```js
-const { getHoliday } = require("pascua");
+const { getHoliday } = require('pascua')
 
-const date = new Date("13-04-2017");
-const holiday = getHoliday(date);
-console.log(holiday);
+const date = new Date('13-04-2017')
+const holiday = getHoliday(date)
+console.log(holiday)
 // 'Jueves Santo'
 ```
 
@@ -54,9 +54,9 @@ If the date is ommited, by defaul the function is going to use the current date.
 The function `getAllHolidays(year)` allows to get all the holidays for a given year, returning an array with the holidays for the requested year:
 
 ```js
-const { getAllHolidays } = require("pascua");
+const { getAllHolidays } = require('pascua')
 
-const holidays2010 = getAllHolidays(2010);
+const holidays2010 = getAllHolidays(2010)
 ```
 
 The content of the `holidays2010` variable will be the following array:
