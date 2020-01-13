@@ -86,6 +86,16 @@ The content of the `holidays2010` variable will be the following array:
 
 Is the year is ommited, by default the function will return the holidays for the current year.
 
+## Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
 ## License
 
 [MIT](LICENSE).
