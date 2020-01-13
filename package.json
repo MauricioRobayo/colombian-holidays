@@ -16,7 +16,7 @@
   "homepage": "https://github.com/MauricioRobayo/pascua#readme",
   "author": "Mauricio Robayo <hi@mauriciorobayo.com> (https://www.mauriciorobayo.com)",
   "keywords": [
-    "Colombia holidays",
+    "Colombian holidays",
     "Festivos en Colombia",
     "Colombia",
     "Festivos",
@@ -85,5 +85,18 @@
     "semi": false,
     "singleQuote": true,
     "trailingComma": "all"
+  },
+  "babel": {
+    "comments": false,
+    "presets": [
+      "minify",
+      [
+        "@babel/env",
+        {
+          "targets": "> 0.25%, not dead",
+          "modules": "umd"
+        }
+      ]
+    ]
   }
 }
