@@ -10,79 +10,48 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a64471b907c44f7587aea4e3aab9d442)](https://www.codacy.com/app/MauricioRobayo/pascua?utm_source=github.com&utm_medium=referral&utm_content=MauricioRobayo/pascua&utm_campaign=Badge_Grade)
 [![Greenkeeper badge](https://badges.greenkeeper.io/MauricioRobayo/pascua.svg)](https://greenkeeper.io/)
 
-Módulo **extraligero** y **sin dependencias** para calcular los [días festivos en Colombia](https://www.feriadoscolombia.com)
+Extralight and no dependencies module to get [Colombian holidays](https://www.mauriciorobayo.com/festivos-colombia).
 
 ---
 
-Pascua permite obtener los días festivos a partir de 1984 año en que entra en vigencia la [Ley 51 de 1983](http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954), que establece los días festivos para Colombia de la forma en que se celebran actualmente.
+Getting Colombian holidays is a little bit tricky because there are three types of holidays:
 
-Para su cálculo, los días feriados en Colombia se dividen en tres categorías y son 18 días festivos en total:
+1. **Fixed date**: 6 holidays - Celebrated the same date they fall.
+2. **Next monday**: 7 holidays - Moved to the next moday after the date they fall.
+3. **Relative to easter**: 5 holidays - Celebrated relative to [easter](https://en.wikipedia.org/wiki/Easter).
 
-1. **Festivos de fecha fija**: Siempre se celebra el día correspondiente a esa fecha sin importar qué día cae. Ej. 25 de diciembre.
-2. **Festivos de próximo lunes**: Se celebra el lunes siguiente a la fecha en que cae el festivo. Ej. 6 de enero. Si ese día es lunes, se celebra ese mismo día.
-3. **Festivos respecto a la Pascua**: Se celebran según la diferencia con respecto al domingo de Pascua para ese año. Ej. Domingo de Pascua +45 días (Ascensión de Jesús).
+## Installation
 
-Los siguientes son los festivos de **fecha fija**:
-
-- 1 de enero: Año Nuevo.
-- 8 de diciembre: Inmaculada Concepción.
-- 25 de diciembre: Navidad.
-- 1 de mayo: Día del Trabajo.
-- 20 de julio: Grito de la Independencia.
-- 7 de agosto: Batalla de Boyacá.
-
-Los siguientes son los festivos de **próximo lunes**:
-
-- 6 de enero: Reyes Magos.
-- 19 de marzo: San José.
-- 29 de junio: San Pedro y San Pablo.
-- 15 de agosto: Asunción de la Virgen.
-- 1 de noviembre: Todos los Santos.
-- 12 de octubre: Día de la Raza.
-- 11 de noviembre: Independencia de Cartagena.
-
-Los siguientes son los festivos **respecto a la Pascua**:
-
-- Pascua -7 días: Domingo de Ramos (no se considera festivo como tal por caer en Domingo).
-- Pascua -3 días: Jueves Santo.
-- Pascua -2 días: Viernes Santo.
-- Pascua: Domingo de Pascua (no se considera festivo como tal por caer en Domingo).
-- Pascua 43 días: Ascensión de Jesús.
-- Pascua 64 días: Corpus Christi.
-- Pascua 71 días: Sagrado Corazón de Jesús.
-
-## Instalación
-
-Para instalar el módulo como un dependencia del proyecto:
+To install as a dependency of your project:
 
 ```shell
 npm install pascua
 ```
 
-Para usar este módulo en el navegador se puede cargar por medio de [`unpkg`](http://unpkg.org/)
-usando el siguiente [enlace](https://unpkg.com/pascua/dist/pascua.js). El objeto `pascua` estará disponible de manera global.
+To load it on the browser you can use [`unpkg`](http://unpkg.org/), just add the following [script](https://unpkg.com/pascua/dist/pascua.js). The `pascua` object will be available globally.
 
-## Uso
+## Use
 
-Pascua incluye dos funciones: `getHoliday` y `getAllHolidays`.
+Pascua include two functions: `getHoliday` y `getAllHolidays`.
 
-### Determinar si un día dado es festivo
+### Tell if a given date is holiday
 
-La función `getHoliday` permite saber si un día determinado es festivo o no. Recibe como argumento opcional una fecha de JavaScript y devuelve el nombre del festivo que aplica para la fecha o una cadena de texto vacía (`""`) si la fecha no corresponde con un festivo:
+The `getHoliday` function allows to check if a given date is a holiday. It takes as an optional argument a JavaScript date and returns the name of the holiday in case the date is a holiday, or an empty string (`""`)if it isn't.
 
 ```js
 const { getHoliday } = require("pascua");
 
 const date = new Date("13-04-2017");
 const holiday = getHoliday(date);
-console.log(holiday); // 'Jueves Santo'
+console.log(holiday);
+// 'Jueves Santo'
 ```
 
-Si se omite la fecha como argumento, por defecto se usará la fecha actual.
+If the date is ommited, by defaul the function is going to use the current date.
 
-### Obtener todos los días festivos para un año determinado
+### Get all holidays for a given year
 
-La la función `getAllHolidays(year)` permite consultar los festivos correspondientes a cualquier año, devolviendo un array con los festivos para el año solicitado. Por ejemplo:
+The function `getAllHolidays(year)` allows to get all the holidays for a given year, returning an array with the holidays for the requested year:
 
 ```js
 const { getAllHolidays } = require("pascua");
@@ -90,7 +59,7 @@ const { getAllHolidays } = require("pascua");
 const holidays2010 = getAllHolidays(2010);
 ```
 
-El contenido de `holidays2010` será el siguiente array:
+The content of the `holidays2010` variable will be the following array:
 
 ```js
 [
@@ -115,10 +84,10 @@ El contenido de `holidays2010` será el siguiente array:
 ],
 ```
 
-Si se omite el año como argumento, por defecto se usará el año actual.
+Is the year is ommited, by default the function will return the holidays for the current year.
 
-## Licencia
+## License
 
 [MIT](LICENSE).
 
-Hecho en ![Bandera de Colombia](https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/16px-Flag_of_Colombia.svg.png) con mucho ☕.
+Made in ![Bandera de Colombia](https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/16px-Flag_of_Colombia.svg.png).
