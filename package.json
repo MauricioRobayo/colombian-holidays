@@ -1,7 +1,7 @@
 {
   "name": "pascua",
   "version": "0.0.0-development",
-  "description": "Calculadora para los festivos en Colombia",
+  "description": "Colombian holidays",
   "main": "dist/pascua.js",
   "scripts": {
     "lint": "eslint src",
@@ -14,8 +14,10 @@
     "url": "https://github.com/MauricioRobayo/pascua/issues"
   },
   "homepage": "https://github.com/MauricioRobayo/pascua#readme",
-  "author": "Mauricio Robayo <rfmajo@gmail.com> (https://www.archemiro.com)",
+  "author": "Mauricio Robayo <hi@mauriciorobayo.com> (https://www.mauriciorobayo.com)",
   "keywords": [
+    "Colombia holidays",
+    "Festivos en Colombia",
     "Colombia",
     "Festivos",
     "Holidays"
