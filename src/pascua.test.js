@@ -128,11 +128,6 @@ describe("Gets all holidays for a given year", () => {
   };
   Object.keys(holidaysYears).forEach(holidaysYear => {
     it(`Should return holidays for ${holidaysYear}`, () => {
-      expect.addSnapshotSerializer({
-        test: val => val.date && val.type && val.name,
-        print: val =>
-          `{ date: '${val.date}', type: '${val.type}', name: '${val.name}' }`
-      });
       expect(getAllHolidays(holidaysYear)).toEqual(holidaysYears[holidaysYear]);
     });
   });
