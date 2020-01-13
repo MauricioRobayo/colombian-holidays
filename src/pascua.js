@@ -43,8 +43,9 @@ function addDays(date, amount) {
 }
 
 function isSameDate(date1, date2) {
-  // Es irrelevante verificar el año ya que el festivo siempre lo creamos a partir del año de la fecha que se pasó como argumento inicial, por lo tanto siempre estamos comparando fechas del mismo año y sólo necesitamos verificar el mes y el día.
   return (
+    // No need to check year as we ceate the holiday
+    // using the year from the given date to check
     date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth()
   );
 }
@@ -56,15 +57,15 @@ function getNextDayOfWeek(date, dayOfWeek) {
 }
 
 /**
- * Devuelve la fecha que corresponde al domingo de Pascua para el año indicado usando el algoritmo de Butcher: https://es.wikipedia.org/wiki/Computus#C.C3.A1lculo
- * Las fiestas correspondientes a la Pascua se calculan con referencia a esta fecha de la siguiente forma:
- *   Pascua -7  :  Domingo de Ramos
- *   Pascua -3  :  Jueves Santo
- *   Pascua -2  :  Viernes Santo
- *   Pascua     :  Domingo de Pascua
- *   Pascua +43 :  Ascensión de Jesús
- *   Pascua +64 :  Corpus Christi
- *   Pascua +71 :  Sagrado Corazón de Jesús
+ * Butcher algorithm: https://es.wikipedia.org/wiki/Computus#C.C3.A1lculo
+ * The holidays corresponding to Pascua are calculating using the following offsets:
+ *   Pascua - 7  =  "Domingo de Ramos"
+ *   Pascua - 3  =  "Jueves Santo"
+ *   Pascua - 2  =  "Viernes Santo"
+ *   Pascua      =  "Domingo de Pascua"
+ *   Pascua + 43 =  "Ascensión de Jesús"
+ *   Pascua + 64 =  "Corpus Christi"
+ *   Pascua + 71 =  "Sagrado Corazón de Jesús"
  */
 function getPascua(year) {
   const A = year % 19;
