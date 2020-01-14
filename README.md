@@ -98,6 +98,4 @@ Give a ⭐️ if you like this project!
 
 ## License
 
-[MIT](LICENSE).
-
-Made in ![Bandera de Colombia](https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/16px-Flag_of_Colombia.svg.png).
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FMauricioRobayo%2Fpascua.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FMauricioRobayo%2Fpascua?ref=badge_large)
