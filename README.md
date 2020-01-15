@@ -11,7 +11,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a64471b907c44f7587aea4e3aab9d442)](https://www.codacy.com/app/MauricioRobayo/pascua?utm_source=github.com&utm_medium=referral&utm_content=MauricioRobayo/pascua&utm_campaign=Badge_Grade)
 [![Greenkeeper badge](https://badges.greenkeeper.io/MauricioRobayo/pascua.svg)](https://greenkeeper.io/)
 
-Extralight and no dependencies module to get [Colombian holidays](https://www.mauriciorobayo.com/festivos-colombia).
+Extralight and no dependencies module to get [Colombian holidays](https://www.mauriciorobayo.com/colombian-holidays).
 
 ---
 
