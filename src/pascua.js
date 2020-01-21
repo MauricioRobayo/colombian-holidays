@@ -87,60 +87,36 @@ function getPascua(year) {
   return pascua
 }
 
+function getHolidayDate(holiday, validYear) {
+  let date = new Date(validYear, holiday.month - 1, holiday.day)
+  if (holiday.type === 2) {
+    date = getNextDayOfWeek(date, 1)
+  }
+  if (holiday.type === 3) {
+    date = addDays(getPascua(validYear), holiday.offset)
+  }
+  return date
+}
+
 function getHoliday(date = new Date()) {
   if (!isValidDate(date)) {
     throw new Error('Invalid date.')
   }
-  const year = date.getFullYear()
-  for (let i = 0; i < holidays.length; i += 1) {
-    if (holidays[i].type === 1) {
-      const holiday = new Date(year, holidays[i].month - 1, holidays[i].day)
-      if (isSameDate(date, holiday)) {
-        return holidays[i].name
-      }
-    }
-    if (holidays[i].type === 2) {
-      const holiday = new Date(year, holidays[i].month - 1, holidays[i].day)
-      const nextMonday = getNextDayOfWeek(holiday, 1)
-      if (isSameDate(date, nextMonday)) {
-        return holidays[i].name
-      }
-    }
-    if (holidays[i].type === 3) {
-      const pascua = getPascua(year)
-      const pascuaHoliday = addDays(pascua, holidays[i].offset)
-      if (isSameDate(date, pascuaHoliday)) {
-        return holidays[i].name
-      }
-    }
-  }
-  return ''
+  const result = holidays.find(holiday =>
+    isSameDate(date, getHolidayDate(holiday, date.getFullYear())),
+  )
+  return result ? result.name : ''
 }
 
 function getAllHolidays(year = new Date().getFullYear()) {
   const validYear = validateYear(year)
-  const yearHolidays = []
-  for (let i = 0; i < holidays.length; i += 1) {
-    let holidayDate
-    if (holidays[i].type === 1) {
-      holidayDate = new Date(validYear, holidays[i].month - 1, holidays[i].day)
-    }
-    if (holidays[i].type === 2) {
-      holidayDate = getNextDayOfWeek(
-        new Date(validYear, holidays[i].month - 1, holidays[i].day),
-        1,
-      )
-    }
-    if (holidays[i].type === 3) {
-      holidayDate = addDays(getPascua(validYear), holidays[i].offset)
-    }
-    yearHolidays.push({
-      date: holidayDate.toISOString().substring(0, 10),
-      type: holidays[i].type,
-      name: holidays[i].name,
-    })
-  }
-  return yearHolidays
+  return holidays.map(holiday => ({
+    date: getHolidayDate(holiday, validYear)
+      .toISOString()
+      .substring(0, 10),
+    type: holiday.type,
+    name: holiday.name,
+  }))
 }
 
 module.exports = { getHoliday, getAllHolidays }
