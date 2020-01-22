@@ -21,7 +21,7 @@ const holidays = [
 
 function validateYear(year) {
   const int = Number.parseInt(year, 10)
-  // En 1983 se expide la ley por la cual se corren algunos festivos al próximo lunes
+  // 1984 is the year when the new holiday scheme is enforced
   // http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
   if (Number.isNaN(int) || int < 1984) {
     throw new Error('Invalid year. Should be an integer > 1983')
