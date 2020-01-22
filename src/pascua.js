@@ -29,11 +29,14 @@ function validateYear(year) {
   return int
 }
 
-function isValidDate(date) {
-  return (
+function validateDate(date) {
+  if (
     Object.prototype.toString.call(date) === '[object Date]' &&
     validateYear(date.getFullYear())
-  )
+  ) {
+    return date
+  }
+  throw new Error('Invalid date.')
 }
 
 function addDays(date, amount) {
@@ -99,11 +102,9 @@ function getHolidayDate(holiday, validYear) {
 }
 
 function getHoliday(date = new Date()) {
-  if (!isValidDate(date)) {
-    throw new Error('Invalid date.')
-  }
+  const validDate = validateDate(date)
   const result = holidays.find(holiday =>
-    isSameDate(date, getHolidayDate(holiday, date.getFullYear())),
+    isSameDate(validDate, getHolidayDate(holiday, date.getFullYear())),
   )
   return result ? result.name : ''
 }
