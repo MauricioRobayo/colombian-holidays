@@ -21,22 +21,24 @@ const holidays = [
 
 function validateYear(year) {
   const int = Number.parseInt(year, 10)
-  // 1984 is the year when the new holiday scheme is enforced
+  // 1984 is the year when the current holidays scheme is enforced
   // http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
   if (Number.isNaN(int) || int < 1984) {
     throw new Error('Invalid year. Should be an integer > 1983')
   }
-  return int
 }
 
 function validateDate(date) {
-  if (
-    Object.prototype.toString.call(date) === '[object Date]' &&
+  try {
     validateYear(date.getFullYear())
-  ) {
-    return date
+  } catch (e) {
+    // If we cannot access the getFullYear method
+    // it means it is not a valid JS date object
+    // and we get a TypeError.
+    // Otherwise the validateYear failed so we
+    // throw the same validateYear error.
+    throw new Error(e instanceof TypeError ? 'Invalid date.' : e)
   }
-  throw new Error('Invalid date.')
 }
 
 function addDays(date, amount) {
@@ -102,17 +104,17 @@ function getHolidayDate(holiday, validYear) {
 }
 
 function getHoliday(date = new Date()) {
-  const validDate = validateDate(date)
+  validateDate(date)
   const result = holidays.find(holiday =>
-    isSameDate(validDate, getHolidayDate(holiday, date.getFullYear())),
+    isSameDate(date, getHolidayDate(holiday, date.getFullYear())),
   )
   return result ? result.name : ''
 }
 
 function getAllHolidays(year = new Date().getFullYear()) {
-  const validYear = validateYear(year)
+  validateYear(year)
   return holidays.map(holiday => ({
-    date: getHolidayDate(holiday, validYear)
+    date: getHolidayDate(holiday, year)
       .toISOString()
       .substring(0, 10),
     type: holiday.type,
