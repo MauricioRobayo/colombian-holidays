@@ -88,8 +88,7 @@ function getPascua(year) {
   const N = H + L - 7 * M + 114
   const month = Math.floor(N / 31)
   const day = 1 + (N % 31)
-  const pascua = new Date(year, month - 1, day)
-  return pascua
+  return new Date(year, month - 1, day)
 }
 
 function getHolidayDate(holiday, validYear) {
