@@ -10,7 +10,7 @@
 [![codecov](https://codecov.io/gh/MauricioRobayo/pascua/branch/master/graph/badge.svg)](https://codecov.io/gh/MauricioRobayo/pascua)
 [![codebeat badge](https://codebeat.co/badges/2f0f841e-a8f8-4427-a28d-7cc4b7314094)](https://codebeat.co/projects/github-com-mauriciorobayo-pascua-master)
 
-Lightweight and dependency-free module to get [Colombian holidays](https://www.mauriciorobayo.com/colombian-holidays).
+Lightweight and dependencies-free module to get [Colombian holidays](https://www.mauriciorobayo.com/colombian-holidays).
 
 ---
 
