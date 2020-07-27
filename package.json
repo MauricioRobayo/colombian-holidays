@@ -81,19 +81,6 @@
     "singleQuote": true,
     "trailingComma": "all"
   },
-  "babel": {
-    "comments": false,
-    "presets": [
-      "minify",
-      [
-        "@babel/env",
-        {
-          "targets": "> 0.25%, not dead",
-          "modules": "umd"
-        }
-      ]
-    ]
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
