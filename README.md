@@ -9,7 +9,6 @@
 [![Build Status](https://github.com/MauricioRobayo/pascua/workflows/Build%20and%20Release/badge.svg)](https://github.com/MauricioRobayo/pascua/actions?query=workflow%3A%22Build+and+Release%22)
 [![codecov](https://codecov.io/gh/MauricioRobayo/pascua/branch/master/graph/badge.svg)](https://codecov.io/gh/MauricioRobayo/pascua)
 [![codebeat badge](https://codebeat.co/badges/2f0f841e-a8f8-4427-a28d-7cc4b7314094)](https://codebeat.co/projects/github-com-mauriciorobayo-pascua-master)
-[![Greenkeeper badge](https://badges.greenkeeper.io/MauricioRobayo/pascua.svg)](https://greenkeeper.io/)
 
 Lightweight and dependency-free module to get [Colombian holidays](https://www.mauriciorobayo.com/colombian-holidays).
 
