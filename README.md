@@ -17,7 +17,7 @@ Lightweight and dependencies-free module to get [Colombian holidays](https://www
 Getting Colombian holidays is a little bit tricky because there are three types of holidays:
 
 1. **Fixed date**: 6 holidays - Celebrated the same date they fall.
-2. **Next monday**: 7 holidays - Moved to the next moday after the date they fall.
+2. **Next monday**: 7 holidays - Moved to the next monday after the date they fall.
 3. **Relative to easter**: 5 holidays - Celebrated relative to [easter](https://en.wikipedia.org/wiki/Easter).
 
 ## Installation
@@ -47,7 +47,7 @@ console.log(holiday)
 // 'Jueves Santo'
 ```
 
-If the date is ommited, by defaul the function is going to use the current date.
+If the date is omitted, by default the function is going to use the current date.
 
 ### Get all holidays for a given year
 
@@ -84,7 +84,7 @@ The content of the `holidays2010` variable will be the following array:
 ],
 ```
 
-Is the year is ommited, by default the function will return the holidays for the current year.
+Is the year is omitted, by default the function will return the holidays for the current year.
 
 ## Contributing
 
