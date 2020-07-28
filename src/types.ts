@@ -5,7 +5,7 @@ export enum HolidayType {
 }
 
 export enum Months {
-  January = 1,
+  January,
   February,
   March,
   April,
