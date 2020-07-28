@@ -1,5 +1,6 @@
 import getPascuaDate from './butcher'
-import { holidays, Holiday, Easter, HolidayType, isEasterHoliday } from './holidays'
+import { holidays, isEasterHoliday } from './holidays'
+import { Holiday, Easter, HolidayType, ReturnedHoliday } from './types'
 
 enum DaysOfTheWeek {
   Sunday,
@@ -44,12 +45,6 @@ function getHolidayDate(holiday: Holiday | Easter, year: number): Date {
   }
   
   return date;
-}
-
-export interface ReturnedHoliday {
-  date: string;
-  type: HolidayType;
-  name: string;
 }
 
 export function getHolidays(year: number = new Date().getFullYear()): ReturnedHoliday[] {
