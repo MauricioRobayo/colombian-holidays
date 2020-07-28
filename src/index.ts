@@ -41,7 +41,7 @@ export function isEasterHoliday(holiday: Holiday | Easter): holiday is Easter {
   return 'offset' in holiday;
 }
 
-export function getHolidays(year: number = new Date().getFullYear()): ReturnedHoliday[] {
+export default function (year: number = new Date().getFullYear()): ReturnedHoliday[] {
   if (!isValidYear(year)) {
     throw new Error('The year should be between 1984 and 9999');
   }

@@ -1,4 +1,4 @@
-import { getHolidays } from '.';
+import getColombianHolidays from '.';
 import { ReturnedHoliday } from './types';
 
 describe('Gets all holidays for a given year', () => {
@@ -87,13 +87,13 @@ describe('Gets all holidays for a given year', () => {
   Object.keys(holidaysYears).forEach(holidaysYear => {
     it(`Should return holidays for ${holidaysYear}`, () => {
       const year = Number(holidaysYear)
-      expect(getHolidays(year)).toEqual(holidaysYears[year]);
+      expect(getColombianHolidays(year)).toEqual(holidaysYears[year]);
     });
   });
   it('Should return holidays for the current year when no year given', () => {
     const currYear = new Date().getFullYear();
-    const currHols = getHolidays();
-    expect(currHols).toEqual(getHolidays(currYear));
+    const currHols = getColombianHolidays();
+    expect(currHols).toEqual(getColombianHolidays(currYear));
     expect(Array.isArray(currHols)).toBe(true);
     expect(currHols.length).toBe(18);
   });
@@ -102,12 +102,12 @@ describe('Gets all holidays for a given year', () => {
 describe('Should return error for a non valid year', () => {
   it('should throw an error for a year below 1984', () => {
     expect(() => {
-      getHolidays(1983);
+      getColombianHolidays(1983);
     }).toThrow('The year should be between 1984 and 9999');
   });
   it('should throw an error for a year above 9999', () => {
     expect(() => {
-      getHolidays(10000);
+      getColombianHolidays(10000);
     }).toThrow('The year should be between 1984 and 9999');
   });
 });
