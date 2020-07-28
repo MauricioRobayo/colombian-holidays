@@ -1,4 +1,4 @@
-import { getHolidays } from './pascua';
+import { getHolidays } from '.';
 import { ReturnedHoliday } from './types';
 
 const times = ['00:00', '12:00', '23:59'];
