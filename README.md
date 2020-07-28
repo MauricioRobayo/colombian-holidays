@@ -6,7 +6,7 @@
 
 ---
 
-This a TypeScript npm module to calculate all colombian holidays for any given year between 1.984 and 9.999.
+This a TypeScript npm module to calculate all colombian holidays for any given year between 1984 and 9999.
 
 There are three types of Colombian holidays for a total of 18 colombian holidays in any given year:
 
