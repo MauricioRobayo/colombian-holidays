@@ -1,12 +1,11 @@
-# Colombian Holidays 🎆 [![npm version](https://badge.fury.io/js/colombian-holidays.svg)](https://badge.fury.io/js/colombian-holidays)
+# Colombian Holidays 🎆
 
+[![npm version](https://badge.fury.io/js/colombian-holidays.svg)](https://badge.fury.io/js/colombian-holidays)
 [![Build Status](https://github.com/MauricioRobayo/colombian-holidays/workflows/Build%20and%20Release/badge.svg)](https://github.com/MauricioRobayo/colombian-holidays/actions?query=workflow%3A%22Build+and+Release%22)
 [![codecov](https://codecov.io/gh/MauricioRobayo/colombian-holidays/branch/master/graph/badge.svg)](https://codecov.io/gh/MauricioRobayo/colombian-holidays)
 [![CodeFactor](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays/badge)](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays)
 
----
-
-This a TypeScript npm module to calculate all colombian holidays for any given year between 1984 and 9999.
+TypeScript module to calculate colombian holidays for any given year.
 
 There are three types of Colombian holidays for a total of 18 colombian holidays in any given year:
 
@@ -24,7 +23,9 @@ npm install colombian-holidays
 
 ## Usage
 
-The function `getHolidays(year)` allows to get all the holidays for a given year, returning an array with the holidays for the requested year:
+The module exports a single function that allows to get all the holidays for a given year, returning an array with the holidays for the requested year.
+
+The `year` should be between 1984 and 9999.
 
 ### CommonJS
 
