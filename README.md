@@ -26,6 +26,8 @@ npm install colombian-holidays
 
 The function `getHolidays(year)` allows to get all the holidays for a given year, returning an array with the holidays for the requested year:
 
+### CommonJS
+
 ```js
 const getColombianHolidays = require('colombian-holidays');
 
@@ -65,13 +67,19 @@ If the year is omitted, by default the function will return the holidays for the
 const colombianHolidays = getColombianHolidays();
 ```
 
-### TypeScript
+### ES modules
 
-```ts
+An ES modules built is included that will be used by build tools that support tree-shake, as Webpack and Rollup.
+
+```js
 import getColombianHolidays from 'colombian-holidays';
 
 const colombianHolidays2015 = getColombianHolidays(2015);
 ```
+
+### TypeScript
+
+The module is written in TypeScript and type definitions files are included.
 
 ## Contributing
 
