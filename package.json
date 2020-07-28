@@ -1,18 +1,18 @@
 {
-  "name": "pascua",
+  "name": "colombian-holidays",
   "version": "0.0.0-development",
   "description": "Colombian holidays",
-  "main": "dist/pascua.js",
+  "main": "dist/colombian-holidays.js",
   "scripts": {
     "lint": "eslint src",
     "test": "jest --coverage",
-    "build": "babel src/pascua.js --delete-dir-on-start --out-dir dist"
+    "build": "babel src/colombian-holidays.js --delete-dir-on-start --out-dir dist"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MauricioRobayo/pascua/issues"
+    "url": "https://github.com/MauricioRobayo/colombian-holidays/issues"
   },
-  "homepage": "https://github.com/MauricioRobayo/pascua#readme",
+  "homepage": "https://github.com/MauricioRobayo/colombian-holidays#readme",
   "author": "Mauricio Robayo <hi@mauriciorobayo.com> (https://www.mauriciorobayo.com)",
   "keywords": [
     "Colombian holidays",
@@ -43,7 +43,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/MauricioRobayo/pascua.git"
+    "url": "https://github.com/MauricioRobayo/colombian-holidays.git"
   },
   "husky": {
     "hooks": {
