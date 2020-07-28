@@ -9,13 +9,13 @@ function isValidYear(year: number): boolean {
 }
 
 function addDays(date: Date, amount: number): Date {
-  const resultDate = new Date(date.getTime());
+  const resultDate = new Date(date);
   resultDate.setDate(resultDate.getDate() + amount);
   return resultDate;
 }
 
 function getNextDayOfWeek(date: Date, dayOfWeek: number): Date {
-  const resultDate = new Date(date.getTime());
+  const resultDate = new Date(date);
   resultDate.setDate(date.getDate() + ((7 + dayOfWeek - date.getDay()) % 7));
   return resultDate;
 }
