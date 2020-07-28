@@ -1,4 +1,4 @@
-# Pascua 🎆
+# Colombian Holidays 🎆
 
 [![install size](https://packagephobia.now.sh/badge?p=pascua)](https://packagephobia.now.sh/result?p=pascua)
 [![gzip size](https://img.badgesize.io/https://unpkg.com/pascua/dist/pascua.js?compression=gzip)](https://unpkg.com/pascua/dist/pascua.js)
@@ -10,7 +10,7 @@
 [![codecov](https://codecov.io/gh/MauricioRobayo/pascua/branch/master/graph/badge.svg)](https://codecov.io/gh/MauricioRobayo/pascua)
 [![CodeFactor](https://www.codefactor.io/repository/github/mauriciorobayo/pascua/badge)](https://www.codefactor.io/repository/github/mauriciorobayo/pascua)
 
-Lightweight and dependencies-free module to get [Colombian holidays](https://www.mauriciorobayo.com/colombian-holidays).
+Lightweight and dependencies-free module to calculate colombian holidays.
 
 ---
 
