@@ -1,8 +1,8 @@
 import getColombianHolidays from '.';
-import { ReturnedHoliday } from './types';
+import { ColombianHoliday } from './types';
 
 describe('Gets all holidays for a given year', () => {
-  const holidaysYears: Record<number, ReturnedHoliday[]>  = {
+  const holidaysYears: Record<number, ColombianHoliday[]>  = {
     2010: [
       { date: '2010-01-01', type: 0, name: 'Año Nuevo' },
       { date: '2010-05-01', type: 0, name: 'Día del Trabajo' },

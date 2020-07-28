@@ -1,6 +1,6 @@
 import getPascuaDate from './butcher'
 import { holidays } from './holidays'
-import { Holiday, Easter, HolidayType, ReturnedHoliday, DayOfTheWeek } from './types'
+import { Holiday, Easter, HolidayType, ColombianHoliday, DayOfTheWeek } from './types'
 
 function isValidYear(year: number): boolean {
   // 1984 is the year when the current holidays scheme is enforced
@@ -41,7 +41,7 @@ export function isEasterHoliday(holiday: Holiday | Easter): holiday is Easter {
   return 'offset' in holiday;
 }
 
-export default function (year: number = new Date().getFullYear()): ReturnedHoliday[] {
+export default function (year: number = new Date().getFullYear()): ColombianHoliday[] {
   if (!isValidYear(year)) {
     throw new Error('The year should be between 1984 and 9999');
   }

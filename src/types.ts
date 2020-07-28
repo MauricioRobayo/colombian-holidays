@@ -44,6 +44,6 @@ export interface Easter extends BasicHoliday {
   offset: number;
 }
 
-export interface ReturnedHoliday extends BasicHoliday {
+export interface ColombianHoliday extends BasicHoliday {
   date: string;
 }
