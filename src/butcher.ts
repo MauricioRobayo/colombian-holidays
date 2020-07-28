@@ -26,4 +26,4 @@ export default (year: number): Date => {
   const month = Math.floor(N / 31);
   const day = 1 + (N % 31);
   return new Date(year, month - 1, day);
-}
+};

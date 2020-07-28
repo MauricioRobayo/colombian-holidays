@@ -4,6 +4,7 @@
   "description": "Colombian holidays",
   "main": "dist/colombian-holidays.js",
   "scripts": {
+    "format": "prettier --write .",
     "lint": "eslint src",
     "test": "jest --coverage",
     "build": "babel src/colombian-holidays.js --delete-dir-on-start --out-dir dist"
@@ -56,14 +57,9 @@
       "eslint --fix",
       "jest --bail --findRelatedTests"
     ],
-    "**/*.{js,css,json,md}": [
+    "**/*.{ts,md}": [
       "prettier --write"
     ]
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "all"
   },
   "commitlint": {
     "extends": [
