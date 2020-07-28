@@ -1,14 +1,14 @@
 # Colombian Holidays 🎆
 
-[![install size](https://packagephobia.now.sh/badge?p=pascua)](https://packagephobia.now.sh/result?p=pascua)
-[![gzip size](https://img.badgesize.io/https://unpkg.com/pascua/dist/pascua.js?compression=gzip)](https://unpkg.com/pascua/dist/pascua.js)
+[![install size](https://packagephobia.now.sh/badge?p=colombian-holidays)](https://packagephobia.now.sh/result?p=colombian-holidays)
+[![gzip size](https://img.badgesize.io/https://unpkg.com/colombian-holidays/dist/colombian-holidays.js?compression=gzip)](https://unpkg.com/colombian-holidays/dist/colombian-holidays.js)
 [![Blazing Fast](https://img.shields.io/badge/speed-blazing%20%F0%9F%94%A5-brightgreen.svg?style=flat-square)](https://twitter.com/acdlite/status/974390255393505280)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMauricioRobayo%2Fpascua.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FMauricioRobayo%2Fpascua?ref=badge_shield)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMauricioRobayo%2Fcolombian-holidays.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FMauricioRobayo%2Fcolombian-holidays?ref=badge_shield)
 
-[![npm version](https://badge.fury.io/js/pascua.svg)](https://badge.fury.io/js/pascua)
-[![Build Status](https://github.com/MauricioRobayo/pascua/workflows/Build%20and%20Release/badge.svg)](https://github.com/MauricioRobayo/pascua/actions?query=workflow%3A%22Build+and+Release%22)
-[![codecov](https://codecov.io/gh/MauricioRobayo/pascua/branch/master/graph/badge.svg)](https://codecov.io/gh/MauricioRobayo/pascua)
-[![CodeFactor](https://www.codefactor.io/repository/github/mauriciorobayo/pascua/badge)](https://www.codefactor.io/repository/github/mauriciorobayo/pascua)
+[![npm version](https://badge.fury.io/js/colombian-holidays.svg)](https://badge.fury.io/js/colombian-holidays)
+[![Build Status](https://github.com/MauricioRobayo/colombian-holidays/workflows/Build%20and%20Release/badge.svg)](https://github.com/MauricioRobayo/colombian-holidays/actions?query=workflow%3A%22Build+and+Release%22)
+[![codecov](https://codecov.io/gh/MauricioRobayo/colombian-holidays/branch/master/graph/badge.svg)](https://codecov.io/gh/MauricioRobayo/colombian-holidays)
+[![CodeFactor](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays/badge)](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays)
 
 Lightweight and dependencies-free module to calculate colombian holidays.
 
@@ -25,21 +25,21 @@ Getting Colombian holidays is a little bit tricky because there are three types 
 To install as a dependency of your project:
 
 ```shell
-npm install pascua
+npm install colombian-holidays
 ```
 
-To load it on the browser you can use [`unpkg`](http://unpkg.org/), just add the following [script](https://unpkg.com/pascua/dist/pascua.js). The `pascua` object will be available globally.
+To load it on the browser you can use [`unpkg`](http://unpkg.org/), just add the following [script](https://unpkg.com/colombian-holidays/dist/colombian-holidays.js). The `colombian-holidays` object will be available globally.
 
 ## Use
 
-Pascua include two functions: `getHoliday` y `getAllHolidays`.
+colombian-holidays include two functions: `getHoliday` y `getAllHolidays`.
 
 ### Tell if a given date is holiday
 
 The `getHoliday` function allows to check if a given date is a holiday. It takes as an optional argument a JavaScript date and returns the name of the holiday in case the date is a holiday, or an empty string (`""`)if it isn't.
 
 ```js
-const { getHoliday } = require('pascua')
+const { getHoliday } = require('colombian-holidays')
 
 const date = new Date('13-04-2017')
 const holiday = getHoliday(date)
@@ -54,7 +54,7 @@ If the date is omitted, by default the function is going to use the current date
 The function `getAllHolidays(year)` allows to get all the holidays for a given year, returning an array with the holidays for the requested year:
 
 ```js
-const { getAllHolidays } = require('pascua')
+const { getAllHolidays } = require('colombian-holidays')
 
 const holidays2010 = getAllHolidays(2010)
 ```
@@ -98,4 +98,4 @@ Give a ⭐️ if you like this project!
 
 ## License
 
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FMauricioRobayo%2Fpascua.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FMauricioRobayo%2Fpascua?ref=badge_large)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FMauricioRobayo%2Fcolombian-holidays.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FMauricioRobayo%2Fcolombian-holidays?ref=badge_large)
