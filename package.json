@@ -1,19 +1,21 @@
 {
-  "name": "pascua",
+  "name": "colombian-holidays",
   "version": "0.0.0-development",
   "description": "Colombian holidays",
-  "main": "dist/pascua.js",
+  "main": "lib/index.js",
   "scripts": {
-    "lint": "eslint src",
+    "format": "prettier --write .",
+    "lint": "eslint . --ext .ts --fix",
     "test": "jest --coverage",
-    "build": "babel src/pascua.js --delete-dir-on-start --out-dir dist"
+    "build": "tsc",
+    "build:check": "tsc --noEmit"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MauricioRobayo/pascua/issues"
+    "url": "https://github.com/MauricioRobayo/colombian-holidays/issues"
   },
-  "homepage": "https://github.com/MauricioRobayo/pascua#readme",
-  "author": "Mauricio Robayo <hi@mauriciorobayo.com> (https://www.mauriciorobayo.com)",
+  "homepage": "https://github.com/MauricioRobayo/colombian-holidays#readme",
+  "author": "Mauricio Robayo <rfmajo@gmail.com> (https://www.mauriciorobayo.com)",
   "keywords": [
     "Colombian holidays",
     "Festivos en Colombia",
@@ -22,29 +24,31 @@
     "Holidays"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.10.5",
-    "@babel/preset-env": "^7.10.4",
-    "@commitlint/cli": "^9.1.2",
-    "@commitlint/config-conventional": "^9.1.1",
-    "babel-preset-minify": "^0.5.0",
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "@types/jest": "^26.0.7",
+    "@typescript-eslint/eslint-plugin": "^3.7.1",
+    "@typescript-eslint/parser": "^3.7.1",
     "eslint": "^7.5.0",
-    "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.22.0",
-    "husky": "^4.2.5",
+    "husky": "^4.0.2",
     "jest": "^26.1.0",
-    "lint-staged": "^10.2.11",
-    "prettier": "^2.0.5",
-    "semantic-release": "^17.1.1"
+    "lint-staged": "^10.0.3",
+    "prettier": "^2.0.0",
+    "semantic-release": "^17.0.7",
+    "ts-jest": "^26.1.3",
+    "typescript": "^3.9.7"
   },
-  "dependencies": {},
+  "dependencies": {
+    "eslint-config-airbnb-typescript": "^9.0.0",
+    "eslint-plugin-import": "^2.22.0"
+  },
   "files": [
-    "dist"
+    "lib"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/MauricioRobayo/pascua.git"
+    "url": "https://github.com/MauricioRobayo/colombian-holidays.git"
   },
   "husky": {
     "hooks": {
@@ -55,50 +59,18 @@
   "lint-staged": {
     "src/**/*.js": [
       "eslint --fix",
-      "git add",
       "jest --bail --findRelatedTests"
     ],
-    "**/*.{js,css,json,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
-      }
-    },
-    "transform": {},
-    "collectCoverageFrom": [
-      "src/**/*.js"
-    ]
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "all"
-  },
-  "babel": {
-    "comments": false,
-    "presets": [
-      "minify",
-      [
-        "@babel/env",
-        {
-          "targets": "> 0.25%, not dead",
-          "modules": "umd"
-        }
-      ]
+    "**/*.{ts,md}": [
+      "prettier --write"
     ]
   },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }
