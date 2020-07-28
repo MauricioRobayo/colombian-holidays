@@ -41,7 +41,7 @@
   },
   "dependencies": {},
   "files": [
-    "dist"
+    "lib"
   ],
   "repository": {
     "type": "git",
