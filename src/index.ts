@@ -1,13 +1,15 @@
-import { holidays } from "./holidays";
-import { ColombianHoliday } from "./types";
-import { getHoliday, isValidYear } from "./helpers";
+import colombianHolidays from './holidays';
+import { ColombianHoliday } from './types';
+import { getHoliday, isValidYear } from './helpers';
 
-export default function (
+function getHolidays(
   year: number = new Date().getFullYear()
 ): ColombianHoliday[] {
   if (!isValidYear(year)) {
-    throw new Error("The year should be between 1984 and 9999");
+    throw new Error('The year should be between 1984 and 9999');
   }
 
-  return holidays.map((holiday) => getHoliday(holiday, year));
+  return colombianHolidays.map((holiday) => getHoliday(holiday, year));
 }
+
+export default getHolidays;

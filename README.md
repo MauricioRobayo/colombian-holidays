@@ -35,7 +35,7 @@ To load it on the browser you can use [`unpkg`](http://unpkg.org/), just add the
 The function `getHolidays(year)` allows to get all the holidays for a given year, returning an array with the holidays for the requested year:
 
 ```js
-const getColombianHolidays = require("colombian-holidays");
+const getColombianHolidays = require('colombian-holidays');
 
 const colombianHolidays2015 = getColombianHolidays(2015);
 ```
@@ -72,7 +72,7 @@ If the year is omitted, by default the function will return the holidays for the
 ### TypeScript
 
 ```ts
-import getColombianHolidays from "colombian-holidays";
+import getColombianHolidays from 'colombian-holidays';
 
 const colombianHolidays2015 = getColombianHolidays(2015);
 ```

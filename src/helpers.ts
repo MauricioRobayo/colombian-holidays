@@ -1,5 +1,5 @@
-import getPascuaDate from "./butcher";
-import { Holiday, Easter, HolidayType, ColombianHoliday } from "./types";
+import getPascuaDate from './butcher';
+import { Holiday, Easter, HolidayType, ColombianHoliday } from './types';
 
 function isValidYear(year: number): boolean {
   // 1984 is the year when the current holidays scheme is enforced
@@ -25,7 +25,7 @@ function getNextMonday(date: Date): Date {
 }
 
 function isEasterHoliday(holiday: Holiday | Easter): holiday is Easter {
-  return "offset" in holiday;
+  return 'offset' in holiday;
 }
 
 function getHolidayDate(holiday: Holiday | Easter, year: number): Date {
@@ -37,7 +37,7 @@ function getHolidayDate(holiday: Holiday | Easter, year: number): Date {
 }
 
 function addZero(n: number): string {
-  return String(n).padStart(2, "0");
+  return String(n).padStart(2, '0');
 }
 
 function formatDate(date: Date): string {

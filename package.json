@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "format": "prettier --write .",
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint . --ext .ts --fix",
     "test": "jest --coverage",
     "build": "tsc",
     "build:check": "tsc --noEmit"
@@ -39,7 +39,10 @@
     "ts-jest": "^26.1.3",
     "typescript": "^3.9.7"
   },
-  "dependencies": {},
+  "dependencies": {
+    "eslint-config-airbnb-typescript": "^9.0.0",
+    "eslint-plugin-import": "^2.22.0"
+  },
   "files": [
     "lib"
   ],
@@ -66,5 +69,8 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }
