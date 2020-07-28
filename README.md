@@ -30,33 +30,14 @@ npm install colombian-holidays
 
 To load it on the browser you can use [`unpkg`](http://unpkg.org/), just add the following [script](https://unpkg.com/colombian-holidays/dist/colombian-holidays.js). The `colombian-holidays` object will be available globally.
 
-## Use
+## Usage
 
-colombian-holidays include two functions: `getHoliday` y `getAllHolidays`.
-
-### Tell if a given date is holiday
-
-The `getHoliday` function allows to check if a given date is a holiday. It takes as an optional argument a JavaScript date and returns the name of the holiday in case the date is a holiday, or an empty string (`""`)if it isn't.
+The function `getHolidays(year)` allows to get all the holidays for a given year, returning an array with the holidays for the requested year:
 
 ```js
-const { getHoliday } = require('colombian-holidays')
+const { getHolidays } = require('colombian-holidays')
 
-const date = new Date('13-04-2017')
-const holiday = getHoliday(date)
-console.log(holiday)
-// 'Jueves Santo'
-```
-
-If the date is omitted, by default the function is going to use the current date.
-
-### Get all holidays for a given year
-
-The function `getAllHolidays(year)` allows to get all the holidays for a given year, returning an array with the holidays for the requested year:
-
-```js
-const { getAllHolidays } = require('colombian-holidays')
-
-const holidays2010 = getAllHolidays(2010)
+const holidays2010 = getHolidays(2010)
 ```
 
 The content of the `holidays2010` variable will be the following array:
@@ -84,7 +65,7 @@ The content of the `holidays2010` variable will be the following array:
 ],
 ```
 
-Is the year is omitted, by default the function will return the holidays for the current year.
+If the year is omitted, by default the function will return the holidays for the current year.
 
 ## Contributing
 
