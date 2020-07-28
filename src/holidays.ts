@@ -1,9 +1,5 @@
 import { Holiday, Easter, HolidayType, Months } from './types'
 
-export function isEasterHoliday(holiday: Holiday | Easter): holiday is Easter {
-  return 'offset' in holiday;
-}
-
 export const holidays: (Holiday | Easter)[] = [
   { type: HolidayType.FixedDate, name: 'Año Nuevo', day: 1, month: Months.January },
   { type: HolidayType.FixedDate, name: 'Día del Trabajo', day: 1, month: Months.May },
