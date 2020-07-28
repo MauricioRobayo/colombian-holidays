@@ -4,20 +4,19 @@
 [![gzip size](https://img.badgesize.io/https://unpkg.com/colombian-holidays/dist/colombian-holidays.js?compression=gzip)](https://unpkg.com/colombian-holidays/dist/colombian-holidays.js)
 [![Blazing Fast](https://img.shields.io/badge/speed-blazing%20%F0%9F%94%A5-brightgreen.svg?style=flat-square)](https://twitter.com/acdlite/status/974390255393505280)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMauricioRobayo%2Fcolombian-holidays.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FMauricioRobayo%2Fcolombian-holidays?ref=badge_shield)
-
 [![npm version](https://badge.fury.io/js/colombian-holidays.svg)](https://badge.fury.io/js/colombian-holidays)
 [![Build Status](https://github.com/MauricioRobayo/colombian-holidays/workflows/Build%20and%20Release/badge.svg)](https://github.com/MauricioRobayo/colombian-holidays/actions?query=workflow%3A%22Build+and+Release%22)
 [![codecov](https://codecov.io/gh/MauricioRobayo/colombian-holidays/branch/master/graph/badge.svg)](https://codecov.io/gh/MauricioRobayo/colombian-holidays)
 [![CodeFactor](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays/badge)](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays)
 
-Lightweight and dependencies-free module to calculate colombian holidays.
-
 ---
 
-Getting Colombian holidays is a little bit tricky because there are three types of holidays:
+This a TypeScript npm module to calculate all colombian holidays for any given year between 1.984 and 9.999.
 
-1. **Fixed date**: 6 holidays - Celebrated the same date they fall.
-2. **Next monday**: 7 holidays - Moved to the next monday after the date they fall.
+There are three types of Colombian holidays for a total of 18 colombian holidays in any given year:
+
+1. **Fixed date**: 6 holidays - Celebrated the same date.
+2. **Next monday**: 7 holidays - Moved to the next Monday after the holiday's date.
 3. **Relative to easter**: 5 holidays - Celebrated relative to [easter](https://en.wikipedia.org/wiki/Easter).
 
 ## Installation
@@ -27,8 +26,6 @@ To install as a dependency of your project:
 ```shell
 npm install colombian-holidays
 ```
-
-To load it on the browser you can use [`unpkg`](http://unpkg.org/), just add the following [script](https://unpkg.com/colombian-holidays/dist/colombian-holidays.js). The `colombian-holidays` object will be available globally.
 
 ## Usage
 
@@ -67,7 +64,11 @@ The content of the `colombianHolidays2015` variable will be the following array:
 ```
 <!-- prettier-ignore-end -->
 
-If the year is omitted, by default the function will return the holidays for the current year.
+If the year is omitted, by default the function will return the holidays for the current year:
+
+```js
+const colombianHolidays = getColombianHolidays();
+```
 
 ### TypeScript
 
@@ -80,8 +81,6 @@ const colombianHolidays2015 = getColombianHolidays(2015);
 ## Contributing
 
 Contributions, issues and feature requests are welcome!
-
-Feel free to check the [issues page](issues/).
 
 ## Show your support
 
