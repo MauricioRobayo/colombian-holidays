@@ -35,15 +35,15 @@ To load it on the browser you can use [`unpkg`](http://unpkg.org/), just add the
 The function `getHolidays(year)` allows to get all the holidays for a given year, returning an array with the holidays for the requested year:
 
 ```js
-const { getHolidays } = require('colombian-holidays')
+const getColombianHolidays = require('colombian-holidays')
 
-const holidays2010 = getHolidays(2010)
+const colombianHolidays2010 = getColombianHolidays(2010)
 ```
 
 The content of the `holidays2010` variable will be the following array:
 
 ```js
-[
+;[
   { date: '2010-01-01', type: 1, name: 'Año Nuevo' },
   { date: '2010-05-01', type: 1, name: 'Día del Trabajo' },
   { date: '2010-07-20', type: 1, name: 'Grito de la Independencia' },
@@ -62,7 +62,7 @@ The content of the `holidays2010` variable will be the following array:
   { date: '2010-05-17', type: 3, name: 'Ascensión de Jesús' },
   { date: '2010-06-07', type: 3, name: 'Corpus Christi' },
   { date: '2010-06-14', type: 3, name: 'Sagrado Corazón de Jesús' },
-],
+]
 ```
 
 If the year is omitted, by default the function will return the holidays for the current year.
