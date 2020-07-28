@@ -1,8 +1,6 @@
 import { getHolidays } from '.';
 import { ReturnedHoliday } from './types';
 
-const times = ['00:00', '12:00', '23:59'];
-
 describe('Gets all holidays for a given year', () => {
   const holidaysYears: Record<number, ReturnedHoliday[]>  = {
     2010: [
