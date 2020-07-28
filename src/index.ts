@@ -24,21 +24,38 @@ function getNextMonday(date: Date): Date {
   return getNextDayOfWeek(date, DayOfTheWeek.Monday)
 }
 
+function isEasterHoliday(holiday: Holiday | Easter): holiday is Easter {
+  return 'offset' in holiday;
+}
+
 function getHolidayDate(holiday: Holiday | Easter, year: number): Date {
   if (isEasterHoliday(holiday)) {
     return addDays(getPascuaDate(year), holiday.offset);
   }
   
-  let date = new Date(year, holiday.month - 1, holiday.day);
-  if (holiday.type === HolidayType.NextMonday) {
-    return getNextMonday(date);
-  }
-  
-  return date;
+  return new Date(year, holiday.month - 1, holiday.day); 
 }
 
-export function isEasterHoliday(holiday: Holiday | Easter): holiday is Easter {
-  return 'offset' in holiday;
+function addZero(n: number): string {
+  return String(n).padStart(2, '0')
+}
+
+function formatDate(date: Date): string {
+  const year = date.getFullYear()
+  const month = addZero(date.getMonth() + 1)
+  const day = addZero(date.getDate())
+  return `${year}-${month}-${day}`
+}
+
+function getHoliday(holiday: Holiday | Easter, year: number): ColombianHoliday {
+  const holidayDate = getHolidayDate(holiday, year)
+  const celebrationDate = holiday.type === HolidayType.NextMonday ? getNextMonday(holidayDate) : holidayDate
+
+  return {
+    date: formatDate(holidayDate),
+    celebrationDate: formatDate(celebrationDate),
+    name: holiday.name,
+  }
 }
 
 export default function (year: number = new Date().getFullYear()): ColombianHoliday[] {
@@ -46,11 +63,5 @@ export default function (year: number = new Date().getFullYear()): ColombianHoli
     throw new Error('The year should be between 1984 and 9999');
   }
 
-  return holidays.map(holiday => ({
-    date: getHolidayDate(holiday, year)
-      .toISOString()
-      .substring(0, 10),
-    type: holiday.type,
-    name: holiday.name,
-  }));
+  return holidays.map((holiday) => getHoliday(holiday, year));
 }
