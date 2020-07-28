@@ -1,6 +1,6 @@
 import getPascuaDate from './butcher'
 import { holidays } from './holidays'
-import { Holiday, Easter, HolidayType, ColombianHoliday, DayOfTheWeek } from './types'
+import { Holiday, Easter, HolidayType, ColombianHoliday } from './types'
 
 function isValidYear(year: number): boolean {
   // 1984 is the year when the current holidays scheme is enforced
@@ -14,14 +14,15 @@ function addDays(date: Date, amount: number): Date {
   return resultDate;
 }
 
-function getNextDayOfWeek(date: Date, dayOfWeek: DayOfTheWeek): Date {
+function getNextDayOfWeek(date: Date, dayOfWeek: number): Date {
   const resultDate = new Date(date.getTime());
   resultDate.setDate(date.getDate() + ((7 + dayOfWeek - date.getDay()) % 7));
   return resultDate;
 }
 
 function getNextMonday(date: Date): Date {
-  return getNextDayOfWeek(date, DayOfTheWeek.Monday)
+  const MONDAY = 1
+  return getNextDayOfWeek(date, MONDAY)
 }
 
 function isEasterHoliday(holiday: Holiday | Easter): holiday is Easter {

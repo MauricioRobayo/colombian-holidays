@@ -19,16 +19,6 @@ export enum Months {
   December,
 }
 
-export enum DayOfTheWeek {
-  Sunday,
-  Monday,
-  Tuesday,
-  Wednesday,
-  Thursday,
-  Friday,
-  Saturday,
-}
-
 export interface BasicHoliday {
   type: HolidayType;
   name: string;
