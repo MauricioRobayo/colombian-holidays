@@ -41,7 +41,7 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "pascua": "^2.0.1"
+    "pascua": "^2.1.0"
   },
   "files": [
     "lib"
