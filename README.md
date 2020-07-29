@@ -27,8 +27,6 @@ The module exports a single function that allows to get all the holidays for a g
 
 The `year` should be between 1984 and 9999.
 
-### CommonJS
-
 ```js
 const getColombianHolidays = require('colombian-holidays');
 
@@ -66,16 +64,6 @@ If the year is omitted, by default the function will return the holidays for the
 
 ```js
 const colombianHolidays = getColombianHolidays();
-```
-
-### ES modules
-
-An ES modules built is included that will be used by build tools that support tree-shake, as Webpack and Rollup.
-
-```js
-import getColombianHolidays from 'colombian-holidays';
-
-const colombianHolidays2015 = getColombianHolidays(2015);
 ```
 
 ### TypeScript
