@@ -2,15 +2,12 @@
   "name": "colombian-holidays",
   "version": "0.0.0-development",
   "description": "Colombian holidays",
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint . --ext .ts --fix",
     "test": "jest --coverage",
-    "build:tsc": "tsc -p tsconfig.json",
-    "build:esm": "tsc -p tsconfig.esm.json",
-    "build": "npm run build:tsc && npm run build:esm"
+    "build": "tsc"
   },
   "license": "MIT",
   "bugs": {
