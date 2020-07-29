@@ -70,6 +70,10 @@ const colombianHolidays = getColombianHolidays();
 
 The module is written in TypeScript and type definitions files are included.
 
+## Demo
+
+Check out this [react demo](https://www.mauriciorobayo.com/colombian-holidays-demo) to display colombian holidays using this package.
+
 ## Contributing
 
 Contributions, issues and feature requests are welcome!
