@@ -28,9 +28,9 @@ The module exports a single function that allows to get all the holidays for a g
 The `year` should be between 1984 and 9999.
 
 ```js
-const getColombianHolidays = require('colombian-holidays');
+const colombianHolidays = require('colombian-holidays');
 
-const colombianHolidays2015 = getColombianHolidays(2015);
+const colombianHolidays2015 = colombianHolidays(2015);
 ```
 
 The content of the `colombianHolidays2015` variable will be the following array:
@@ -63,7 +63,7 @@ The content of the `colombianHolidays2015` variable will be the following array:
 If the year is omitted, by default the function will return the holidays for the current year:
 
 ```js
-const colombianHolidays = getColombianHolidays();
+const colombianHolidays = colombianHolidays();
 ```
 
 ### TypeScript
