@@ -57,9 +57,9 @@ const HolidaysList = ({
     <HolidaysListWrapper>
       <ul>
         {holidays.map(({ celebrationDate, name }, index, array) => {
-          // Colombian timezone adjustment
-          const holidayDate = new Date(`${celebrationDate}T05:00`);
-          const currentYear = holidayDate.getFullYear() === date.getFullYear();
+          // create a local date
+          const holidayDate = new Date(celebrationDate);
+          const currentYear = holidayDate.getUTCFullYear() === date.getUTCFullYear();
           const inactive = holidayDate < date && currentYear;
           let current = false;
           if (index) {
