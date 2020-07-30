@@ -1,12 +1,6 @@
 import pascua from 'pascua';
 import { Holiday, Easter, HolidayType, ColombianHoliday } from './types';
 
-function isValidYear(year: number): boolean {
-  // 1984 is the year when the current holidays scheme is enforced
-  // http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
-  return year >= 1984 && year < 9999;
-}
-
 function getNextDayOfWeek(date: Date, dayOfWeek: number): Date {
   const resultDate = new Date(date);
   resultDate.setDate(date.getDate() + ((7 + dayOfWeek - date.getDay()) % 7));
@@ -56,4 +50,4 @@ function getHoliday(holiday: Holiday | Easter, year: number): ColombianHoliday {
   };
 }
 
-export { isValidYear, getHoliday };
+export default getHoliday;

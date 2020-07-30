@@ -19,7 +19,7 @@ npm install colombian-holidays
 
 The module exports a single function that allows to get all the holidays for a given year, returning an array with the holidays for the requested year.
 
-The `year` should be between 1984 and 9999.
+The `year` should be between 1984 and 4099.
 
 ```js
 const colombianHolidays = require('colombian-holidays');
