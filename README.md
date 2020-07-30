@@ -4,15 +4,8 @@
 [![Build Status](https://github.com/MauricioRobayo/colombian-holidays/workflows/Build%20and%20Release/badge.svg)](https://github.com/MauricioRobayo/colombian-holidays/actions?query=workflow%3A%22Build+and+Release%22)
 [![codecov](https://codecov.io/gh/MauricioRobayo/colombian-holidays/branch/master/graph/badge.svg)](https://codecov.io/gh/MauricioRobayo/colombian-holidays)
 [![CodeFactor](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays/badge)](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays)
-[![demo](https://github.com/MauricioRobayo/colombian-holidays/workflows/demo/badge.svg)](https://www.mauriciorobayo.com/colombian-holidays)
 
 TypeScript module to calculate colombian holidays for any given year.
-
-There are three types of Colombian holidays for a total of 18 colombian holidays in any given year:
-
-1. **Fixed date**: 6 holidays - Celebrated the same date.
-2. **Next monday**: 7 holidays - Moved to the next Monday after the holiday's date.
-3. **Relative to easter**: 5 holidays - Celebrated relative to [easter](https://en.wikipedia.org/wiki/Easter).
 
 ## Installation
 
