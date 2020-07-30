@@ -4,6 +4,7 @@
 [![Build Status](https://github.com/MauricioRobayo/colombian-holidays/workflows/Build%20and%20Release/badge.svg)](https://github.com/MauricioRobayo/colombian-holidays/actions?query=workflow%3A%22Build+and+Release%22)
 [![codecov](https://codecov.io/gh/MauricioRobayo/colombian-holidays/branch/master/graph/badge.svg)](https://codecov.io/gh/MauricioRobayo/colombian-holidays)
 [![CodeFactor](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays/badge)](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays)
+[![demo](https://github.com/MauricioRobayo/colombian-holidays/workflows/demo/badge.svg)](https://www.mauriciorobayo.com/colombian-holidays)
 
 TypeScript module to calculate colombian holidays for any given year.
 
@@ -69,10 +70,6 @@ const colombianHolidays = colombianHolidays();
 ### TypeScript
 
 The module is written in TypeScript and type definitions files are included.
-
-## Demo
-
-Check out this [react demo](https://www.mauriciorobayo.com/colombian-holidays-demo) to display colombian holidays using this package.
 
 ## Contributing
 
