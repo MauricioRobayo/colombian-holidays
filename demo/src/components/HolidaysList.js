@@ -25,6 +25,10 @@ const HolidaysListWrapper = styled(Main)`
       h3 {
         margin: 0 0 0.25rem;
       }
+      &:hover {
+        transition: background-color 0.25s;
+        background-color: ${({ theme: { primary: {h, s, l} } }) => `hsla(${h},${s}%,${l + 40}%, 0.25)`};
+      }
     }
     li.inactive {
       padding: 0.45rem 0.75rem 0.15rem;

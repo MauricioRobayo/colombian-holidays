@@ -17,8 +17,18 @@ const defaultTheme = {
   white: '#fff',
   inactiveFG: '#aaa',
   inactiveBG: '#f4f4f4',
-  primary: '#6b5b95',
-  success: '#00A591',
+  primary: {
+    h: 257,
+    s: 24,
+    l: 47,
+    toString() { return `hsl(${this.h}, ${this.s}%, ${this.l}%)`}
+  },
+  success: {
+    h: 173,
+    s: 100,
+    l: 32,
+    toString() { return `hsl(${this.h}, ${this.s}%, ${this.l}%)`}
+  },
   danger: '#fe840e',
   maxWidth: '640px',
 };
