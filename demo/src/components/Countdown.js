@@ -19,6 +19,7 @@ const CountDownWrapper = styled.div`
   }
   &.current {
     background-color: ${({ theme }) => theme.success};
+    margin-top: 0.5rem;
     a {
       color: white;
     }
