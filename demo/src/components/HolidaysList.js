@@ -27,7 +27,7 @@ const HolidaysListWrapper = styled(Main)`
       }
     }
     li.inactive {
-      padding: 0.25rem 0.75rem 0.15rem;
+      padding: 0.45rem 0.75rem 0.15rem;
       font-size: 0.85rem;
       a { 
         color: ${({ theme }) => theme.inactiveFG};
