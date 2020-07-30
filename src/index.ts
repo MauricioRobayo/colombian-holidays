@@ -2,14 +2,12 @@ import colombianHolidays from './holidays';
 import { ColombianHoliday } from './types';
 import { getHoliday, isValidYear } from './helpers';
 
-function getHolidays(
+export default (
   year: number = new Date().getFullYear()
-): ColombianHoliday[] {
+): ColombianHoliday[] => {
   if (!isValidYear(year)) {
     throw new Error('The year should be between 1984 and 9999');
   }
 
   return colombianHolidays.map((holiday) => getHoliday(holiday, year));
-}
-
-export default getHolidays;
+};
