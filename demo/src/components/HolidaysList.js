@@ -71,11 +71,11 @@ const HolidaysList = ({
             <li key={name} className={inactive ? 'inactive' : ''}>
               <h3>{name}</h3>
               <PrettyDate date={celebrationDate} />
-              <Countdown
+              {currentYear && <Countdown
                 date={celebrationDate}
                 inactive={inactive}
                 current={current}
-              />
+              />}
             </li>
           );
         })}
