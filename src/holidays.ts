@@ -1,25 +1,28 @@
 import { Holiday, Easter } from './types';
 
 // https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
-const holidays: (Holiday | Easter)[] = [
-  { name: 'Año Nuevo', day: 1, month: 1, nextMonday: false },
-  { name: 'Día del Trabajo', day: 1, month: 5, nextMonday: false },
-  { name: 'Grito de la Independencia', day: 20, month: 7, nextMonday: false },
-  { name: 'Batalla de Boyacá', day: 7, month: 8, nextMonday: false },
-  { name: 'Inmaculada Concepción', day: 8, month: 12, nextMonday: false },
-  { name: 'Navidad', day: 25, month: 12, nextMonday: false },
-  { name: 'Reyes Magos', day: 6, month: 1, nextMonday: true },
-  { name: 'San José', day: 19, month: 3, nextMonday: true },
-  { name: 'San Pedro y San Pablo', day: 29, month: 6, nextMonday: true },
-  { name: 'Asunción de la Virgen', day: 15, month: 8, nextMonday: true },
-  { name: 'Día de la Raza', day: 12, month: 10, nextMonday: true },
-  { name: 'Todos los Santos', day: 1, month: 11, nextMonday: true },
-  { name: 'Independencia de Cartagena', day: 11, month: 11, nextMonday: true },
-  { name: 'Jueves Santo', offset: -3, nextMonday: false },
-  { name: 'Viernes Santo', offset: -2, nextMonday: false },
-  { name: 'Ascensión del Señor', offset: 39, nextMonday: true },
-  { name: 'Corpus Christi', offset: 60, nextMonday: true },
-  { name: 'Sagrado Corazón de Jesús', offset: 68, nextMonday: true },
+const holidays: Holiday[] = [
+  { month: 1, day: 1, name: 'Año Nuevo', nextMonday: false },
+  { month: 5, day: 1, name: 'Día del Trabajo', nextMonday: false },
+  { month: 7, day: 20, name: 'Grito de la Independencia', nextMonday: false },
+  { month: 8, day: 7, name: 'Batalla de Boyacá', nextMonday: false },
+  { month: 12, day: 8, name: 'Inmaculada Concepción', nextMonday: false },
+  { month: 12, day: 25, name: 'Navidad', nextMonday: false },
+  { month: 1, day: 6, name: 'Reyes Magos', nextMonday: true },
+  { month: 3, day: 19, name: 'San José', nextMonday: true },
+  { month: 6, day: 29, name: 'San Pedro y San Pablo', nextMonday: true },
+  { month: 8, day: 15, name: 'Asunción de la Virgen', nextMonday: true },
+  { month: 10, day: 12, name: 'Día de la Raza', nextMonday: true },
+  { month: 11, day: 1, name: 'Todos los Santos', nextMonday: true },
+  { month: 11, day: 11, name: 'Independencia de Cartagena', nextMonday: true },
 ];
 
-export default holidays;
+const easterHolidays: Easter[] = [
+  { offset: -3, name: 'Jueves Santo', nextMonday: false },
+  { offset: -2, name: 'Viernes Santo', nextMonday: false },
+  { offset: 39, name: 'Ascensión del Señor', nextMonday: true },
+  { offset: 60, name: 'Corpus Christi', nextMonday: true },
+  { offset: 68, name: 'Sagrado Corazón de Jesús', nextMonday: true },
+];
+
+export default [...holidays, ...easterHolidays];
