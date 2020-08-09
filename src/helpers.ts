@@ -24,18 +24,12 @@ function getHolidayDate(holiday: Holiday | EasterHoliday, year: number): Date {
     return new Date(year, month - 1, day + holiday.offset);
   }
 
-  return new Date(year, holiday.month - 1, holiday.day);
-}
-
-function addZero(n: number): string {
-  return String(n).padStart(2, '0');
+  const [month, day] = holiday.date.split('-');
+  return new Date(year, Number(month) - 1, Number(day));
 }
 
 function formatDate(date: Date): string {
-  const year = date.getFullYear();
-  const month = addZero(date.getMonth() + 1);
-  const day = addZero(date.getDate());
-  return `${year}-${month}-${day}`;
+  return date.toISOString().substr(0, 10);
 }
 
 function getHoliday(
