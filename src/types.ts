@@ -1,8 +1,8 @@
 export type HolidayType = 'FixDate' | 'NextMonday' | 'RelativeToEaster';
 
 export interface BasicHoliday {
-  type: HolidayType;
   name: string;
+  type: HolidayType;
 }
 
 export interface Holiday extends BasicHoliday {
@@ -18,4 +18,5 @@ export interface ColombianHoliday {
   date: string;
   celebrationDate: string;
   name: string;
+  type: HolidayType;
 }

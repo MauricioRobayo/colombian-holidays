@@ -45,6 +45,7 @@ function getHoliday(holiday: Holiday | Easter, year: number): ColombianHoliday {
     date: formatDate(holidayDate),
     celebrationDate: formatDate(celebrationDate),
     name: holiday.name,
+    type: holiday.type,
   };
 }
 
