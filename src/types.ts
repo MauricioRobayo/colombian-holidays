@@ -1,4 +1,4 @@
-export type HolidayType = 'FixedDate' | 'NextMonday' | 'RelativeToEaster';
+export type HolidayType = 'FixDate' | 'NextMonday' | 'RelativeToEaster';
 
 export enum Months {
   January,

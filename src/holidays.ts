@@ -2,12 +2,12 @@ import { Holiday, Easter, Months } from './types';
 
 // prettier-ignore
 const holidays: (Holiday | Easter)[] = [
-  { type: 'FixedDate', name: 'Año Nuevo', day: 1, month: Months.January },
-  { type: 'FixedDate', name: 'Día del Trabajo', day: 1, month: Months.May },
-  { type: 'FixedDate', name: 'Grito de la Independencia', day: 20, month: Months.July },
-  { type: 'FixedDate', name: 'Batalla de Boyacá', day: 7, month: Months.August },
-  { type: 'FixedDate', name: 'Inmaculada Concepción', day: 8, month: Months.December },
-  { type: 'FixedDate', name: 'Navidad', day: 25, month: Months.December },
+  { type: 'FixDate', name: 'Año Nuevo', day: 1, month: Months.January },
+  { type: 'FixDate', name: 'Día del Trabajo', day: 1, month: Months.May },
+  { type: 'FixDate', name: 'Grito de la Independencia', day: 20, month: Months.July },
+  { type: 'FixDate', name: 'Batalla de Boyacá', day: 7, month: Months.August },
+  { type: 'FixDate', name: 'Inmaculada Concepción', day: 8, month: Months.December },
+  { type: 'FixDate', name: 'Navidad', day: 25, month: Months.December },
   { type: 'NextMonday', name: 'Reyes Magos', day: 6, month: Months.January },
   { type: 'NextMonday', name: 'San José', day: 19, month: Months.March },
   { type: 'NextMonday', name: 'San Pedro y San Pablo', day: 29, month: Months.June },
