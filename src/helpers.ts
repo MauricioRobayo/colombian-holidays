@@ -26,8 +26,15 @@ function getHolidayDate(holiday: Holiday, year: number): Date {
   return new Date(year, Number(month) - 1, Number(day));
 }
 
+function addZero(n: number): string {
+  return String(n).padStart(2, '0');
+}
+
 function formatDate(date: Date): string {
-  return date.toISOString().substr(0, 10);
+  const year = date.getFullYear();
+  const month = addZero(date.getMonth() + 1);
+  const day = addZero(date.getDate());
+  return `${year}-${month}-${day}`;
 }
 
 function getHoliday(holiday: Holiday, year: number): ColombianHoliday {
