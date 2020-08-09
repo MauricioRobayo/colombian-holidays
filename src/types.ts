@@ -26,7 +26,6 @@ export interface Holiday extends BasicHoliday {
 }
 
 export interface Easter extends BasicHoliday {
-  name: string;
   offset: number;
 }
 
