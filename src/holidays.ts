@@ -1,6 +1,6 @@
-import { Holiday, EasterHoliday } from './types';
+import { DateHoliday, EasterHoliday } from './types';
 
-const holidays: Holiday[] = [
+const dateHolidays: DateHoliday[] = [
   { date: '01-01', name: 'Año Nuevo', nextMonday: false },
   { date: '05-01', name: 'Día del Trabajo', nextMonday: false },
   { date: '07-20', name: 'Grito de la Independencia', nextMonday: false },
@@ -31,4 +31,4 @@ const easterHolidays: EasterHoliday[] = [
   { offset: 68, name: 'Sagrado Corazón de Jesús', nextMonday: true },
 ];
 
-export default [...holidays, ...easterHolidays];
+export default [...dateHolidays, ...easterHolidays];

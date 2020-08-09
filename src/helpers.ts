@@ -12,13 +12,11 @@ function getNextMonday(date: Date): Date {
   return getNextDayOfWeek(date, MONDAY);
 }
 
-function isEasterHoliday(
-  holiday: Holiday | EasterHoliday
-): holiday is EasterHoliday {
+function isEasterHoliday(holiday: Holiday): holiday is EasterHoliday {
   return 'offset' in holiday;
 }
 
-function getHolidayDate(holiday: Holiday | EasterHoliday, year: number): Date {
+function getHolidayDate(holiday: Holiday, year: number): Date {
   if (isEasterHoliday(holiday)) {
     const { month, day } = pascua(year);
     return new Date(year, month - 1, day + holiday.offset);
@@ -32,10 +30,7 @@ function formatDate(date: Date): string {
   return date.toISOString().substr(0, 10);
 }
 
-function getHoliday(
-  holiday: Holiday | EasterHoliday,
-  year: number
-): ColombianHoliday {
+function getHoliday(holiday: Holiday, year: number): ColombianHoliday {
   const holidayDate = getHolidayDate(holiday, year);
   const celebrationDate = holiday.nextMonday
     ? getNextMonday(holidayDate)

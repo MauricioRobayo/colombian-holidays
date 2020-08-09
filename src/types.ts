@@ -3,7 +3,7 @@ export interface BasicHoliday {
   nextMonday: boolean;
 }
 
-export interface Holiday extends BasicHoliday {
+export interface DateHoliday extends BasicHoliday {
   date: string;
 }
 
@@ -15,3 +15,5 @@ export interface ColombianHoliday extends BasicHoliday {
   date: string;
   celebrationDate: string;
 }
+
+export type Holiday = DateHoliday | EasterHoliday;
