@@ -1,6 +1,5 @@
 import { Holiday, EasterHoliday } from './types';
 
-// https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
 const holidays: Holiday[] = [
   { date: '01-01', name: 'Año Nuevo', nextMonday: false },
   { date: '05-01', name: 'Día del Trabajo', nextMonday: false },
@@ -17,6 +16,13 @@ const holidays: Holiday[] = [
   { date: '11-11', name: 'Independencia de Cartagena', nextMonday: true },
 ];
 
+// We could simplify the calculation by setting the offset to match Monday.
+// For example, instead of 60 offset for the 'Corpus Christi' offset, we could
+// use 64 and that would always be on Monday.
+// But that's not going to be accurate as the date for the 'Corpus Christi' is
+// 60 days after Easter and that's the date it is celebrated in most countries.
+// In Colombia, that date is moved to the next monday.
+// https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
 const easterHolidays: EasterHoliday[] = [
   { offset: -3, name: 'Jueves Santo', nextMonday: false },
   { offset: -2, name: 'Viernes Santo', nextMonday: false },
