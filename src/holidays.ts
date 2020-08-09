@@ -17,7 +17,7 @@ const holidays: (Holiday | Easter)[] = [
   { type: 'NextMonday', name: 'Independencia de Cartagena', day: 11, month: 11 },
   { type: 'RelativeToEaster', name: 'Jueves Santo', offset: -3 },
   { type: 'RelativeToEaster', name: 'Viernes Santo', offset: -2 },
-  { type: 'RelativeToEaster', name: 'Ascensión de Jesús', offset: 43 },
+  { type: 'RelativeToEaster', name: 'Ascensión del Señor', offset: 43 },
   { type: 'RelativeToEaster', name: 'Corpus Christi', offset: 64 },
   { type: 'RelativeToEaster', name: 'Sagrado Corazón de Jesús', offset: 71 },
 ];

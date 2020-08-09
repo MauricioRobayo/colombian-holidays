@@ -97,7 +97,7 @@ describe('Gets all holidays for a given year', () => {
       {
         date: '2015-05-18',
         celebrationDate: '2015-05-18',
-        name: 'Ascensión de Jesús',
+        name: 'Ascensión del Señor',
         type: 'RelativeToEaster',
       },
       {
@@ -207,7 +207,7 @@ describe('Gets all holidays for a given year', () => {
       {
         date: '2018-05-14',
         celebrationDate: '2018-05-14',
-        name: 'Ascensión de Jesús',
+        name: 'Ascensión del Señor',
         type: 'RelativeToEaster',
       },
       {
