@@ -18,5 +18,7 @@ export default (
     );
   }
 
-  return colombianHolidays.map((holiday) => getHoliday(holiday, year));
+  return colombianHolidays
+    .map((holiday) => getHoliday(holiday, year))
+    .sort((a, b) => a.celebrationDate.localeCompare(b.celebrationDate));
 };

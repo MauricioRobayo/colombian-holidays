@@ -1,25 +1,34 @@
-import { Holiday, Easter } from './types';
+import { DateHoliday, EasterHoliday } from './types';
 
-// prettier-ignore
-const holidays: (Holiday | Easter)[] = [
-  { type: 'FixDate', name: 'Año Nuevo', day: 1, month: 1 },
-  { type: 'FixDate', name: 'Día del Trabajo', day: 1, month: 5 },
-  { type: 'FixDate', name: 'Grito de la Independencia', day: 20, month: 7 },
-  { type: 'FixDate', name: 'Batalla de Boyacá', day: 7, month: 8 },
-  { type: 'FixDate', name: 'Inmaculada Concepción', day: 8, month: 12 },
-  { type: 'FixDate', name: 'Navidad', day: 25, month: 12 },
-  { type: 'NextMonday', name: 'Reyes Magos', day: 6, month: 1 },
-  { type: 'NextMonday', name: 'San José', day: 19, month: 3 },
-  { type: 'NextMonday', name: 'San Pedro y San Pablo', day: 29, month: 6 },
-  { type: 'NextMonday', name: 'Asunción de la Virgen', day: 15, month: 8 },
-  { type: 'NextMonday', name: 'Día de la Raza', day: 12, month: 10 },
-  { type: 'NextMonday', name: 'Todos los Santos', day: 1, month: 11 },
-  { type: 'NextMonday', name: 'Independencia de Cartagena', day: 11, month: 11 },
-  { type: 'RelativeToEaster', name: 'Jueves Santo', offset: -3 },
-  { type: 'RelativeToEaster', name: 'Viernes Santo', offset: -2 },
-  { type: 'RelativeToEaster', name: 'Ascensión de Jesús', offset: 43 },
-  { type: 'RelativeToEaster', name: 'Corpus Christi', offset: 64 },
-  { type: 'RelativeToEaster', name: 'Sagrado Corazón de Jesús', offset: 71 },
+const dateHolidays: DateHoliday[] = [
+  { date: '01-01', name: 'Año Nuevo', nextMonday: false },
+  { date: '05-01', name: 'Día del Trabajo', nextMonday: false },
+  { date: '07-20', name: 'Grito de la Independencia', nextMonday: false },
+  { date: '08-07', name: 'Batalla de Boyacá', nextMonday: false },
+  { date: '12-08', name: 'Inmaculada Concepción', nextMonday: false },
+  { date: '12-25', name: 'Navidad', nextMonday: false },
+  { date: '01-06', name: 'Reyes Magos', nextMonday: true },
+  { date: '03-19', name: 'San José', nextMonday: true },
+  { date: '06-29', name: 'San Pedro y San Pablo', nextMonday: true },
+  { date: '08-15', name: 'Asunción de la Virgen', nextMonday: true },
+  { date: '10-12', name: 'Día de la Raza', nextMonday: true },
+  { date: '11-01', name: 'Todos los Santos', nextMonday: true },
+  { date: '11-11', name: 'Independencia de Cartagena', nextMonday: true },
 ];
 
-export default holidays;
+// We could simplify the calculation by setting the offset to match Monday.
+// For example, instead of 60 offset for the 'Corpus Christi' offset, we could
+// use 64 and that would always be on Monday.
+// But that's not going to be accurate as the date for the 'Corpus Christi' is
+// 60 days after Easter and that's the date it is celebrated in most countries.
+// In Colombia, that date is moved to the next monday.
+// https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
+const easterHolidays: EasterHoliday[] = [
+  { offset: -3, name: 'Jueves Santo', nextMonday: false },
+  { offset: -2, name: 'Viernes Santo', nextMonday: false },
+  { offset: 39, name: 'Ascensión del Señor', nextMonday: true },
+  { offset: 60, name: 'Corpus Christi', nextMonday: true },
+  { offset: 68, name: 'Sagrado Corazón de Jesús', nextMonday: true },
+];
+
+export default [...dateHolidays, ...easterHolidays];

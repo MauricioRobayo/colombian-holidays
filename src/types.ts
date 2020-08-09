@@ -1,16 +1,13 @@
-export type HolidayType = 'FixDate' | 'NextMonday' | 'RelativeToEaster';
-
 export interface BasicHoliday {
   name: string;
-  type: HolidayType;
+  nextMonday: boolean;
 }
 
-export interface Holiday extends BasicHoliday {
-  day: number;
-  month: number;
+export interface DateHoliday extends BasicHoliday {
+  date: string;
 }
 
-export interface Easter extends BasicHoliday {
+export interface EasterHoliday extends BasicHoliday {
   offset: number;
 }
 
@@ -18,3 +15,5 @@ export interface ColombianHoliday extends BasicHoliday {
   date: string;
   celebrationDate: string;
 }
+
+export type Holiday = DateHoliday | EasterHoliday;
