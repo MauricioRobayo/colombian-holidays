@@ -8,7 +8,7 @@ export interface Holiday extends BasicHoliday {
   month: number;
 }
 
-export interface Easter extends BasicHoliday {
+export interface EasterHoliday extends BasicHoliday {
   offset: number;
 }
 

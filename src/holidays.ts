@@ -1,4 +1,4 @@
-import { Holiday, Easter } from './types';
+import { Holiday, EasterHoliday } from './types';
 
 // https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
 const holidays: Holiday[] = [
@@ -17,7 +17,7 @@ const holidays: Holiday[] = [
   { month: 11, day: 11, name: 'Independencia de Cartagena', nextMonday: true },
 ];
 
-const easterHolidays: Easter[] = [
+const easterHolidays: EasterHoliday[] = [
   { offset: -3, name: 'Jueves Santo', nextMonday: false },
   { offset: -2, name: 'Viernes Santo', nextMonday: false },
   { offset: 39, name: 'Ascensión del Señor', nextMonday: true },
