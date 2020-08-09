@@ -65,7 +65,9 @@ describe('Gets all holidays for a given year', () => {
       });
     });
   });
-  it('Should return holidays for the current year when no year given', () => {
+});
+describe('Gets all holidays for the current year', () => {
+  it('Should return holidays for the current year when no year is given', () => {
     const currYear = new Date().getFullYear();
     const currHols = colombianHolidays();
     const holidaysInAYear = 18;
