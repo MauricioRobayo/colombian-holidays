@@ -1,41 +1,20 @@
-export enum HolidayType {
-  FixedDate,
-  NextMonday,
-  RelativeToEaster,
-}
-
-export enum Months {
-  January,
-  February,
-  March,
-  April,
-  May,
-  June,
-  July,
-  August,
-  September,
-  October,
-  November,
-  December,
-}
+export type HolidayType = 'FixDate' | 'NextMonday' | 'RelativeToEaster';
 
 export interface BasicHoliday {
-  type: HolidayType;
   name: string;
+  type: HolidayType;
 }
 
 export interface Holiday extends BasicHoliday {
   day: number;
-  month: Months;
+  month: number;
 }
 
 export interface Easter extends BasicHoliday {
-  name: string;
   offset: number;
 }
 
-export interface ColombianHoliday {
+export interface ColombianHoliday extends BasicHoliday {
   date: string;
   celebrationDate: string;
-  name: string;
 }

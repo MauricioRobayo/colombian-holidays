@@ -1,5 +1,5 @@
 import pascua from 'pascua';
-import { Holiday, Easter, HolidayType, ColombianHoliday } from './types';
+import { Holiday, Easter, ColombianHoliday } from './types';
 
 function getNextDayOfWeek(date: Date, dayOfWeek: number): Date {
   const resultDate = new Date(date);
@@ -22,7 +22,7 @@ function getHolidayDate(holiday: Holiday | Easter, year: number): Date {
     return new Date(year, month - 1, day + holiday.offset);
   }
 
-  return new Date(year, holiday.month, holiday.day);
+  return new Date(year, holiday.month - 1, holiday.day);
 }
 
 function addZero(n: number): string {
@@ -39,14 +39,13 @@ function formatDate(date: Date): string {
 function getHoliday(holiday: Holiday | Easter, year: number): ColombianHoliday {
   const holidayDate = getHolidayDate(holiday, year);
   const celebrationDate =
-    holiday.type === HolidayType.NextMonday
-      ? getNextMonday(holidayDate)
-      : holidayDate;
+    holiday.type === 'NextMonday' ? getNextMonday(holidayDate) : holidayDate;
 
   return {
     date: formatDate(holidayDate),
     celebrationDate: formatDate(celebrationDate),
     name: holiday.name,
+    type: holiday.type,
   };
 }
 
