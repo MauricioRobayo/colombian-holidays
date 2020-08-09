@@ -1,8 +1,6 @@
-export type HolidayType = 'FixDate' | 'NextMonday' | 'RelativeToEaster';
-
 export interface BasicHoliday {
   name: string;
-  type: HolidayType;
+  nextMonday: boolean;
 }
 
 export interface Holiday extends BasicHoliday {

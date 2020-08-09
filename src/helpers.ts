@@ -38,14 +38,15 @@ function formatDate(date: Date): string {
 
 function getHoliday(holiday: Holiday | Easter, year: number): ColombianHoliday {
   const holidayDate = getHolidayDate(holiday, year);
-  const celebrationDate =
-    holiday.type === 'NextMonday' ? getNextMonday(holidayDate) : holidayDate;
+  const celebrationDate = holiday.nextMonday
+    ? getNextMonday(holidayDate)
+    : holidayDate;
 
   return {
     date: formatDate(holidayDate),
     celebrationDate: formatDate(celebrationDate),
     name: holiday.name,
-    type: holiday.type,
+    nextMonday: holiday.nextMonday,
   };
 }
 
