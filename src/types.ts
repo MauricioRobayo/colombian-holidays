@@ -14,9 +14,7 @@ export interface Easter extends BasicHoliday {
   offset: number;
 }
 
-export interface ColombianHoliday {
+export interface ColombianHoliday extends BasicHoliday {
   date: string;
   celebrationDate: string;
-  name: string;
-  type: HolidayType;
 }
