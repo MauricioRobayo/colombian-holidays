@@ -37,6 +37,7 @@
     "lint-staged": "^10.0.3",
     "prettier": "^2.0.0",
     "semantic-release": "^17.0.7",
+    "timezone-mock": "^1.1.1",
     "ts-jest": "^26.1.4",
     "typescript": "^3.9.7"
   },
