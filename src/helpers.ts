@@ -22,7 +22,7 @@ function getHolidayDate(holiday: Holiday | Easter, year: number): Date {
     return new Date(year, month - 1, day + holiday.offset);
   }
 
-  return new Date(year, holiday.month, holiday.day);
+  return new Date(year, holiday.month - 1, holiday.day);
 }
 
 function addZero(n: number): string {
