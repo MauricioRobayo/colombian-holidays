@@ -1,4 +1,4 @@
-import colombianHolidays, { firstHolidayYear, lastHolidayYear } from '.';
+import colombianHolidays, { FIRST_HOLIDAY_YEAR, LAST_HOLIDAY_YEAR } from '.';
 import { ColombianHoliday } from './types';
 
 describe('Gets all holidays for a given year', () => {
@@ -205,12 +205,12 @@ describe('Gets all holidays for a given year', () => {
 });
 
 describe('Should throw an error for a non valid year', () => {
-  it(`should throw an error for a year below ${firstHolidayYear}`, () => {
-    expect(() => colombianHolidays(firstHolidayYear)).not.toThrow();
-    expect(() => colombianHolidays(firstHolidayYear - 1)).toThrow();
+  it(`should throw an error for a year below ${FIRST_HOLIDAY_YEAR}`, () => {
+    expect(() => colombianHolidays(FIRST_HOLIDAY_YEAR)).not.toThrow();
+    expect(() => colombianHolidays(FIRST_HOLIDAY_YEAR - 1)).toThrow();
   });
-  it(`should throw an error for a year above ${lastHolidayYear}`, () => {
-    expect(() => colombianHolidays(lastHolidayYear)).not.toThrow();
-    expect(() => colombianHolidays(lastHolidayYear + 1)).toThrow();
+  it(`should throw an error for a year above ${LAST_HOLIDAY_YEAR}`, () => {
+    expect(() => colombianHolidays(LAST_HOLIDAY_YEAR)).not.toThrow();
+    expect(() => colombianHolidays(LAST_HOLIDAY_YEAR + 1)).toThrow();
   });
 });
