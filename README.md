@@ -21,9 +21,21 @@ The module exports a single function that allows to get all the holidays for a g
 
 The `year` should be between 1984 and 4099.
 
-```js
-const colombianHolidays = require('colombian-holidays');
+### CommonJS
 
+```js
+const colombianHolidays = require('colombian-holidays').default;
+```
+
+### ES6 Modules
+
+```js
+import colombianHolidays from 'colombian-holidays';
+```
+
+You get a function that you can use to get the complete list of holidays for a given year:
+
+```
 const colombianHolidays2015 = colombianHolidays(2015);
 ```
 
