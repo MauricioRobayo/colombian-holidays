@@ -17,11 +17,10 @@ const dateHolidays: DateHoliday[] = [
 ];
 
 // We could simplify the calculation by setting the offset to match Monday.
-// For example, instead of 60 offset for the 'Corpus Christi' offset, we could
-// use 64 and that would always be on Monday.
-// But that's not going to be accurate as the date for the 'Corpus Christi' is
-// 60 days after Easter and that's the date it is celebrated in most countries.
-// In Colombia, that date is moved to the next monday.
+// For example, the date for the 'Corpus Christi' is 60 days after Easter
+// and that's the date it is celebrated in most countries. In Colombia,
+// that date is moved to the next monday, hence, we use 60 for the offset
+// and then get the next monday instead of directly using 64 as the offset.
 // https://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
 const easterHolidays: EasterHoliday[] = [
   { offset: -3, name: 'Jueves Santo', nextMonday: false },
