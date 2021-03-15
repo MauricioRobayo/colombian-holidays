@@ -23,15 +23,4 @@ const colombianHolidays = (
     .sort((a, b) => a.celebrationDate.localeCompare(b.celebrationDate));
 };
 
-export function isColombianHoliday(date: Date): boolean {
-  return colombianHolidays(date.getFullYear()).some(({ celebrationDate }) => {
-    const d = new Date(`${celebrationDate}T00:00:00.000Z`);
-    return (
-      d.getUTCDate() === date.getUTCDate() &&
-      d.getUTCMonth() === date.getUTCMonth() &&
-      d.getUTCFullYear() === date.getUTCFullYear()
-    );
-  });
-}
-
 export default colombianHolidays;
