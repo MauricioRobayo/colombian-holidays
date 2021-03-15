@@ -1,6 +1,6 @@
-import colombianHolidays from './holidays';
-import { ColombianHoliday } from './types';
 import getHoliday from './helpers';
+import holidays from './holidays';
+import { ColombianHoliday } from './types';
 
 // 1984 is the year when the current holidays scheme is enforced
 // http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
@@ -9,7 +9,7 @@ export const FIRST_HOLIDAY_YEAR = 1984;
 // The pascua package calculates Easter until 4099.
 export const LAST_HOLIDAY_YEAR = 4099;
 
-export default (
+const colombianHolidays = (
   year: number = new Date().getFullYear()
 ): ColombianHoliday[] => {
   if (year < FIRST_HOLIDAY_YEAR || year > LAST_HOLIDAY_YEAR) {
@@ -18,7 +18,20 @@ export default (
     );
   }
 
-  return colombianHolidays
+  return holidays
     .map((holiday) => getHoliday(holiday, year))
     .sort((a, b) => a.celebrationDate.localeCompare(b.celebrationDate));
 };
+
+export function isColombianHoliday(date: Date): boolean {
+  return colombianHolidays(date.getFullYear()).some(({ celebrationDate }) => {
+    const d = new Date(`${celebrationDate}T00:00:00.000Z`);
+    return (
+      d.getUTCDate() === date.getUTCDate() &&
+      d.getUTCMonth() === date.getUTCMonth() &&
+      d.getUTCFullYear() === date.getUTCFullYear()
+    );
+  });
+}
+
+export default colombianHolidays;

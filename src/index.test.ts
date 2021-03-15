@@ -1,5 +1,9 @@
 import timezone_mock, { TimeZone } from 'timezone-mock';
-import colombianHolidays, { FIRST_HOLIDAY_YEAR, LAST_HOLIDAY_YEAR } from '.';
+import colombianHolidays, {
+  FIRST_HOLIDAY_YEAR,
+  isColombianHoliday,
+  LAST_HOLIDAY_YEAR,
+} from '.';
 import { ColombianHoliday } from './types';
 
 // prettier-ignore
@@ -66,6 +70,7 @@ describe('Gets all holidays for a given year', () => {
     });
   });
 });
+
 describe('Gets all holidays for the current year', () => {
   it('Should return holidays for the current year when no year is given', () => {
     const currYear = new Date().getFullYear();
@@ -85,5 +90,16 @@ describe('Should throw an error for a non valid year', () => {
   it(`should throw an error for a year above ${LAST_HOLIDAY_YEAR}`, () => {
     expect(() => colombianHolidays(LAST_HOLIDAY_YEAR)).not.toThrow();
     expect(() => colombianHolidays(LAST_HOLIDAY_YEAR + 1)).toThrow();
+  });
+});
+
+describe('isColombianHoliday', () => {
+  const holidays = ['2003-06-23', '2012-10-15', '2017-05-29', '2021-03-22'];
+  describe.each(holidays)('is holiday %p', (holiday) => {
+    it.each(timezones)('%p', (timezone) => {
+      timezone_mock.register(timezone);
+      const date = new Date(holiday);
+      expect(isColombianHoliday(date)).toBe(true);
+    });
   });
 });
