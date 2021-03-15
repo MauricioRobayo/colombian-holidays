@@ -45,6 +45,7 @@ const holidaysYears: Record<number, ColombianHoliday[]> = {
     { date: '2018-12-25', celebrationDate: '2018-12-25', name: 'Navidad', nextMonday: false },
   ],
 };
+const years = Object.keys(holidaysYears);
 const timezones: TimeZone[] = [
   'US/Pacific',
   'US/Eastern',
@@ -54,18 +55,17 @@ const timezones: TimeZone[] = [
   'Australia/Adelaide',
 ];
 
-describe('Gets all holidays for a given year', () => {
-  Object.keys(holidaysYears).forEach((holidaysYear) => {
-    timezones.forEach((timezone) => {
-      it(`Should return holidays for ${holidaysYear} in ${timezone}`, () => {
-        timezone_mock.register(timezone);
-        const year = Number(holidaysYear);
-        expect(colombianHolidays(year)).toEqual(holidaysYears[year]);
-        timezone_mock.unregister();
-      });
-    });
+afterEach(() => {
+  timezone_mock.unregister();
+});
+
+describe.each(years)('Gets all holidays for %p', (year) => {
+  it.each(timezones)('Should return holidays for %p', (timezone) => {
+    timezone_mock.register(timezone);
+    expect(colombianHolidays(Number(year))).toEqual(holidaysYears[year]);
   });
 });
+
 describe('Gets all holidays for the current year', () => {
   it('Should return holidays for the current year when no year is given', () => {
     const currYear = new Date().getFullYear();
