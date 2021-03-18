@@ -67,5 +67,8 @@
   },
   "prettier": {
     "singleQuote": true
+  },
+  "release": {
+    "branches": ["main"]
   }
 }
