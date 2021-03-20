@@ -65,9 +65,6 @@
       "@commitlint/config-conventional"
     ]
   },
-  "prettier": {
-    "singleQuote": true
-  },
   "release": {
     "branches": [
       "main"

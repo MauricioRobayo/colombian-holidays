@@ -24,13 +24,13 @@ The `year` should be between 1984 and 4099.
 ### CommonJS
 
 ```js
-const colombianHolidays = require('colombian-holidays').default;
+const colombianHolidays = require("colombian-holidays").default;
 ```
 
 ### ES6 Modules
 
 ```js
-import colombianHolidays from 'colombian-holidays';
+import colombianHolidays from "colombian-holidays";
 ```
 
 You get a function that you can use to get the complete list of holidays for a given year:

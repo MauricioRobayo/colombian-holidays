@@ -1,6 +1,6 @@
-import getHoliday from './helpers';
-import holidays from './holidays';
-import { ColombianHoliday } from './types';
+import getHoliday from "./helpers";
+import holidays from "./holidays";
+import { ColombianHoliday } from "./types";
 
 // 1984 is the year when the current holidays scheme is enforced
 // http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
