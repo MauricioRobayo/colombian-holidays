@@ -26,14 +26,10 @@ function getHolidayDate(holiday: Holiday, year: number): Date {
   return new Date(year, Number(month) - 1, Number(day));
 }
 
-function addZero(n: number): string {
-  return String(n).padStart(2, "0");
-}
-
 function formatDate(date: Date): string {
   const year = date.getFullYear();
-  const month = addZero(date.getMonth() + 1);
-  const day = addZero(date.getDate());
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
 }
 
