@@ -8,8 +8,8 @@
     "lint": "eslint . --ext .ts --fix",
     "test": "jest --coverage",
     "build": "tsc",
-    "postinstall": "git config core.hooksPath .githooks",
-    "prepare": "git config core.hooksPath .githooks"
+    "postinstall": "git config core.hooksPath .githooks || true",
+    "prepare": "git config core.hooksPath .githooks || true"
   },
   "license": "MIT",
   "bugs": {
