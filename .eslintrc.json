@@ -5,10 +5,6 @@
   "parserOptions": {
     "project": "./tsconfig.eslint.json"
   },
-  "extends": [
-    "airbnb-typescript/base",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
+  "extends": ["airbnb-typescript/base", "prettier"],
   "ignorePatterns": ["lib", "coverage"]
 }
