@@ -1,5 +1,5 @@
-import pascua from "pascua";
-import { Holiday, EasterHoliday, ColombianHoliday } from "./types";
+import pascua from 'pascua';
+import { Holiday, EasterHoliday, ColombianHoliday } from './types';
 
 function getNextDayOfWeek(date: Date, dayOfWeek: number): Date {
   const resultDate = new Date(date);
@@ -13,7 +13,7 @@ function getNextMonday(date: Date): Date {
 }
 
 function isEasterHoliday(holiday: Holiday): holiday is EasterHoliday {
-  return "offset" in holiday;
+  return 'offset' in holiday;
 }
 
 function getHolidayDate(holiday: Holiday, year: number): Date {
@@ -22,14 +22,14 @@ function getHolidayDate(holiday: Holiday, year: number): Date {
     return new Date(year, month - 1, day + holiday.offset);
   }
 
-  const [month, day] = holiday.date.split("-");
+  const [month, day] = holiday.date.split('-');
   return new Date(year, Number(month) - 1, Number(day));
 }
 
 function formatDate(date: Date): string {
   const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
 }
 
