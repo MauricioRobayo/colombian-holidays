@@ -35,7 +35,7 @@ import colombianHolidays from "colombian-holidays";
 
 You get a function that you can use to get the complete list of holidays for a given year:
 
-```
+```js
 const colombianHolidays2015 = colombianHolidays(2015);
 ```
 
