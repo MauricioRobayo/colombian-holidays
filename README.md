@@ -69,7 +69,7 @@ The content of the `colombianHolidays2015` variable will be the following array:
 If the year is omitted, by default the function will return the holidays for the current year:
 
 ```js
-const colombianHolidays = colombianHolidays();
+const currentYearHolidays = colombianHolidays();
 ```
 
 ### TypeScript
