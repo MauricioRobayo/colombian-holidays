@@ -13,10 +13,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup Node
-        uses: actions/setup-node@v1
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
-          node-version: "12.x"
+          node-version: 18.x
+          cache: npm
       - name: Cache node modules
         uses: actions/cache@v1
         with:
@@ -49,6 +50,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: npm
       - name: Download build
         uses: actions/download-artifact@v1
         with:
