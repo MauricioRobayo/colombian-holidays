@@ -18,15 +18,6 @@ jobs:
         with:
           node-version: 18.x
           cache: npm
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-${{ env.cache-name }}-
-            ${{ runner.os }}-node-
-            ${{ runner.os }}-
       - name: Install Dependencies
         run: npm ci
       - name: Build
