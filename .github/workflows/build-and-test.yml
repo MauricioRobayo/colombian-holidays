@@ -1,8 +1,6 @@
-name: build and release
+name: build and test
 on:
   pull_request:
-    branches: [main]
-  push:
     branches: [main]
 
 jobs:
@@ -22,11 +20,6 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Upload build
-        uses: actions/upload-artifact@v1
-        with:
-          name: lib
-          path: lib
       - name: Test
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
@@ -34,7 +27,7 @@ jobs:
           npm run lint
           npm test
           npx codecov
-  release:
+
     runs-on: ubuntu-latest
     needs: build-and-test
     if: github.ref == 'refs/heads/main'
