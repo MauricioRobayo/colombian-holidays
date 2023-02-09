@@ -1,21 +1,19 @@
 {
   "name": "colombian-holidays",
-  "version": "0.0.0-development",
+  "version": "1.7.7",
   "description": "Colombian holidays",
   "main": "lib/index.js",
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint . --ext .ts --fix",
     "test": "jest --coverage",
-    "build": "tsc",
-    "postinstall": "git config core.hooksPath .githooks || true",
-    "prepare": "git config core.hooksPath .githooks || true"
+    "build": "tsc"
   },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MauricioRobayo/colombian-holidays/issues"
   },
-  "homepage": "https://www.mauriciorobayo.com/colombian-holidays",
+  "homepage": "https://github.com/MauricioRobayo/colombian-holidays",
   "author": "Mauricio Robayo <rfmajo@gmail.com> (https://www.mauriciorobayo.com)",
   "keywords": [
     "Colombian holidays",
@@ -25,16 +23,12 @@
     "Holidays"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^17.0.0",
-    "@commitlint/config-conventional": "^17.0.0",
     "@types/jest": "^27.4.1",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
     "eslint": "^8.14.0",
     "jest": "^27.0.1",
-    "lint-staged": "^13.0.0",
     "prettier": "^2.6.2",
-    "semantic-release": "^20.0.3",
     "timezone-mock": "^1.3.1",
     "ts-jest": "^27.1.4",
     "typescript": "^4.6.4"
@@ -48,20 +42,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/MauricioRobayo/colombian-holidays.git"
-  },
-  "lint-staged": {
-    "src/**/*.js": [
-      "eslint --fix",
-      "jest --bail --findRelatedTests"
-    ],
-    "**/*.{ts,md}": [
-      "prettier --write"
-    ]
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   },
   "release": {
     "branches": [
