@@ -459,11 +459,46 @@ afterEach(() => {
 });
 
 describe.each(years)("Gets all holidays for %p", (year) => {
-  it.each(timezones)("Should return holidays for %p", (timezone) => {
-    timezone_mock.register(timezone);
-    expect(colombianHolidays(year).length).toBe(holidaysYears[year].length);
-    expect(colombianHolidays(year)).toEqual(holidaysYears[year]);
-  });
+  it.each(timezones)(
+    "Should return holidays formatted as string for %p if no options given",
+    (timezone) => {
+      timezone_mock.register(timezone);
+      expect(colombianHolidays(year)).toEqual(holidaysYears[year]);
+    }
+  );
+
+  it.each(timezones)(
+    "Should return holidays formatted as string for %p if options is empty",
+    (timezone) => {
+      timezone_mock.register(timezone);
+      expect(colombianHolidays(year, {})).toEqual(holidaysYears[year]);
+    }
+  );
+
+  it.each(timezones)(
+    "Should return holidays formatted as string for %p if returnNativeDate is set to false",
+    (timezone) => {
+      timezone_mock.register(timezone);
+      expect(colombianHolidays(year, { returnNativeDate: false })).toEqual(
+        holidaysYears[year]
+      );
+    }
+  );
+
+  it.each(timezones)(
+    "Should return holidays with native JS date for %p if returnNativeDate is set to true",
+    (timezone) => {
+      timezone_mock.register(timezone);
+      expect(colombianHolidays(year, { returnNativeDate: true })).toEqual(
+        holidaysYears[year].map((holiday) => ({
+          date: new Date(holiday.date),
+          celebrationDate: new Date(holiday.celebrationDate),
+          name: holiday.name,
+          nextMonday: holiday.nextMonday,
+        }))
+      );
+    }
+  );
 });
 
 describe("Gets all holidays for the current year", () => {

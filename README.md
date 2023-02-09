@@ -66,6 +66,14 @@ The content of the `colombianHolidays2015` variable will be the following array:
 ```
 <!-- prettier-ignore-end -->
 
+You can opt-in to have the function return native JavaScript dates instead of strings for the `date` and `celebrationDate` properties by using the `returnNativeDate` option:
+
+<!-- prettier-ignore-start -->
+
+```js
+const colombianHolidays2015 = colombianHolidays(2015, { returnNativeDate });
+```
+
 If the year is omitted, by default the function will return the holidays for the current year:
 
 ```js
@@ -123,14 +131,6 @@ const holidays = holidaysWithinInterval({ start, end });
 ### TypeScript
 
 The module is written in TypeScript and type definitions files are included.
-
-## Contributing
-
-Contributions, issues and feature requests are welcome!
-
-## Show your support
-
-Give a ⭐️ if you like this project!
 
 ## License
 

@@ -2,18 +2,18 @@ import type { DateHoliday, EasterHoliday } from "./types";
 
 const dateHolidays: DateHoliday[] = [
   { date: "01-01", name: "Año Nuevo", nextMonday: false },
-  { date: "05-01", name: "Día del Trabajo", nextMonday: false },
-  { date: "07-20", name: "Grito de la Independencia", nextMonday: false },
-  { date: "08-07", name: "Batalla de Boyacá", nextMonday: false },
-  { date: "12-08", name: "Inmaculada Concepción", nextMonday: false },
-  { date: "12-25", name: "Navidad", nextMonday: false },
   { date: "01-06", name: "Reyes Magos", nextMonday: true },
   { date: "03-19", name: "San José", nextMonday: true },
+  { date: "05-01", name: "Día del Trabajo", nextMonday: false },
   { date: "06-29", name: "San Pedro y San Pablo", nextMonday: true },
+  { date: "07-20", name: "Grito de la Independencia", nextMonday: false },
+  { date: "08-07", name: "Batalla de Boyacá", nextMonday: false },
   { date: "08-15", name: "Asunción de la Virgen", nextMonday: true },
   { date: "10-12", name: "Día de la Raza", nextMonday: true },
   { date: "11-01", name: "Todos los Santos", nextMonday: true },
   { date: "11-11", name: "Independencia de Cartagena", nextMonday: true },
+  { date: "12-08", name: "Inmaculada Concepción", nextMonday: false },
+  { date: "12-25", name: "Navidad", nextMonday: false },
 ];
 
 // We could simplify the calculation by setting the offset to match Monday.
