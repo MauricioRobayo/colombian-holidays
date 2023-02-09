@@ -3,7 +3,7 @@ import type {
   Holiday,
   EasterHoliday,
   ColombianHoliday,
-  ColombianHolidayWithDates,
+  ColombianHolidayWithNativeDate,
 } from "./types";
 
 // 1984 is the year when the current holidays scheme is enforced
@@ -55,12 +55,12 @@ function getHoliday(
   holiday: Holiday,
   year: number,
   options?: { returnNativeDate: true }
-): ColombianHolidayWithDates;
+): ColombianHolidayWithNativeDate;
 function getHoliday(
   holiday: Holiday,
   year: number,
   options?: { returnNativeDate?: boolean }
-): ColombianHoliday | ColombianHolidayWithDates;
+): ColombianHoliday | ColombianHolidayWithNativeDate;
 function getHoliday(
   holiday: Holiday,
   year: number,

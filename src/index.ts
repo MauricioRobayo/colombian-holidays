@@ -1,6 +1,6 @@
 import getHoliday from "./helpers";
 import holidays from "./holidays";
-import { ColombianHoliday, ColombianHolidayWithDates } from "./types";
+import { ColombianHoliday, ColombianHolidayWithNativeDate } from "./types";
 
 // pascua package year limits
 export const FIRST_HOLIDAY_YEAR = 1583;
@@ -13,11 +13,11 @@ function colombianHolidays(
 function colombianHolidays(
   year?: number,
   options?: { returnNativeDate?: true }
-): ColombianHolidayWithDates[];
+): ColombianHolidayWithNativeDate[];
 function colombianHolidays(
   year?: number,
   options?: { returnNativeDate?: boolean }
-): (ColombianHoliday | ColombianHolidayWithDates)[];
+): (ColombianHoliday | ColombianHolidayWithNativeDate)[];
 function colombianHolidays(
   year: number = new Date().getFullYear(),
   { returnNativeDate = false }: { returnNativeDate?: boolean } = {}

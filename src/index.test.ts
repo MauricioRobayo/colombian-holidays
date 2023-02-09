@@ -467,7 +467,7 @@ describe.each(years)("Gets all holidays for %p", (year) => {
     }
   );
   it.each(timezones)(
-    "Should return holidays with native date for %p",
+    "Should return holidays with native JS date for %p",
     (timezone) => {
       timezone_mock.register(timezone);
       expect(colombianHolidays(year, { returnNativeDate: true })).toEqual(

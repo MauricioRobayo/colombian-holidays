@@ -16,7 +16,7 @@ export interface ColombianHoliday extends BasicHoliday {
   celebrationDate: string;
 }
 
-export interface ColombianHolidayWithDates extends BasicHoliday {
+export interface ColombianHolidayWithNativeDate extends BasicHoliday {
   date: Date;
   celebrationDate: Date;
 }
