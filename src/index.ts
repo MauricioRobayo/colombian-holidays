@@ -8,19 +8,19 @@ export const LAST_HOLIDAY_YEAR = 4099;
 
 function colombianHolidays(
   year?: number,
-  returnNativeDate?: true | undefined
-): ColombianHolidayWithDates[];
-function colombianHolidays(
-  year?: number,
-  returnNativeDate?: false
+  options?: undefined | { returnNativeDate?: false | undefined }
 ): ColombianHoliday[];
 function colombianHolidays(
   year?: number,
-  returnNativeDate?: boolean
+  options?: { returnNativeDate?: true }
+): ColombianHolidayWithDates[];
+function colombianHolidays(
+  year?: number,
+  options?: { returnNativeDate?: boolean }
 ): (ColombianHoliday | ColombianHolidayWithDates)[];
 function colombianHolidays(
   year: number = new Date().getFullYear(),
-  returnNativeDate = false
+  { returnNativeDate = false }: { returnNativeDate?: boolean } = {}
 ): unknown[] {
   if (year < FIRST_HOLIDAY_YEAR || year > LAST_HOLIDAY_YEAR) {
     throw new Error(
@@ -29,7 +29,7 @@ function colombianHolidays(
   }
 
   return holidays
-    .map((holiday) => getHoliday(holiday, year, returnNativeDate))
+    .map((holiday) => getHoliday(holiday, year, { returnNativeDate }))
     .sort((a, b) => {
       if (
         a.celebrationDate instanceof Date &&

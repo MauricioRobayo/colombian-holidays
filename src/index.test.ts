@@ -459,15 +459,18 @@ afterEach(() => {
 });
 
 describe.each(years)("Gets all holidays for %p", (year) => {
-  it.each(timezones)("Should return holidays for %p", (timezone) => {
-    timezone_mock.register(timezone);
-    expect(colombianHolidays(year)).toEqual(holidaysYears[year]);
-  });
+  it.each(timezones)(
+    "Should return holidays formatted as string for %p",
+    (timezone) => {
+      timezone_mock.register(timezone);
+      expect(colombianHolidays(year)).toEqual(holidaysYears[year]);
+    }
+  );
   it.each(timezones)(
     "Should return holidays with native date for %p",
     (timezone) => {
       timezone_mock.register(timezone);
-      expect(colombianHolidays(year, true)).toEqual(
+      expect(colombianHolidays(year, { returnNativeDate: true })).toEqual(
         holidaysYears[year].map((holiday) => ({
           date: new Date(holiday.date),
           celebrationDate: new Date(holiday.celebrationDate),

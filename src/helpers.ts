@@ -45,25 +45,26 @@ function formatDate(date: Date): string {
   const day = String(date.getUTCDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
 }
+
 function getHoliday(
   holiday: Holiday,
   year: number,
-  returnNativeDate?: true | undefined
-): ColombianHolidayWithDates;
-function getHoliday(
-  holiday: Holiday,
-  year: number,
-  returnNativeDate?: false
+  options?: undefined | { returnNativeDate?: false | undefined }
 ): ColombianHoliday;
 function getHoliday(
   holiday: Holiday,
   year: number,
-  returnNativeDate?: boolean
+  options?: { returnNativeDate: true }
+): ColombianHolidayWithDates;
+function getHoliday(
+  holiday: Holiday,
+  year: number,
+  options?: { returnNativeDate?: boolean }
 ): ColombianHoliday | ColombianHolidayWithDates;
 function getHoliday(
   holiday: Holiday,
   year: number,
-  returnNativeDate?: boolean
+  { returnNativeDate = false }: { returnNativeDate?: boolean } = {}
 ): unknown {
   const holidayDate = getHolidayDate(holiday, year);
   const celebrationDate =
