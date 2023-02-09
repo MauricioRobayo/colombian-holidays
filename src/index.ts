@@ -2,11 +2,8 @@ import getHoliday from "./helpers";
 import holidays from "./holidays";
 import { ColombianHoliday } from "./types";
 
-// 1984 is the year when the current holidays scheme is enforced
-// http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
-export const FIRST_HOLIDAY_YEAR = 1984;
-
-// The pascua package calculates Easter until 4099.
+// pascua package year limits
+export const FIRST_HOLIDAY_YEAR = 1583;
 export const LAST_HOLIDAY_YEAR = 4099;
 
 function colombianHolidays(
