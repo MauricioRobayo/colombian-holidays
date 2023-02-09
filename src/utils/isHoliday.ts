@@ -1,4 +1,4 @@
-import colombianHolidays from ".";
+import colombianHolidays from "..";
 
 export function isHoliday(date: Date): boolean {
   return colombianHolidays(date.getUTCFullYear()).some(
