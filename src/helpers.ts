@@ -1,5 +1,10 @@
 import pascua from "pascua";
-import type { Holiday, EasterHoliday, ColombianHoliday } from "./types";
+import type {
+  Holiday,
+  EasterHoliday,
+  ColombianHoliday,
+  ColombianHolidayWithDates,
+} from "./types";
 
 // 1984 is the year when the current holidays scheme is enforced
 // http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4954
@@ -7,7 +12,9 @@ export const NEW_HOLIDAY_SCHEMA_START_YEAR = 1984;
 
 function getNextDayOfWeek(date: Date, dayOfWeek: number): Date {
   const resultDate = new Date(date);
-  resultDate.setDate(date.getDate() + ((7 + dayOfWeek - date.getDay()) % 7));
+  resultDate.setUTCDate(
+    date.getUTCDate() + ((7 + dayOfWeek - date.getUTCDay()) % 7)
+  );
   return resultDate;
 }
 
@@ -23,29 +30,52 @@ function isEasterHoliday(holiday: Holiday): holiday is EasterHoliday {
 function getHolidayDate(holiday: Holiday, year: number): Date {
   if (isEasterHoliday(holiday)) {
     const { month, day } = pascua(year);
-    return new Date(year, month - 1, day + holiday.offset);
+    const date = new Date(`${year}-${String(month).padStart(2, "0")}-01`);
+    date.setUTCDate(day + holiday.offset);
+    return date;
   }
 
   const [month, day] = holiday.date.split("-");
-  return new Date(year, Number(month) - 1, Number(day));
+  return new Date(`${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`);
 }
 
 function formatDate(date: Date): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
+  const year = date.getUTCFullYear();
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(date.getUTCDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
 }
-
-function getHoliday(holiday: Holiday, year: number): ColombianHoliday {
+function getHoliday(
+  holiday: Holiday,
+  year: number,
+  returnNativeDate?: true | undefined
+): ColombianHolidayWithDates;
+function getHoliday(
+  holiday: Holiday,
+  year: number,
+  returnNativeDate?: false
+): ColombianHoliday;
+function getHoliday(
+  holiday: Holiday,
+  year: number,
+  returnNativeDate?: boolean
+): ColombianHoliday | ColombianHolidayWithDates;
+function getHoliday(
+  holiday: Holiday,
+  year: number,
+  returnNativeDate?: boolean
+): unknown {
   const holidayDate = getHolidayDate(holiday, year);
   const celebrationDate =
     year >= NEW_HOLIDAY_SCHEMA_START_YEAR && holiday.nextMonday
       ? getNextMonday(holidayDate)
       : holidayDate;
+
   return {
-    date: formatDate(holidayDate),
-    celebrationDate: formatDate(celebrationDate),
+    date: returnNativeDate ? holidayDate : formatDate(holidayDate),
+    celebrationDate: returnNativeDate
+      ? celebrationDate
+      : formatDate(celebrationDate),
     name: holiday.name,
     nextMonday: year >= NEW_HOLIDAY_SCHEMA_START_YEAR && holiday.nextMonday,
   };
