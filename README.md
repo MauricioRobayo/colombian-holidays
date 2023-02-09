@@ -132,14 +132,6 @@ const holidays = holidaysWithinInterval({ start, end });
 
 The module is written in TypeScript and type definitions files are included.
 
-## Contributing
-
-Contributions, issues and feature requests are welcome!
-
-## Show your support
-
-Give a ⭐️ if you like this project!
-
 ## License
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FMauricioRobayo%2Fcolombian-holidays.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FMauricioRobayo%2Fcolombian-holidays?ref=badge_large)
