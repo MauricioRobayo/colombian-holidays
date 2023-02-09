@@ -74,18 +74,50 @@ const currentYearHolidays = colombianHolidays();
 
 ## Utils
 
-The package provides the `isHoliday` helper which can be imported from `lib/utils`:
+The package provides two helper functions which can be imported from `lib/utils`:
+
+### isHoliday
+
+Returns true if the given date is a colombian holiday, otherwise returns false.
 
 ```js
-import { isHoliday } from 'colombian-holidays/lib/utils`
+import { isHoliday } from 'colombian-holidays/lib/utils/isHoliday`
 
 const date = new Date("2018-01-01T05:00:00.000Z")
 
 if (isHoliday(date)) {
-  console.log('it is holiday');
+  console.log('it is a colombian holiday');
 } else {
-  console.log('it is not');
+  console.log('it is NOT a colombian holiday');
 }
+```
+
+### holidaysWithinInterval
+
+Returns an with the colombian holidays within two dates:
+
+```js
+import { holidaysWithinInterval } from 'colombian-holidays/lib/utils/holidaysWithinInterval`
+
+const start = new Date("2021-01-01");
+const end = new Date("2021-01-11");
+const holidays = holidaysWithinInterval({ start, end });
+/*
+[
+  {
+    celebrationDate: "2021-01-01",
+    date: "2021-01-01",
+    name: "Año Nuevo",
+    nextMonday: false,
+  },
+  {
+    celebrationDate: "2021-01-11",
+    date: "2021-01-06",
+    name: "Reyes Magos",
+    nextMonday: true,
+  },
+]
+*/
 ```
 
 ### TypeScript

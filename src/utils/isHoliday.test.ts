@@ -1,4 +1,4 @@
-import { isHoliday } from "./utils";
+import { isHoliday } from "./isHoliday";
 
 describe("test isHoliday", () => {
   it(`should return true for a holiday date object`, () => {
