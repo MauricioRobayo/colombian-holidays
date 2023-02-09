@@ -72,6 +72,22 @@ If the year is omitted, by default the function will return the holidays for the
 const currentYearHolidays = colombianHolidays();
 ```
 
+## Utils
+
+The package provides the `isHoliday` helper which can be imported from `lib/utils`:
+
+```js
+import { isHoliday } from 'colombian-holidays/lib/utils`
+
+const date = new Date("2018-01-01T05:00:00.000Z")
+
+if (isHoliday(date)) {
+  console.log('it is holiday');
+} else {
+  console.log('it is not');
+}
+```
+
 ### TypeScript
 
 The module is written in TypeScript and type definitions files are included.
