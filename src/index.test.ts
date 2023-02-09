@@ -461,8 +461,21 @@ afterEach(() => {
 describe.each(years)("Gets all holidays for %p", (year) => {
   it.each(timezones)("Should return holidays for %p", (timezone) => {
     timezone_mock.register(timezone);
-    expect(colombianHolidays(year).length).toBe(holidaysYears[year].length);
     expect(colombianHolidays(year)).toEqual(holidaysYears[year]);
+  });
+});
+
+describe.each(years)("Gets all holidays for %p", (year) => {
+  it.each(timezones)("Should return holidays for %p", (timezone) => {
+    timezone_mock.register(timezone);
+    expect(colombianHolidays(year, true)).toEqual(
+      holidaysYears[year].map((holiday) => ({
+        date: new Date(holiday.date),
+        celebrationDate: new Date(holiday.celebrationDate),
+        name: holiday.name,
+        nextMonday: holiday.nextMonday,
+      }))
+    );
   });
 });
 
