@@ -89,7 +89,7 @@ The package provides two helper functions which can be imported from `lib/utils`
 Returns true if the given date is a colombian holiday, otherwise returns false.
 
 ```js
-import { isHoliday } from 'colombian-holidays/lib/utils/isHoliday`
+import { isHoliday } from 'colombian-holidays/lib/utils/isHoliday'
 
 const date = new Date("2018-01-01T05:00:00.000Z")
 
@@ -105,7 +105,7 @@ if (isHoliday(date)) {
 Returns an with the colombian holidays within two dates:
 
 ```js
-import { holidaysWithinInterval } from 'colombian-holidays/lib/utils/holidaysWithinInterval`
+import { holidaysWithinInterval } from 'colombian-holidays/lib/utils/holidaysWithinInterval'
 
 const start = new Date("2021-01-01");
 const end = new Date("2021-01-11");
