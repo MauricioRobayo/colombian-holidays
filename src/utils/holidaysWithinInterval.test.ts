@@ -61,6 +61,33 @@ describe("holidaysWithinInterval", () => {
     const result = holidaysWithinInterval({ start, end });
 
     expect(result.length).toBe(18);
+    expect(result).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          date: expect.any(String),
+          celebrationDate: expect.any(String),
+        }),
+      ])
+    );
+  });
+
+  it("should return the correct number of holidays for a given year with native JS dates", () => {
+    const start = new Date("2021-01-01");
+    const end = new Date("2021-12-31");
+    const result = holidaysWithinInterval({
+      start,
+      end,
+      returnNativeDate: true,
+    });
+    expect(result.length).toBe(18);
+    expect(result).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          date: expect.any(Date),
+          celebrationDate: expect.any(Date),
+        }),
+      ])
+    );
   });
 
   it("should return the correct number of holidays overlapping three years", () => {
