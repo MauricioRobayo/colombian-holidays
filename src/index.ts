@@ -17,11 +17,11 @@ function colombianHolidays(
 function colombianHolidays(
   year?: number,
   options?: { returnNativeDate?: boolean }
-): (ColombianHoliday | ColombianHolidayWithNativeDate)[];
+): ColombianHoliday[] | ColombianHolidayWithNativeDate[];
 function colombianHolidays(
   year: number = new Date().getFullYear(),
   { returnNativeDate = false }: { returnNativeDate?: boolean } = {}
-): unknown[] {
+): unknown {
   if (year < FIRST_HOLIDAY_YEAR || year > LAST_HOLIDAY_YEAR) {
     throw new Error(
       `The year should be between ${FIRST_HOLIDAY_YEAR} and ${LAST_HOLIDAY_YEAR}`

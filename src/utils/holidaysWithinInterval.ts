@@ -1,24 +1,42 @@
 import colombianHolidays from "..";
-import { ColombianHoliday } from "../types";
+import { ColombianHoliday, ColombianHolidayWithNativeDate } from "../types";
 
-export type Interval = {
+export function holidaysWithinInterval(options: {
   start: Date;
   end: Date;
-};
+  returnNativeDate?: false;
+}): ColombianHoliday[];
+export function holidaysWithinInterval(options: {
+  start: Date;
+  end: Date;
+  returnNativeDate?: true;
+}): ColombianHolidayWithNativeDate[];
+export function holidaysWithinInterval(options: {
+  start: Date;
+  end: Date;
+  returnNativeDate?: boolean;
+}): ColombianHoliday[] | ColombianHolidayWithNativeDate[];
 export function holidaysWithinInterval({
   start,
   end,
-}: Interval): ColombianHoliday[] {
+  returnNativeDate = false,
+}: {
+  start: Date;
+  end: Date;
+  returnNativeDate?: boolean;
+}): unknown {
   const yearEnd = new Date(end).getUTCFullYear();
   const yearStart = new Date(start).getUTCFullYear();
-  let holidays: ColombianHoliday[] = [];
 
-  for (let i = yearStart; i <= yearEnd; i += 1) {
-    holidays = holidays.concat(colombianHolidays(i));
-  }
+  const holidays = Array.from({ length: yearEnd - yearStart + 1 }, (_, i) =>
+    colombianHolidays(i + yearStart, { returnNativeDate })
+  ).flat();
 
   return holidays.filter(({ celebrationDate }) => {
-    const date = new Date(celebrationDate);
+    const date =
+      typeof celebrationDate === "string"
+        ? new Date(celebrationDate)
+        : celebrationDate;
     return date >= start && date <= end;
   });
 }
