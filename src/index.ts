@@ -17,7 +17,7 @@ function colombianHolidays(
 function colombianHolidays(
   year?: number,
   options?: { returnNativeDate?: boolean }
-): (ColombianHoliday | ColombianHolidayWithNativeDate)[];
+): ColombianHoliday[] | ColombianHolidayWithNativeDate[];
 function colombianHolidays(
   year: number = new Date().getFullYear(),
   { returnNativeDate = false }: { returnNativeDate?: boolean } = {}
