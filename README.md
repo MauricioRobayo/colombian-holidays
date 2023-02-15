@@ -41,34 +41,150 @@ const colombianHolidays2015 = colombianHolidays(2015);
 
 The content of the `colombianHolidays2015` variable will be the following array:
 
-<!-- prettier-ignore-start -->
 ```js
 [
-  { date: '2015-01-01', celebrationDate: '2015-01-01', name: 'Año Nuevo', nextMonday: false },
-  { date: '2015-01-06', celebrationDate: '2015-01-12', name: 'Reyes Magos', nextMonday: true },
-  { date: '2015-03-19', celebrationDate: '2015-03-23', name: 'San José', nextMonday: true },
-  { date: '2015-04-02', celebrationDate: '2015-04-02', name: 'Jueves Santo', nextMonday: false },
-  { date: '2015-04-03', celebrationDate: '2015-04-03', name: 'Viernes Santo', nextMonday: false },
-  { date: '2015-05-01', celebrationDate: '2015-05-01', name: 'Día del Trabajo', nextMonday: false },
-  { date: '2015-05-14', celebrationDate: '2015-05-18', name: 'Ascensión del Señor', nextMonday: true },
-  { date: '2015-06-04', celebrationDate: '2015-06-08', name: 'Corpus Christi', nextMonday: true },
-  { date: '2015-06-12', celebrationDate: '2015-06-15', name: 'Sagrado Corazón de Jesús', nextMonday: true },
-  { date: '2015-06-29', celebrationDate: '2015-06-29', name: 'San Pedro y San Pablo', nextMonday: true },
-  { date: '2015-07-20', celebrationDate: '2015-07-20', name: 'Grito de la Independencia', nextMonday: false },
-  { date: '2015-08-07', celebrationDate: '2015-08-07', name: 'Batalla de Boyacá', nextMonday: false },
-  { date: '2015-08-15', celebrationDate: '2015-08-17', name: 'Asunción de la Virgen', nextMonday: true },
-  { date: '2015-10-12', celebrationDate: '2015-10-12', name: 'Día de la Raza', nextMonday: true },
-  { date: '2015-11-01', celebrationDate: '2015-11-02', name: 'Todos los Santos', nextMonday: true },
-  { date: '2015-11-11', celebrationDate: '2015-11-16', name: 'Independencia de Cartagena', nextMonday: true },
-  { date: '2015-12-08', celebrationDate: '2015-12-08', name: 'Inmaculada Concepción', nextMonday: false },
-  { date: '2015-12-25', celebrationDate: '2015-12-25', name: 'Navidad', nextMonday: false },
-]
+  {
+    date: "2015-01-01",
+    celebrationDate: "2015-01-01",
+    name: {
+      es: "Año Nuevo",
+      en: "New Year's day",
+    },
+    nextMonday: false,
+  },
+  {
+    date: "2015-01-06",
+    celebrationDate: "2015-01-12",
+    name: {
+      es: "Reyes Magos",
+      en: "Epiphany",
+    },
+    nextMonday: true,
+  },
+  {
+    date: "2015-03-19",
+    celebrationDate: "2015-03-23",
+    name: {
+      es: "San José",
+      en: "Saint Joseph's Day",
+    },
+    nextMonday: true,
+  },
+  {
+    date: "2015-04-02",
+    celebrationDate: "2015-04-02",
+    { es: "Jueves Santo", en: "Maundy Thursday" },
+    nextMonday: false,
+  },
+  {
+    date: "2015-04-03",
+    celebrationDate: "2015-04-03",
+    { es: "Viernes Santo", en: "Good Friday" },
+    nextMonday: false,
+  },
+  {
+    date: "2015-05-01",
+    celebrationDate: "2015-05-01",
+name: {
+      es: "Día del Trabajo",
+      en: "Labour Day",
+    }
+    nextMonday: false,
+  },
+  {
+    date: "2015-05-14",
+    celebrationDate: "2015-05-18",
+    name: { es: "Ascensión del Señor", en: "Ascension of Jesus" },
+    nextMonday: true,
+  },
+  {
+    date: "2015-06-04",
+    celebrationDate: "2015-06-08",
+    name: { es: "Corpus Christi", en: "Corpus Christi" },
+    nextMonday: true,
+  },
+  {
+    date: "2015-06-12",
+    celebrationDate: "2015-06-15",
+    name: { es: "Sagrado Corazón de Jesús", en: "Sacred Heart" },
+    nextMonday: true,
+  },
+  {
+    date: "2015-06-29",
+    celebrationDate: "2015-06-29",
+    name: {
+      es: "San Pedro y San Pablo",
+      en: "Saint Peter and Saint Paul",
+    },
+    nextMonday: true,
+  },
+  {
+    date: "2015-07-20",
+    celebrationDate: "2015-07-20",
+    name: {
+      es: "Grito de la Independencia",
+      en: "Declaration of Independence",
+    },
+    nextMonday: false,
+  },
+  {
+    date: "2015-08-07",
+    celebrationDate: "2015-08-07",
+    name: {
+      es: "Batalla de Boyacá",
+      en: "Battle of Boyacá",
+    },
+    nextMonday: false,
+  },
+  {
+    date: "2015-08-15",
+    celebrationDate: "2015-08-17",
+    name: {
+      es: "Asunción de la Virgen",
+      en: "Assumption of Mary",
+    },
+    nextMonday: true,
+  },
+  {
+    date: "2015-10-12",
+    celebrationDate: "2015-10-12",
+    name: {
+      es: "Día de la Raza",
+      en: "Columbus Day",
+    },
+    nextMonday: true,
+  },
+  {
+    date: "2015-11-01",
+    celebrationDate: "2015-11-02",
+    name: {
+      es: "Todos los Santos",
+      en: "All Saints’ Day",
+    },
+    nextMonday: true,
+  },
+  {
+    date: "2015-11-11",
+    celebrationDate: "2015-11-16",
+    name: { es: "Independencia de Cartagena", en: "Independence of Cartagena" },
+    nextMonday: true,
+  },
+  {
+    date: "2015-12-08",
+    celebrationDate: "2015-12-08",
+    name: { es: "Inmaculada Concepción", en: "Immaculate Conception" },
+    nextMonday: false,
+  },
+  {
+    date: "2015-12-25",
+    celebrationDate: "2015-12-25",
+    name: { es: "Navidad", en: "Christmas" },
+    nextMonday: false,
+  },
+];
 ```
-<!-- prettier-ignore-end -->
 
 You can opt-in to have the function return native JavaScript dates instead of strings for the `date` and `celebrationDate` properties by using the `returnNativeDate` option:
-
-<!-- prettier-ignore-start -->
 
 ```js
 const colombianHolidays2015 = colombianHolidays(2015, { returnNativeDate });
@@ -89,14 +205,14 @@ The package provides two helper functions which can be imported from `lib/utils`
 Returns true if the given date is a colombian holiday, otherwise returns false.
 
 ```js
-import { isHoliday } from 'colombian-holidays/lib/utils/isHoliday'
+import { isHoliday } from "colombian-holidays/lib/utils/isHoliday";
 
-const date = new Date("2018-01-01T05:00:00.000Z")
+const date = new Date("2018-01-01T05:00:00.000Z");
 
 if (isHoliday(date)) {
-  console.log('it is a colombian holiday');
+  console.log("it is a colombian holiday");
 } else {
-  console.log('it is NOT a colombian holiday');
+  console.log("it is NOT a colombian holiday");
 }
 ```
 
@@ -105,7 +221,7 @@ if (isHoliday(date)) {
 Returns an with the colombian holidays within two dates:
 
 ```js
-import { holidaysWithinInterval } from 'colombian-holidays/lib/utils/holidaysWithinInterval'
+import { holidaysWithinInterval } from "colombian-holidays/lib/utils/holidaysWithinInterval";
 
 const start = new Date("2021-01-01");
 const end = new Date("2021-01-11");
@@ -119,16 +235,22 @@ returns:
   {
     celebrationDate: "2021-01-01",
     date: "2021-01-01",
-    name: "Año Nuevo",
+    name: {
+      es: "Año Nuevo",
+      en: "New Year's day",
+    },
     nextMonday: false,
   },
   {
     celebrationDate: "2021-01-11",
     date: "2021-01-06",
-    name: "Reyes Magos",
+    name: {
+      es: "Reyes Magos",
+      en: "Epiphany",
+    },
     nextMonday: true,
   },
-]
+];
 ```
 
 ### TypeScript
