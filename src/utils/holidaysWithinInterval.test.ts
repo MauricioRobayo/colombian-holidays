@@ -26,25 +26,25 @@ describe("holidaysWithinInterval", () => {
       {
         celebrationDate: "2020-12-08",
         date: "2020-12-08",
-        name: "Inmaculada Concepción",
+        name: expect.objectContaining({ es: "Inmaculada Concepción" }),
         nextMonday: false,
       },
       {
         celebrationDate: "2020-12-25",
         date: "2020-12-25",
-        name: "Navidad",
+        name: expect.objectContaining({ es: "Navidad" }),
         nextMonday: false,
       },
       {
         celebrationDate: "2021-01-01",
         date: "2021-01-01",
-        name: "Año Nuevo",
+        name: expect.objectContaining({ es: "Año Nuevo" }),
         nextMonday: false,
       },
       {
         celebrationDate: "2021-01-11",
         date: "2021-01-06",
-        name: "Reyes Magos",
+        name: expect.objectContaining({ es: "Reyes Magos" }),
         nextMonday: true,
       },
     ]);
@@ -59,13 +59,13 @@ describe("holidaysWithinInterval", () => {
       {
         celebrationDate: "2021-01-01",
         date: "2021-01-01",
-        name: "Año Nuevo",
+        name: expect.objectContaining({ es: "Año Nuevo" }),
         nextMonday: false,
       },
       {
         celebrationDate: "2021-01-11",
         date: "2021-01-06",
-        name: "Reyes Magos",
+        name: expect.objectContaining({ es: "Reyes Magos" }),
         nextMonday: true,
       },
     ]);

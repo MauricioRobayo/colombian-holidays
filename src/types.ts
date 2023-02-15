@@ -1,10 +1,14 @@
 export interface BasicHoliday {
-  name: string;
+  name: {
+    en: string;
+    es: string;
+  };
   nextMonday: boolean;
 }
 
 export interface DateHoliday extends BasicHoliday {
-  date: string;
+  month: number;
+  day: number;
 }
 
 export interface EasterHoliday extends BasicHoliday {
