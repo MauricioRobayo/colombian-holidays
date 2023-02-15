@@ -225,7 +225,7 @@ import { holidaysWithinInterval } from "colombian-holidays/lib/utils/holidaysWit
 
 const start = new Date("2021-01-01");
 const end = new Date("2021-01-11");
-const holidays = holidaysWithinInterval({ start, end });
+const holidays = holidaysWithinInterval({ start, end, /* returnNativeDate: false */ });
 ```
 
 returns:
