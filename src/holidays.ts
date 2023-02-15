@@ -2,7 +2,8 @@ import type { DateHoliday, EasterHoliday } from "./types";
 
 const dateHolidays: DateHoliday[] = [
   {
-    date: "01-01",
+    month: 1,
+    day: 1,
     name: {
       es: "Año Nuevo",
       en: "New Year's day",
@@ -10,7 +11,8 @@ const dateHolidays: DateHoliday[] = [
     nextMonday: false,
   },
   {
-    date: "01-06",
+    month: 1,
+    day: 6,
     name: {
       es: "Reyes Magos",
       en: "Epiphany",
@@ -18,7 +20,8 @@ const dateHolidays: DateHoliday[] = [
     nextMonday: true,
   },
   {
-    date: "03-19",
+    month: 3,
+    day: 19,
     name: {
       es: "San José",
       en: "Saint Joseph's Day",
@@ -26,7 +29,8 @@ const dateHolidays: DateHoliday[] = [
     nextMonday: true,
   },
   {
-    date: "05-01",
+    month: 5,
+    day: 1,
     name: {
       es: "Día del Trabajo",
       en: "Labour Day",
@@ -34,7 +38,8 @@ const dateHolidays: DateHoliday[] = [
     nextMonday: false,
   },
   {
-    date: "06-29",
+    month: 6,
+    day: 29,
     name: {
       es: "San Pedro y San Pablo",
       en: "Saint Peter and Saint Paul",
@@ -42,7 +47,8 @@ const dateHolidays: DateHoliday[] = [
     nextMonday: true,
   },
   {
-    date: "07-20",
+    month: 7,
+    day: 20,
     name: {
       es: "Grito de la Independencia",
       en: "Declaration of Independence",
@@ -50,7 +56,8 @@ const dateHolidays: DateHoliday[] = [
     nextMonday: false,
   },
   {
-    date: "08-07",
+    month: 8,
+    day: 7,
     name: {
       es: "Batalla de Boyacá",
       en: "Battle of Boyacá",
@@ -58,7 +65,8 @@ const dateHolidays: DateHoliday[] = [
     nextMonday: false,
   },
   {
-    date: "08-15",
+    month: 8,
+    day: 15,
     name: {
       es: "Asunción de la Virgen",
       en: "Assumption of Mary",
@@ -66,7 +74,8 @@ const dateHolidays: DateHoliday[] = [
     nextMonday: true,
   },
   {
-    date: "10-12",
+    month: 10,
+    day: 12,
     name: {
       es: "Día de la Raza",
       en: "Columbus Day",
@@ -74,7 +83,8 @@ const dateHolidays: DateHoliday[] = [
     nextMonday: true,
   },
   {
-    date: "11-01",
+    month: 11,
+    day: 1,
     name: {
       es: "Todos los Santos",
       en: "All Saints’ Day",
@@ -82,17 +92,20 @@ const dateHolidays: DateHoliday[] = [
     nextMonday: true,
   },
   {
-    date: "11-11",
+    month: 11,
+    day: 11,
     name: { es: "Independencia de Cartagena", en: "Independence of Cartagena" },
     nextMonday: true,
   },
   {
-    date: "12-08",
+    month: 12,
+    day: 8,
     name: { es: "Inmaculada Concepción", en: "Immaculate Conception" },
     nextMonday: false,
   },
   {
-    date: "12-25",
+    month: 12,
+    day: 25,
     name: { es: "Navidad", en: "Christmas" },
     nextMonday: false,
   },

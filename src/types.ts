@@ -7,7 +7,8 @@ export interface BasicHoliday {
 }
 
 export interface DateHoliday extends BasicHoliday {
-  date: string;
+  month: number;
+  day: number;
 }
 
 export interface EasterHoliday extends BasicHoliday {

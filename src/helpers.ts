@@ -30,20 +30,33 @@ function isEasterHoliday(holiday: Holiday): holiday is EasterHoliday {
 function getHolidayDate(holiday: Holiday, year: number): Date {
   if (isEasterHoliday(holiday)) {
     const { month, day } = pascua(year);
-    const date = new Date(`${year}-${String(month).padStart(2, "0")}-01`);
+    const date = new Date(generateUtcStringFromDateParts(year, month, 1));
     date.setUTCDate(day + holiday.offset);
     return date;
   }
 
-  const [month, day] = holiday.date.split("-");
-  return new Date(`${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`);
+  return new Date(
+    generateUtcStringFromDateParts(year, holiday.month, holiday.day)
+  );
 }
 
-function formatDate(date: Date): string {
-  const year = date.getUTCFullYear();
-  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
-  const day = String(date.getUTCDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
+function generateUtcStringFromDateParts(
+  year: number,
+  month: number,
+  day: number
+) {
+  return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(
+    2,
+    "0"
+  )}`;
+}
+
+function generateUtcStringFromDate(date: Date): string {
+  return generateUtcStringFromDateParts(
+    date.getUTCFullYear(),
+    date.getUTCMonth() + 1,
+    date.getUTCDate()
+  );
 }
 
 function getHoliday(
@@ -73,10 +86,12 @@ function getHoliday(
       : holidayDate;
 
   return {
-    date: returnNativeDate ? holidayDate : formatDate(holidayDate),
+    date: returnNativeDate
+      ? holidayDate
+      : generateUtcStringFromDate(holidayDate),
     celebrationDate: returnNativeDate
       ? celebrationDate
-      : formatDate(celebrationDate),
+      : generateUtcStringFromDate(celebrationDate),
     name: holiday.name,
     nextMonday: year >= NEW_HOLIDAY_SCHEMA_START_YEAR && holiday.nextMonday,
   };
