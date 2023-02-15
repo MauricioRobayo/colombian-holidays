@@ -8,7 +8,7 @@
     "lint": "eslint . --ext .ts --fix",
     "test": "jest --coverage",
     "build": "tsc",
-    "prepack": "build"
+    "prepack": "tsc"
   },
   "license": "MIT",
   "bugs": {
