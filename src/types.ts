@@ -1,5 +1,8 @@
 export interface BasicHoliday {
-  name: string;
+  name: {
+    en: string;
+    es: string;
+  };
   nextMonday: boolean;
 }
 
