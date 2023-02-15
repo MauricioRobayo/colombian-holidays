@@ -218,7 +218,7 @@ if (isHoliday(date)) {
 
 ### holidaysWithinInterval
 
-Returns an with the colombian holidays within two dates:
+Returns an array with the colombian holidays within two dates:
 
 ```js
 import { holidaysWithinInterval } from "colombian-holidays/lib/utils/holidaysWithinInterval";
