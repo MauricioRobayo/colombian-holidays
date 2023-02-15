@@ -25,8 +25,11 @@ export function holidaysWithinInterval({
   end: Date;
   returnNativeDate?: boolean;
 }): unknown {
-  const yearEnd = new Date(end).getUTCFullYear();
-  const yearStart = new Date(start).getUTCFullYear();
+  if (start >= end) {
+    throw new Error("end date should be greater than start date");
+  }
+  const yearEnd = end.getUTCFullYear();
+  const yearStart = start.getUTCFullYear();
 
   const holidays = Array.from({ length: yearEnd - yearStart + 1 }, (_, i) =>
     colombianHolidays(i + yearStart, { returnNativeDate })

@@ -1,6 +1,22 @@
 import { holidaysWithinInterval } from "./holidaysWithinInterval";
 
 describe("holidaysWithinInterval", () => {
+  it("should throw an error if end is equal to start", () => {
+    const start = new Date("2022-01-01");
+    const end = new Date("2022-01-01");
+    expect(() => holidaysWithinInterval({ start, end })).toThrowError(
+      "end date should be greater than start date"
+    );
+  });
+
+  it("should throw an error if start is greater than end", () => {
+    const start = new Date("2022-01-02");
+    const end = new Date("2022-01-01");
+    expect(() => holidaysWithinInterval({ start, end })).toThrowError(
+      "end date should be greater than start date"
+    );
+  });
+
   it("should return the correct number of holidays overlapping two years", () => {
     const start = new Date("2020-12-01");
     const end = new Date("2021-01-15");
