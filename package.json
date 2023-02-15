@@ -1,13 +1,14 @@
 {
   "name": "colombian-holidays",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "Colombian holidays",
   "main": "lib/index.js",
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint . --ext .ts --fix",
     "test": "jest --coverage",
-    "build": "tsc"
+    "build": "tsc",
+    "prepack": "tsc"
   },
   "license": "MIT",
   "bugs": {
