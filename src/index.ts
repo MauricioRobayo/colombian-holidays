@@ -47,7 +47,7 @@ export function colombianHolidays({
         return Number(holiday.celebrationDate.slice(5, 7)) === month;
       }
 
-      return holiday.celebrationDate.getUTCMonth() === month;
+      return holiday.celebrationDate.getUTCMonth() + 1 === month;
     })
     .sort((a, b) => {
       if (

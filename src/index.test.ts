@@ -1,6 +1,10 @@
 import timezone_mock, { TimeZone } from "timezone-mock";
 import colombianHolidays, { FIRST_HOLIDAY_YEAR, LAST_HOLIDAY_YEAR } from ".";
-import { ColombianHoliday } from "./types";
+import {
+  ColombianHoliday,
+  ColombianHolidayWithNativeDate,
+  Holiday,
+} from "./types";
 
 const holidaysYears: Record<number, ColombianHoliday[]> = {
   1976: [
@@ -445,6 +449,7 @@ const holidaysYears: Record<number, ColombianHoliday[]> = {
   ],
 };
 const years = Object.keys(holidaysYears).map(Number);
+const months = Array.from({ length: 12 }, (_, i) => i + 1);
 const timezones: TimeZone[] = [
   "US/Pacific",
   "US/Eastern",
@@ -459,6 +464,38 @@ afterEach(() => {
 });
 
 describe.each(years)("Gets all holidays for %p", (year) => {
+  describe.each(months)(
+    "Get only corresponding holidays for month %p",
+    (month) => {
+      it.each(timezones)("should return all holidays for %p", (timezone) => {
+        timezone_mock.register(timezone);
+        const holidays = colombianHolidays({ year, month });
+        const expected = holidaysYears[year].filter(
+          (holiday) => Number(holiday.celebrationDate.slice(5, 7)) === month
+        );
+        expect(holidays).toEqual(expected);
+      });
+
+      it.each(timezones)(
+        "should return all holidays for %p when using native dates",
+        (timezone) => {
+          timezone_mock.register(timezone);
+          const holidays = colombianHolidays({
+            year,
+            month,
+            returnNativeDate: true,
+          });
+          const expected = holidaysYears[year]
+            .filter(
+              (holiday) => Number(holiday.celebrationDate.slice(5, 7)) === month
+            )
+            .map(transformStringsToDates);
+          expect(holidays).toEqual(expected);
+        }
+      );
+    }
+  );
+
   it.each(timezones)(
     "Should return holidays formatted as string for %p if no options given",
     (timezone) => {
@@ -482,12 +519,7 @@ describe.each(years)("Gets all holidays for %p", (year) => {
     (timezone) => {
       timezone_mock.register(timezone);
       expect(colombianHolidays({ year, returnNativeDate: true })).toEqual(
-        holidaysYears[year].map((holiday) => ({
-          date: new Date(holiday.date),
-          celebrationDate: new Date(holiday.celebrationDate),
-          name: holiday.name,
-          nextMonday: holiday.nextMonday,
-        }))
+        holidaysYears[year].map(transformStringsToDates)
       );
     }
   );
@@ -514,3 +546,14 @@ describe("Should throw an error for a non valid year", () => {
     expect(() => colombianHolidays({ year: LAST_HOLIDAY_YEAR + 1 })).toThrow();
   });
 });
+
+function transformStringsToDates(
+  holiday: ColombianHoliday
+): ColombianHolidayWithNativeDate {
+  return {
+    date: new Date(holiday.date),
+    celebrationDate: new Date(holiday.celebrationDate),
+    name: holiday.name,
+    nextMonday: holiday.nextMonday,
+  };
+}
