@@ -6,19 +6,22 @@ import { ColombianHoliday, ColombianHolidayWithNativeDate } from "./types";
 export const FIRST_HOLIDAY_YEAR = 1583;
 export const LAST_HOLIDAY_YEAR = 4099;
 
+type MonthNumbers = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+export type Month = MonthNumbers | Omit<number, MonthNumbers>;
+
 export function colombianHolidays(
   options?:
     | undefined
-    | { year?: number; month?: number; returnNativeDate: false | undefined }
+    | { year?: number; month?: Month; returnNativeDate: false | undefined }
 ): ColombianHoliday[];
 export function colombianHolidays(options?: {
   year?: number;
-  month?: number;
+  month?: Month;
   returnNativeDate: true;
 }): ColombianHolidayWithNativeDate[];
 export function colombianHolidays(options?: {
   year?: number;
-  month?: number;
+  month?: Month;
   returnNativeDate?: boolean;
 }): ColombianHoliday[] | ColombianHolidayWithNativeDate[];
 export function colombianHolidays({
@@ -27,7 +30,7 @@ export function colombianHolidays({
   returnNativeDate = false,
 }: {
   year?: number;
-  month?: number;
+  month?: Month;
   returnNativeDate?: boolean;
 } = {}): unknown {
   if (year < FIRST_HOLIDAY_YEAR || year > LAST_HOLIDAY_YEAR) {
