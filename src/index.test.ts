@@ -1,10 +1,6 @@
 import timezone_mock, { TimeZone } from "timezone-mock";
 import colombianHolidays, { FIRST_HOLIDAY_YEAR, LAST_HOLIDAY_YEAR } from ".";
-import {
-  ColombianHoliday,
-  ColombianHolidayWithNativeDate,
-  Holiday,
-} from "./types";
+import { ColombianHoliday, ColombianHolidayWithNativeDate } from "./types";
 
 const holidaysYears: Record<number, ColombianHoliday[]> = {
   1976: [

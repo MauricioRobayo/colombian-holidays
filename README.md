@@ -17,7 +17,7 @@ npm install colombian-holidays
 
 ## Usage
 
-The module exports a single function to get all the holidays for a given year, returning an array with the holidays for the requested year.
+The default export is a function to get all the holidays for a given year, returning an array with the holidays for the requested year.
 
 The `year` should be between 1583 and 4099.
 
