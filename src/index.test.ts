@@ -530,6 +530,23 @@ describe("Gets all holidays for the current year", () => {
     expect(Array.isArray(currHols)).toBe(true);
     expect(currHols.length).toBe(holidaysInAYear);
   });
+
+  describe("Current year", () => {
+    it("should return 2 holidays for month 1 for current year when no year is given", () => {
+      const holidays = colombianHolidays({ month: 1 });
+      expect(Array.isArray(holidays)).toBe(true);
+      expect(holidays.length).toBe(2);
+    });
+
+    it("Should return holidays for the current year when no year is given", () => {
+      const currYear = new Date().getFullYear();
+      const currHols = colombianHolidays();
+      const holidaysInAYear = 18;
+      expect(currHols).toEqual(colombianHolidays({ year: currYear }));
+      expect(Array.isArray(currHols)).toBe(true);
+      expect(currHols.length).toBe(holidaysInAYear);
+    });
+  });
 });
 
 describe("Should throw an error for a non valid year", () => {
