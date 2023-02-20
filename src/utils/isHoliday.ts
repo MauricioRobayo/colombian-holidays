@@ -1,7 +1,7 @@
 import colombianHolidays from "..";
 
 export function isHoliday(date: Date): boolean {
-  return colombianHolidays(date.getUTCFullYear()).some(
+  return colombianHolidays({ year: date.getUTCFullYear() }).some(
     ({ celebrationDate }) => {
       const d = new Date(celebrationDate);
       return (

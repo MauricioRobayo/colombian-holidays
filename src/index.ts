@@ -6,22 +6,30 @@ import { ColombianHoliday, ColombianHolidayWithNativeDate } from "./types";
 export const FIRST_HOLIDAY_YEAR = 1583;
 export const LAST_HOLIDAY_YEAR = 4099;
 
-function colombianHolidays(
-  year?: number,
-  options?: undefined | { returnNativeDate?: false | undefined }
+export function colombianHolidays(
+  options?:
+    | undefined
+    | { year?: number; month?: number; returnNativeDate: false | undefined }
 ): ColombianHoliday[];
-function colombianHolidays(
-  year?: number,
-  options?: { returnNativeDate?: true }
-): ColombianHolidayWithNativeDate[];
-function colombianHolidays(
-  year?: number,
-  options?: { returnNativeDate?: boolean }
-): ColombianHoliday[] | ColombianHolidayWithNativeDate[];
-function colombianHolidays(
-  year: number = new Date().getFullYear(),
-  { returnNativeDate = false }: { returnNativeDate?: boolean } = {}
-): unknown {
+export function colombianHolidays(options?: {
+  year?: number;
+  month?: number;
+  returnNativeDate: true;
+}): ColombianHolidayWithNativeDate[];
+export function colombianHolidays(options?: {
+  year?: number;
+  month?: number;
+  returnNativeDate?: boolean;
+}): ColombianHoliday[] | ColombianHolidayWithNativeDate[];
+export function colombianHolidays({
+  year = new Date().getUTCFullYear(),
+  month,
+  returnNativeDate = false,
+}: {
+  year?: number;
+  month?: number;
+  returnNativeDate?: boolean;
+} = {}): unknown {
   if (year < FIRST_HOLIDAY_YEAR || year > LAST_HOLIDAY_YEAR) {
     throw new Error(
       `The year should be between ${FIRST_HOLIDAY_YEAR} and ${LAST_HOLIDAY_YEAR}`
@@ -29,7 +37,18 @@ function colombianHolidays(
   }
 
   return holidays
-    .map((holiday) => getHoliday(holiday, year, { returnNativeDate }))
+    .map((holiday) => getHoliday(holiday, { year, returnNativeDate }))
+    .filter((holiday) => {
+      if (month === undefined) {
+        return true;
+      }
+
+      if (typeof holiday.celebrationDate === "string") {
+        return Number(holiday.celebrationDate.slice(5, 7)) === month;
+      }
+
+      return holiday.celebrationDate.getUTCMonth() === month;
+    })
     .sort((a, b) => {
       if (
         a.celebrationDate instanceof Date &&

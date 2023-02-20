@@ -61,23 +61,22 @@ function generateUtcStringFromDate(date: Date): string {
 
 function getHoliday(
   holiday: Holiday,
-  year: number,
-  options?: undefined | { returnNativeDate?: false | undefined }
+  options?: { year?: number; returnNativeDate: false | undefined }
 ): ColombianHoliday;
 function getHoliday(
   holiday: Holiday,
-  year: number,
-  options?: { returnNativeDate: true }
+  options: { year?: number; returnNativeDate: true }
 ): ColombianHolidayWithNativeDate;
 function getHoliday(
   holiday: Holiday,
-  year: number,
-  options?: { returnNativeDate?: boolean }
+  options?: { year?: number; returnNativeDate?: boolean }
 ): ColombianHoliday | ColombianHolidayWithNativeDate;
 function getHoliday(
   holiday: Holiday,
-  year: number,
-  { returnNativeDate = false }: { returnNativeDate?: boolean } = {}
+  {
+    year = new Date().getUTCFullYear(),
+    returnNativeDate = false,
+  }: { year?: number; returnNativeDate?: boolean } = {}
 ): unknown {
   const holidayDate = getHolidayDate(holiday, year);
   const celebrationDate =
