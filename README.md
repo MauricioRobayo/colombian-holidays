@@ -17,9 +17,9 @@ npm install colombian-holidays
 
 ## Usage
 
-The module exports a single function to get all the holidays for a given year, returning an array with the holidays for the requested year.
+The default export is a function to get all the holidays for a given year, returning an array with the holidays for the requested year.
 
-The `year` should be between 1583 and 4099.
+The `year` should be between 1583 and 4099 (see [Pascua](https://github.com/MauricioRobayo/pascua) package).
 
 ### CommonJS
 
@@ -36,7 +36,7 @@ import colombianHolidays from "colombian-holidays";
 You get a function that you can use to get the complete list of holidays for a given year:
 
 ```js
-const colombianHolidays2015 = colombianHolidays(2015);
+const colombianHolidays2015 = colombianHolidays({ year: 2015 });
 ```
 
 The content of the `colombianHolidays2015` variable will be the following array:
@@ -184,16 +184,56 @@ name: {
 ];
 ```
 
+Optionally, you can request the holidays for just a given month:
+
+```js
+const colombianHolidays2015 = colombianHolidays({
+  year: 2015,
+  month: 1 /* January */,
+});
+```
+
+Returns:
+
+```js
+[
+  {
+    date: "2015-01-01",
+    celebrationDate: "2015-01-01",
+    name: {
+      es: "Año Nuevo",
+      en: "New Year's day",
+    },
+    nextMonday: false,
+  },
+  {
+    date: "2015-01-06",
+    celebrationDate: "2015-01-12",
+    name: {
+      es: "Reyes Magos",
+      en: "Epiphany",
+    },
+    nextMonday: true,
+  },
+];
+```
+
 You can opt-in to have the function return native JavaScript dates instead of strings for the `date` and `celebrationDate` properties by using the `returnNativeDate` option:
 
 ```js
-const colombianHolidays2015 = colombianHolidays(2015, { returnNativeDate });
+const colombianHolidays2015 = colombianHolidays({
+  year: 2015,
+  returnNativeDate: true,
+});
 ```
 
 If the year is omitted, by default the function will return the holidays for the current year:
 
 ```js
-const currentYearHolidays = colombianHolidays();
+const currentYearHolidaysAsStrings = colombianHolidays();
+const currentYearHolidaysAsDates = colombianHolidays({
+  returnNativeDate: true,
+});
 ```
 
 ## Utils

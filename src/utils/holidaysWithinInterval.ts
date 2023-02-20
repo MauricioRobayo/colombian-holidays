@@ -4,12 +4,12 @@ import { ColombianHoliday, ColombianHolidayWithNativeDate } from "../types";
 export function holidaysWithinInterval(options: {
   start: Date;
   end: Date;
-  returnNativeDate?: false;
+  returnNativeDate: false | undefined;
 }): ColombianHoliday[];
 export function holidaysWithinInterval(options: {
   start: Date;
   end: Date;
-  returnNativeDate?: true;
+  returnNativeDate: true;
 }): ColombianHolidayWithNativeDate[];
 export function holidaysWithinInterval(options: {
   start: Date;
@@ -32,7 +32,7 @@ export function holidaysWithinInterval({
   const yearStart = start.getUTCFullYear();
 
   const holidays = Array.from({ length: yearEnd - yearStart + 1 }, (_, i) =>
-    colombianHolidays(i + yearStart, { returnNativeDate })
+    colombianHolidays({ year: i + yearStart, returnNativeDate })
   ).flat();
 
   return holidays.filter(({ celebrationDate }) => {
