@@ -6,7 +6,7 @@ const dateHolidays: DateHoliday[] = [
     day: 1,
     name: {
       es: "Año Nuevo",
-      en: "New Year's day",
+      en: "New Year's Day",
     },
     nextMonday: false,
   },
