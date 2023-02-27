@@ -12,26 +12,26 @@ export type Month = MonthNumbers | Omit<number, MonthNumbers>;
 export function colombianHolidays(
   options?:
     | undefined
-    | { year?: number; month?: Month; returnNativeDate: false | undefined }
+    | { year?: number; month?: Month; valueAsDate: false | undefined }
 ): ColombianHoliday[];
 export function colombianHolidays(options?: {
   year?: number;
   month?: Month;
-  returnNativeDate: true;
+  valueAsDate: true;
 }): ColombianHolidayWithNativeDate[];
 export function colombianHolidays(options?: {
   year?: number;
   month?: Month;
-  returnNativeDate?: boolean;
+  valueAsDate?: boolean;
 }): ColombianHoliday[] | ColombianHolidayWithNativeDate[];
 export function colombianHolidays({
   year = new Date().getUTCFullYear(),
   month,
-  returnNativeDate = false,
+  valueAsDate = false,
 }: {
   year?: number;
   month?: Month;
-  returnNativeDate?: boolean;
+  valueAsDate?: boolean;
 } = {}): unknown {
   if (year < FIRST_HOLIDAY_YEAR || year > LAST_HOLIDAY_YEAR) {
     throw new Error(
@@ -40,7 +40,7 @@ export function colombianHolidays({
   }
 
   return holidays
-    .map((holiday) => getHoliday(holiday, { year, returnNativeDate }))
+    .map((holiday) => getHoliday(holiday, { year, valueAsDate }))
     .filter((holiday) => {
       if (month === undefined) {
         return true;

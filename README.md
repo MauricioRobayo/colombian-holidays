@@ -218,12 +218,12 @@ Returns:
 ];
 ```
 
-You can opt-in to have the function return native JavaScript dates instead of strings for the `date` and `celebrationDate` properties by using the `returnNativeDate` option:
+You can opt-in to have the function return native JavaScript dates instead of strings for the `date` and `celebrationDate` properties by using the `valueAsDate` option:
 
 ```js
 const colombianHolidays2015 = colombianHolidays({
   year: 2015,
-  returnNativeDate: true,
+  valueAsDate: true,
 });
 ```
 
@@ -232,7 +232,7 @@ If the year is omitted, by default the function will return the holidays for the
 ```js
 const currentYearHolidaysAsStrings = colombianHolidays();
 const currentYearHolidaysAsDates = colombianHolidays({
-  returnNativeDate: true,
+  valueAsDate: true,
 });
 ```
 

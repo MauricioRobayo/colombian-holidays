@@ -93,7 +93,7 @@ describe("holidaysWithinInterval", () => {
     const result = holidaysWithinInterval({
       start,
       end,
-      returnNativeDate: true,
+      valueAsDate: true,
     });
     expect(result.length).toBe(18);
     expect(result).toEqual(
