@@ -479,7 +479,7 @@ describe.each(years)("Gets all holidays for %p", (year) => {
           const holidays = colombianHolidays({
             year,
             month,
-            returnNativeDate: true,
+            valueAsDate: true,
           });
           const expected = holidaysYears[year]
             .filter(
@@ -501,20 +501,20 @@ describe.each(years)("Gets all holidays for %p", (year) => {
   );
 
   it.each(timezones)(
-    "Should return holidays formatted as string for %p if returnNativeDate is set to false",
+    "Should return holidays formatted as string for %p if valueAsDate is set to false",
     (timezone) => {
       timezone_mock.register(timezone);
-      expect(colombianHolidays({ year, returnNativeDate: false })).toEqual(
+      expect(colombianHolidays({ year, valueAsDate: false })).toEqual(
         holidaysYears[year]
       );
     }
   );
 
   it.each(timezones)(
-    "Should return holidays with native JS date for %p if returnNativeDate is set to true",
+    "Should return holidays with native JS date for %p if valueAsDate is set to true",
     (timezone) => {
       timezone_mock.register(timezone);
-      expect(colombianHolidays({ year, returnNativeDate: true })).toEqual(
+      expect(colombianHolidays({ year, valueAsDate: true })).toEqual(
         holidaysYears[year].map(transformStringsToDates)
       );
     }
