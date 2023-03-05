@@ -17,7 +17,7 @@ npm install colombian-holidays
 
 ## Usage
 
-The default export is a function to get all the holidays for a given year, returning an array with the holidays for the requested year.
+The default export is a function to get all the holidays for a given year.
 
 The `year` should be between 1583 and 4099 (see [Pascua](https://github.com/MauricioRobayo/pascua) package).
 
@@ -231,9 +231,7 @@ If the year is omitted, by default the function will return the holidays for the
 
 ```js
 const currentYearHolidaysAsStrings = colombianHolidays();
-const currentYearHolidaysAsDates = colombianHolidays({
-  valueAsDate: true,
-});
+const currentYearHolidaysAsDates = colombianHolidays({ valueAsDate: true });
 ```
 
 ## Utils
@@ -242,7 +240,7 @@ The package provides two helper functions which can be imported from `lib/utils`
 
 ### isHoliday
 
-Returns true if the given date is a colombian holiday, otherwise returns false.
+Returns `true` if the given date is a colombian holiday, otherwise returns `false`.
 
 ```js
 import { isHoliday } from "colombian-holidays/lib/utils/isHoliday";
@@ -258,7 +256,7 @@ if (isHoliday(date)) {
 
 ### holidaysWithinInterval
 
-Returns an with the colombian holidays within two dates:
+Returns an array with the colombian holidays within two dates:
 
 ```js
 import { holidaysWithinInterval } from "colombian-holidays/lib/utils/holidaysWithinInterval";
