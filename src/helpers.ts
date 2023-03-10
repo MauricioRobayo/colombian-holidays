@@ -51,7 +51,7 @@ function generateUtcStringFromDateParts(
   )}`;
 }
 
-function generateUtcStringFromDate(date: Date): string {
+export function generateUtcStringFromDate(date: Date): string {
   return generateUtcStringFromDateParts(
     date.getUTCFullYear(),
     date.getUTCMonth() + 1,
