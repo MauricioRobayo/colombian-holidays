@@ -6,11 +6,11 @@ import { isSameDate } from "./helpers";
 export function getHoliday(
   date: Date,
   options: { valueAsDate: true }
-): ColombianHolidayWithNativeDate;
+): ColombianHolidayWithNativeDate | null;
 export function getHoliday(
   date: Date,
   options?: undefined | { valueAsDate: false }
-): ColombianHoliday;
+): ColombianHoliday | null;
 export function getHoliday(
   date: Date,
   options: { valueAsDate: boolean } = { valueAsDate: false }
