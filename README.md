@@ -247,13 +247,39 @@ Returns true if the given date is a colombian holiday, otherwise returns false.
 ```js
 import { isHoliday } from "colombian-holidays/lib/utils/isHoliday";
 
-const date = new Date("2018-01-01T05:00:00.000Z");
+const date = new Date("2018-01-01");
 
 if (isHoliday(date)) {
   console.log("it is a colombian holiday");
 } else {
   console.log("it is NOT a colombian holiday");
 }
+```
+
+### getHoliday
+
+Similar to `isHoliday` but will return the corresponding holiday for a given date or `null` if there is no matching holiday.
+
+```js
+import { getHoliday } from "colombian-holidays/lib/utils/getHoliday";
+
+const date = new Date("2018-01-01");
+
+const newYear = getHoliday(date);
+/*
+  {
+    celebrationDate: "2018-01-01",
+    date: "2018-01-01",
+    name: { en: "New Year's Day", es: "Año Nuevo" },
+    nextMonday: false,
+  }
+*/
+```
+
+To get the values as date use the options argument:
+
+```js
+const newYearAsDate = getHoliday(date, { valueAsDate: true });
 ```
 
 ### holidaysWithinInterval
@@ -266,6 +292,7 @@ import { holidaysWithinInterval } from "colombian-holidays/lib/utils/holidaysWit
 const start = new Date("2021-01-01");
 const end = new Date("2021-01-11");
 const holidays = holidaysWithinInterval({ start, end });
+// const holidays = holidaysWithinInterval({ start, end, valueAsDate: true });
 ```
 
 returns:
