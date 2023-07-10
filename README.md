@@ -4,6 +4,7 @@
 [![build and release](https://github.com/MauricioRobayo/colombian-holidays/actions/workflows/build-and-release.yml/badge.svg)](https://github.com/MauricioRobayo/colombian-holidays/actions/workflows/build-and-release.yml)
 [![codecov](https://codecov.io/gh/MauricioRobayo/colombian-holidays/branch/master/graph/badge.svg)](https://codecov.io/gh/MauricioRobayo/colombian-holidays)
 [![CodeFactor](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays/badge)](https://www.codefactor.io/repository/github/mauriciorobayo/colombian-holidays)
+[![](https://badgen.net/badge/Run%20with%20/VS%20Code/5B3ADF?icon=https://runme.dev/img/logo.svg)](git@github.com:MauricioRobayo/colombian-holidays.git)
 
 TypeScript module to calculate colombian holidays for any given year.
 
@@ -11,7 +12,7 @@ TypeScript module to calculate colombian holidays for any given year.
 
 To install as a dependency of your project:
 
-```shell
+```sh
 npm install colombian-holidays
 ```
 
@@ -37,6 +38,20 @@ You get a function that you can use to get the complete list of holidays for a g
 
 ```js
 const colombianHolidays2015 = colombianHolidays({ year: 2015 });
+```
+
+# Examples
+
+Get current year holidays
+
+```sh
+npm run ts-node examples/currentDate
+```
+
+Get next year holidays
+
+```sh
+npm run ts-node examples/nextYear
 ```
 
 The content of the `colombianHolidays2015` variable will be the following array:
@@ -216,6 +231,12 @@ Returns:
     nextMonday: true,
   },
 ];
+```
+
+Run the previous example
+
+```sh
+npm run ts-node examples/monthHolidays
 ```
 
 You can opt-in to have the function return native JavaScript dates instead of strings for the `date` and `celebrationDate` properties by using the `valueAsDate` option:
