@@ -47,6 +47,6 @@
     "url": "https://github.com/MauricioRobayo/colombian-holidays.git"
   },
   "release": {
-    "branch": "main"
+    "branches": "main"
   }
 }
