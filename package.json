@@ -3,6 +3,7 @@
   "version": "4.1.1",
   "description": "Colombian holidays",
   "main": "dist/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint . --ext .ts --fix",
@@ -40,6 +41,7 @@
     "pascua": "^2.1.5"
   },
   "files": [
+    "dist"
     "dist"
   ],
   "repository": {
