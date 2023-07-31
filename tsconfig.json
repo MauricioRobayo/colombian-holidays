@@ -4,7 +4,7 @@
     "module": "CommonJS",
     "declaration": true,
     "sourceMap": true,
-    "outDir": "./lib",
+    "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
