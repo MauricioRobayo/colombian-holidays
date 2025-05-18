@@ -1,6 +1,6 @@
 {
   "name": "colombian-holidays",
-  "version": "4.1.1",
+  "version": "4.2.0",
   "description": "Colombian holidays",
   "main": "dist/index.js",
   "scripts": {
