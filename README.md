@@ -280,9 +280,10 @@ This function is equivalent to calling:
 colombianHolidays({ year: 2025 });
 ```
 
-But exposed as a named utility function for convenience.
+But uses an in-memory cache.
 
-This function uses a shared in-memory cache and is a preferable option to `colombianHolidays` when the same year is requested multiple times, such as in loops or build processes.
+> [!TIP]
+> Prefer this to `colombianHolidays` when the same year is requested multiple times, such as in loops or build processes.
 
 ### isHoliday
 
