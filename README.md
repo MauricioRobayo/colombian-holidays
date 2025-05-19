@@ -264,7 +264,7 @@ The package provides four helper functions:
 Returns the list of all Colombian holidays for a given year.
 
 ```js
-import { getHolidaysByYear } from "colombian-holidays/lib/utils/getHolidaysByYear";
+import { getHolidaysByYear } from "colombian-holidays";
 
 const holidays = getHolidaysByYear(2025);
 ```
@@ -290,7 +290,7 @@ This function uses a shared in-memory cache and is a preferable option to `colom
 Returns `true` if the given date is a colombian holiday, otherwise returns `false`.
 
 ```js
-import { isHoliday } from "colombian-holidays/lib/utils/isHoliday";
+import { isHoliday } from "colombian-holidays";
 
 const date = new Date("2018-01-01");
 
@@ -306,7 +306,7 @@ if (isHoliday(date)) {
 Similar to `isHoliday` but will return the corresponding holiday for a given date or `null` if there is no matching holiday.
 
 ```js
-import { getHoliday } from "colombian-holidays/lib/utils/getHoliday";
+import { getHoliday } from "colombian-holidays";
 
 const date = new Date("2018-01-01");
 
@@ -332,7 +332,7 @@ const newYearAsDate = getHoliday(date, { valueAsDate: true });
 Returns an array with the colombian holidays within two dates:
 
 ```js
-import { holidaysWithinInterval } from "colombian-holidays/lib/utils/holidaysWithinInterval";
+import { holidaysWithinInterval } from "colombian-holidays";
 
 const start = new Date("2021-01-01");
 const end = new Date("2021-01-11");
