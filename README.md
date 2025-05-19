@@ -283,7 +283,7 @@ colombianHolidays({ year: 2025 });
 But uses an in-memory cache.
 
 > [!TIP]
-> Prefer this to `colombianHolidays` when the same year is requested multiple times, such as in loops or build processes.
+> Use `getHolidaysByYear` instead of `colombianHolidays` when possible. It includes built-in caching, which improves performance and avoids redundant computations when accessing holidays by year. It is used under the hood by all other helpers, providing a shared in-memory cache.
 
 ### isHoliday
 
