@@ -72,3 +72,7 @@ export function colombianHolidays({
 }
 
 export default colombianHolidays;
+
+export { getHolidaysForYear } from "./utils/getHolidaysByYear";
+export { isHoliday } from "./utils/isHoliday";
+export { holidaysWithinInterval } from "./utils/holidaysWithinInterval";

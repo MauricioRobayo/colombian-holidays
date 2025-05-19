@@ -257,7 +257,33 @@ const currentYearHolidaysAsDates = colombianHolidays({ valueAsDate: true });
 
 ## Utils
 
-The package provides two helper functions which can be imported from `lib/utils`:
+The package provides four helper functions:
+
+### getHolidaysByYear
+
+Returns the list of all Colombian holidays for a given year.
+
+```js
+import { getHolidaysByYear } from "colombian-holidays/lib/utils/getHolidaysByYear";
+
+const holidays = getHolidaysByYear(2025);
+```
+
+You can also pass the `valueAsDate` option to return native JavaScript `Date` objects instead of ISO strings:
+
+```js
+const holidaysAsDates = getHolidaysByYear(2025, { valueAsDate: true });
+```
+
+This function is equivalent to calling:
+
+```js
+colombianHolidays({ year: 2025 });
+```
+
+But exposed as a named utility function for convenience.
+
+This function uses a shared in-memory cache and is a preferable option to `colombianHolidays` when the same year is requested multiple times, such as in loops or build processes.
 
 ### isHoliday
 

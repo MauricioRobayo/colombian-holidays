@@ -51,14 +51,6 @@ function generateUtcStringFromDateParts(
   )}`;
 }
 
-export function generateUtcStringFromDate(date: Date): string {
-  return generateUtcStringFromDateParts(
-    date.getUTCFullYear(),
-    date.getUTCMonth() + 1,
-    date.getUTCDate()
-  );
-}
-
 function getHoliday(
   holiday: Holiday,
   options?: { year?: number; valueAsDate: false | undefined }
@@ -85,10 +77,10 @@ function getHoliday(
       : holidayDate;
 
   return {
-    date: valueAsDate ? holidayDate : generateUtcStringFromDate(holidayDate),
+    date: valueAsDate ? holidayDate : holidayDate.toISOString().slice(0, 10),
     celebrationDate: valueAsDate
       ? celebrationDate
-      : generateUtcStringFromDate(celebrationDate),
+      : celebrationDate.toISOString().slice(0, 10),
     name: holiday.name,
     nextMonday: year >= NEW_HOLIDAY_SCHEMA_START_YEAR && holiday.nextMonday,
   };
