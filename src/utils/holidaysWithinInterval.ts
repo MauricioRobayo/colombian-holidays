@@ -1,5 +1,5 @@
-import { getHolidaysForYear } from "..";
 import { ColombianHoliday, ColombianHolidayWithNativeDate } from "../types";
+import { getHolidaysForYear } from "./getHolidaysByYear";
 
 export function holidaysWithinInterval(options: {
   start: Date;

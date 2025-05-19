@@ -1,4 +1,4 @@
-import { getHolidaysForYear } from "..";
+import { getHolidaysForYear } from "./getHolidaysByYear";
 import { isSameDate } from "./helpers";
 
 export function isHoliday(date: Date): boolean {
