@@ -8,10 +8,7 @@
     "lint": "eslint . --ext .ts --fix",
     "test": "vitest run",
     "build": "tsup src/index.ts --dts --format cjs,esm --out-dir dist",
-    "build:cjs": "tsup src/index.ts --format cjs --out-dir dist/cjs",
-    "build:esm": "tsup src/index.ts --format esm --out-dir dist/esm",
-    "build:types": "tsup src/index.ts --dts-only --out-dir dist/types",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run lint && npm run test && npm run build"
   },
   "license": "MIT",
   "bugs": {
