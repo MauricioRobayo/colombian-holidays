@@ -447,21 +447,12 @@ const holidaysYears: Record<number, ColombianHoliday[]> = {
 
 const years = Object.keys(holidaysYears).map(Number);
 const months = Array.from({ length: 12 }, (_, i) => i + 1);
-const timezones = [
-  "US/Pacific",
-  "US/Eastern",
-  "Brazil/East",
-  "UTC",
-  "Europe/London",
-  "Australia/Adelaide",
-];
 
 describe.each(years)("Gets all holidays for %p", (year) => {
   describe.each(months)(
     "Get only corresponding holidays for month %p",
     (month) => {
-      it.each(timezones)("should return all holidays for %p", (timezone) => {
-        // Skipping timezone mocking, just run the test
+      it("should return all holidays for %p", () => {
         const holidays = colombianHolidays({ year, month });
         const expected = holidaysYears[year].filter(
           (holiday) => Number(holiday.celebrationDate.slice(5, 7)) === month
@@ -469,53 +460,37 @@ describe.each(years)("Gets all holidays for %p", (year) => {
         expect(holidays).toEqual(expected);
       });
 
-      it.each(timezones)(
-        "should return all holidays for %p when using native dates",
-        (timezone) => {
-          // Skipping timezone mocking, just run the test
-          const holidays = colombianHolidays({
-            year,
-            month,
-            valueAsDate: true,
-          });
-          const expected = holidaysYears[year]
-            .filter(
-              (holiday) => Number(holiday.celebrationDate.slice(5, 7)) === month
-            )
-            .map(transformStringsToDates);
-          expect(holidays).toEqual(expected);
-        }
-      );
+      it("should return all holidays for %p when using native dates", () => {
+        const holidays = colombianHolidays({
+          year,
+          month,
+          valueAsDate: true,
+        });
+        const expected = holidaysYears[year]
+          .filter(
+            (holiday) => Number(holiday.celebrationDate.slice(5, 7)) === month
+          )
+          .map(transformStringsToDates);
+        expect(holidays).toEqual(expected);
+      });
     }
   );
 
-  it.each(timezones)(
-    "Should return holidays formatted as string for %p if no options given",
-    (timezone) => {
-      // Skipping timezone mocking, just run the test
-      expect(colombianHolidays({ year })).toEqual(holidaysYears[year]);
-    }
-  );
+  it("Should return holidays formatted as string for %p if no options given", () => {
+    expect(colombianHolidays({ year })).toEqual(holidaysYears[year]);
+  });
 
-  it.each(timezones)(
-    "Should return holidays formatted as string for %p if valueAsDate is set to false",
-    (timezone) => {
-      // Skipping timezone mocking, just run the test
-      expect(colombianHolidays({ year, valueAsDate: false })).toEqual(
-        holidaysYears[year]
-      );
-    }
-  );
+  it("Should return holidays formatted as string for %p if valueAsDate is set to false", () => {
+    expect(colombianHolidays({ year, valueAsDate: false })).toEqual(
+      holidaysYears[year]
+    );
+  });
 
-  it.each(timezones)(
-    "Should return holidays with native JS date for %p if valueAsDate is set to true",
-    (timezone) => {
-      // Skipping timezone mocking, just run the test
-      expect(colombianHolidays({ year, valueAsDate: true })).toEqual(
-        holidaysYears[year].map(transformStringsToDates)
-      );
-    }
-  );
+  it("Should return holidays with native JS date for %p if valueAsDate is set to true", () => {
+    expect(colombianHolidays({ year, valueAsDate: true })).toEqual(
+      holidaysYears[year].map(transformStringsToDates)
+    );
+  });
 });
 
 describe("Gets all holidays for the current year", () => {

@@ -7,8 +7,11 @@
     "format": "prettier --write .",
     "lint": "eslint . --ext .ts --fix",
     "test": "vitest run",
-    "build": "tsc",
-    "prepublishOnly": "tsc"
+    "build": "tsup src/index.ts --dts --format cjs,esm --out-dir dist",
+    "build:cjs": "tsup src/index.ts --format cjs --out-dir dist/cjs",
+    "build:esm": "tsup src/index.ts --format esm --out-dir dist/esm",
+    "build:types": "tsup src/index.ts --dts-only --out-dir dist/types",
+    "prepublishOnly": "npm run build"
   },
   "license": "MIT",
   "bugs": {
@@ -28,6 +31,7 @@
     "@typescript-eslint/parser": "^5.21.0",
     "eslint": "^8.14.0",
     "prettier": "^2.6.2",
+    "tsup": "^7.2.0",
     "typescript": "^4.6.4",
     "vitest": "^1.6.1"
   },
