@@ -31,7 +31,7 @@
 		"vitest": "^3.2.4"
 	},
 	"dependencies": {
-		"pascua": "^3.0.4"
+		"pascua": "^3.0.5"
 	},
 	"files": [
 		"dist"
