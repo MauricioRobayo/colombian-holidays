@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/colombian-holidays.svg)](https://badge.fury.io/js/colombian-holidays)
 
-TypeScript module to calculate colombian holidays for any given year.
+TypeScript module to get colombian holidays for any given year.
 
 ## Installation
 

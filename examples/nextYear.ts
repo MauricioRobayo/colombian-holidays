@@ -1,3 +1,3 @@
-import colombianHolidays from '../src/index'
+import colombianHolidays from "../src/index";
 
-console.log(colombianHolidays({ year: new Date().getFullYear() + 1 }))
+console.log(colombianHolidays({ year: new Date().getFullYear() + 1 }));

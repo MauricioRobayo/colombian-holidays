@@ -1,9 +1,9 @@
-import colombianHolidays from '../src/index'
+import colombianHolidays from "../src/index";
 
-const year = new Date().getFullYear()
+const year = new Date().getFullYear();
 const holidays = colombianHolidays({
-    year,
-    month: 1 /* January */,
+	year,
+	month: 1 /* January */,
 });
 
-console.log(`Getting holidays for January of ${year}`, holidays)
+console.log(`Getting holidays for January of ${year}`, holidays);

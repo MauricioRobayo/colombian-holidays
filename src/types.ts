@@ -1,28 +1,28 @@
 export interface BasicHoliday {
-  name: {
-    en: string;
-    es: string;
-  };
-  nextMonday: boolean;
+	name: {
+		en: string;
+		es: string;
+	};
+	nextMonday: boolean;
 }
 
 export interface DateHoliday extends BasicHoliday {
-  month: number;
-  day: number;
+	month: number;
+	day: number;
 }
 
 export interface EasterHoliday extends BasicHoliday {
-  offset: number;
+	offset: number;
 }
 
 export interface ColombianHoliday extends BasicHoliday {
-  date: string;
-  celebrationDate: string;
+	date: string;
+	celebrationDate: string;
 }
 
 export interface ColombianHolidayWithNativeDate extends BasicHoliday {
-  date: Date;
-  celebrationDate: Date;
+	date: Date;
+	celebrationDate: Date;
 }
 
 export type Holiday = DateHoliday | EasterHoliday;
