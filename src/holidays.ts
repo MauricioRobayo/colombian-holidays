@@ -4,109 +4,79 @@ const dateHolidays: DateHoliday[] = [
 	{
 		month: 1,
 		day: 1,
-		name: {
-			es: "Año Nuevo",
-			en: "New Year's Day",
-		},
+		name: "Año Nuevo",
 		nextMonday: false,
 	},
 	{
 		month: 1,
 		day: 6,
-		name: {
-			es: "Reyes Magos",
-			en: "Epiphany",
-		},
+		name: "Reyes Magos",
 		nextMonday: true,
 	},
 	{
 		month: 3,
 		day: 19,
-		name: {
-			es: "San José",
-			en: "Saint Joseph's Day",
-		},
+		name: "San José",
 		nextMonday: true,
 	},
 	{
 		month: 5,
 		day: 1,
-		name: {
-			es: "Día del Trabajo",
-			en: "Labour Day",
-		},
+		name: "Día del Trabajo",
 		nextMonday: false,
 	},
 	{
 		month: 6,
 		day: 29,
-		name: {
-			es: "San Pedro y San Pablo",
-			en: "Saint Peter and Saint Paul",
-		},
+		name: "San Pedro y San Pablo",
 		nextMonday: true,
 	},
 	{
 		month: 7,
 		day: 20,
-		name: {
-			es: "Grito de la Independencia",
-			en: "Declaration of Independence",
-		},
+		name: "Grito de la Independencia",
 		nextMonday: false,
 	},
 	{
 		month: 8,
 		day: 7,
-		name: {
-			es: "Batalla de Boyacá",
-			en: "Battle of Boyacá",
-		},
+		name: "Batalla de Boyacá",
 		nextMonday: false,
 	},
 	{
 		month: 8,
 		day: 15,
-		name: {
-			es: "Asunción de la Virgen",
-			en: "Assumption of Mary",
-		},
+		name: "Asunción de la Virgen",
 		nextMonday: true,
 	},
 	{
 		month: 10,
 		day: 12,
-		name: {
-			es: "Día de la Raza",
-			en: "Columbus Day",
-		},
+		name: "Día de la Raza",
 		nextMonday: true,
 	},
 	{
 		month: 11,
 		day: 1,
-		name: {
-			es: "Todos los Santos",
-			en: "All Saints' Day",
-		},
+		name: "Todos los Santos",
 		nextMonday: true,
 	},
 	{
 		month: 11,
 		day: 11,
-		name: { es: "Independencia de Cartagena", en: "Independence of Cartagena" },
+		name: "Independencia de Cartagena",
 		nextMonday: true,
 	},
 	{
 		month: 12,
 		day: 8,
-		name: { es: "Inmaculada Concepción", en: "Immaculate Conception" },
+		name: "Inmaculada Concepción",
 		nextMonday: false,
 	},
 	{
 		month: 12,
 		day: 25,
-		name: { es: "Navidad", en: "Christmas" },
+		name: "Navidad",
 		nextMonday: false,
 	},
 ];
@@ -120,27 +90,27 @@ const dateHolidays: DateHoliday[] = [
 const easterHolidays: EasterHoliday[] = [
 	{
 		offset: -3,
-		name: { es: "Jueves Santo", en: "Maundy Thursday" },
+		name: "Jueves Santo",
 		nextMonday: false,
 	},
 	{
 		offset: -2,
-		name: { es: "Viernes Santo", en: "Good Friday" },
+		name: "Viernes Santo",
 		nextMonday: false,
 	},
 	{
 		offset: 39,
-		name: { es: "Ascensión del Señor", en: "Ascension of Jesus" },
+		name: "Ascensión del Señor",
 		nextMonday: true,
 	},
 	{
 		offset: 60,
-		name: { es: "Corpus Christi", en: "Corpus Christi" },
+		name: "Corpus Christi",
 		nextMonday: true,
 	},
 	{
 		offset: 68,
-		name: { es: "Sagrado Corazón de Jesús", en: "Sacred Heart" },
+		name: "Sagrado Corazón de Jesús",
 		nextMonday: true,
 	},
 ];

@@ -6,7 +6,7 @@ describe("test getHoliday", () => {
 		const expectedHoliday = {
 			celebrationDate: "2018-01-01",
 			date: "2018-01-01",
-			name: { en: "New Year's Day", es: "Año Nuevo" },
+			name: "Año Nuevo",
 			nextMonday: false,
 		};
 		const holiday = getHoliday(new Date("2018-01-01"));
@@ -17,7 +17,7 @@ describe("test getHoliday", () => {
 		const expectedHoliday = {
 			celebrationDate: new Date("2018-01-01T00:00:00.000Z"),
 			date: new Date("2018-01-01T00:00:00.000Z"),
-			name: { en: "New Year's Day", es: "Año Nuevo" },
+			name: "Año Nuevo",
 			nextMonday: false,
 		};
 		const holiday = getHoliday(new Date("2018-01-01"), {
