@@ -2,11 +2,9 @@
 
 [![npm version](https://badge.fury.io/js/colombian-holidays.svg)](https://badge.fury.io/js/colombian-holidays)
 
-TypeScript module to get colombian holidays for any given year.
+TypeScript module to get Colombian holidays for any given year.
 
 ## Installation
-
-To install as a dependency of your project:
 
 ```sh
 npm install colombian-holidays
@@ -14,280 +12,77 @@ npm install colombian-holidays
 
 ## Usage
 
-The default export is a function to get all the holidays for a given year.
-
-The `year` should be between 1583 and 4099 (see [Pascua](https://github.com/MauricioRobayo/pascua) package).
-
-### CommonJS
+Import each helper from its dedicated subpath:
 
 ```js
-const colombianHolidays = require("colombian-holidays").default;
+import { FIRST_HOLIDAY_YEAR, LAST_HOLIDAY_YEAR } from "colombian-holidays/constants";
+import { getHolidaysByYear } from "colombian-holidays/getHolidaysByYear";
+import { getHoliday } from "colombian-holidays/getHoliday";
+import { isHoliday } from "colombian-holidays/isHoliday";
+import { holidaysWithinInterval } from "colombian-holidays/holidaysWithinInterval";
 ```
 
-### ES6 Modules
+The supported year range is from `FIRST_HOLIDAY_YEAR` to `LAST_HOLIDAY_YEAR`.
 
 ```js
-import colombianHolidays from "colombian-holidays";
+console.log(FIRST_HOLIDAY_YEAR); // 1583
+console.log(LAST_HOLIDAY_YEAR); // 4099
 ```
 
-You get a function that you can use to get the complete list of holidays for a given year:
-
-```js
-const colombianHolidays2015 = colombianHolidays({ year: 2015 });
-```
-
-# Examples
-
-Get current year holidays
-
-```sh
-npm run ts-node examples/currentDate
-```
-
-Get next year holidays
-
-```sh
-npm run ts-node examples/nextYear
-```
-
-The content of the `colombianHolidays2015` variable will be the following array:
-
-```js
-[
-  {
-    date: "2015-01-01",
-    celebrationDate: "2015-01-01",
-    name: {
-      es: "Año Nuevo",
-      en: "New Year's day",
-    },
-    nextMonday: false,
-  },
-  {
-    date: "2015-01-06",
-    celebrationDate: "2015-01-12",
-    name: {
-      es: "Reyes Magos",
-      en: "Epiphany",
-    },
-    nextMonday: true,
-  },
-  {
-    date: "2015-03-19",
-    celebrationDate: "2015-03-23",
-    name: {
-      es: "San José",
-      en: "Saint Joseph's Day",
-    },
-    nextMonday: true,
-  },
-  {
-    date: "2015-04-02",
-    celebrationDate: "2015-04-02",
-    { es: "Jueves Santo", en: "Maundy Thursday" },
-    nextMonday: false,
-  },
-  {
-    date: "2015-04-03",
-    celebrationDate: "2015-04-03",
-    { es: "Viernes Santo", en: "Good Friday" },
-    nextMonday: false,
-  },
-  {
-    date: "2015-05-01",
-    celebrationDate: "2015-05-01",
-name: {
-      es: "Día del Trabajo",
-      en: "Labour Day",
-    }
-    nextMonday: false,
-  },
-  {
-    date: "2015-05-14",
-    celebrationDate: "2015-05-18",
-    name: { es: "Ascensión del Señor", en: "Ascension of Jesus" },
-    nextMonday: true,
-  },
-  {
-    date: "2015-06-04",
-    celebrationDate: "2015-06-08",
-    name: { es: "Corpus Christi", en: "Corpus Christi" },
-    nextMonday: true,
-  },
-  {
-    date: "2015-06-12",
-    celebrationDate: "2015-06-15",
-    name: { es: "Sagrado Corazón de Jesús", en: "Sacred Heart" },
-    nextMonday: true,
-  },
-  {
-    date: "2015-06-29",
-    celebrationDate: "2015-06-29",
-    name: {
-      es: "San Pedro y San Pablo",
-      en: "Saint Peter and Saint Paul",
-    },
-    nextMonday: true,
-  },
-  {
-    date: "2015-07-20",
-    celebrationDate: "2015-07-20",
-    name: {
-      es: "Grito de la Independencia",
-      en: "Declaration of Independence",
-    },
-    nextMonday: false,
-  },
-  {
-    date: "2015-08-07",
-    celebrationDate: "2015-08-07",
-    name: {
-      es: "Batalla de Boyacá",
-      en: "Battle of Boyacá",
-    },
-    nextMonday: false,
-  },
-  {
-    date: "2015-08-15",
-    celebrationDate: "2015-08-17",
-    name: {
-      es: "Asunción de la Virgen",
-      en: "Assumption of Mary",
-    },
-    nextMonday: true,
-  },
-  {
-    date: "2015-10-12",
-    celebrationDate: "2015-10-12",
-    name: {
-      es: "Día de la Raza",
-      en: "Columbus Day",
-    },
-    nextMonday: true,
-  },
-  {
-    date: "2015-11-01",
-    celebrationDate: "2015-11-02",
-    name: {
-      es: "Todos los Santos",
-      en: "All Saints’ Day",
-    },
-    nextMonday: true,
-  },
-  {
-    date: "2015-11-11",
-    celebrationDate: "2015-11-16",
-    name: { es: "Independencia de Cartagena", en: "Independence of Cartagena" },
-    nextMonday: true,
-  },
-  {
-    date: "2015-12-08",
-    celebrationDate: "2015-12-08",
-    name: { es: "Inmaculada Concepción", en: "Immaculate Conception" },
-    nextMonday: false,
-  },
-  {
-    date: "2015-12-25",
-    celebrationDate: "2015-12-25",
-    name: { es: "Navidad", en: "Christmas" },
-    nextMonday: false,
-  },
-];
-```
-
-Optionally, you can request the holidays for just a given month:
-
-```js
-const colombianHolidays2015 = colombianHolidays({
-  year: 2015,
-  month: 1 /* January */,
-});
-```
-
-Returns:
-
-```js
-[
-  {
-    date: "2015-01-01",
-    celebrationDate: "2015-01-01",
-    name: {
-      es: "Año Nuevo",
-      en: "New Year's day",
-    },
-    nextMonday: false,
-  },
-  {
-    date: "2015-01-06",
-    celebrationDate: "2015-01-12",
-    name: {
-      es: "Reyes Magos",
-      en: "Epiphany",
-    },
-    nextMonday: true,
-  },
-];
-```
-
-Run the previous example
-
-```sh
-npm run ts-node examples/monthHolidays
-```
-
-You can opt-in to have the function return native JavaScript dates instead of strings for the `date` and `celebrationDate` properties by using the `valueAsDate` option:
-
-```js
-const colombianHolidays2015 = colombianHolidays({
-  year: 2015,
-  valueAsDate: true,
-});
-```
-
-If the year is omitted, by default the function will return the holidays for the current year:
-
-```js
-const currentYearHolidaysAsStrings = colombianHolidays();
-const currentYearHolidaysAsDates = colombianHolidays({ valueAsDate: true });
-```
-
-## Utils
-
-The package provides four helper functions:
+## Public API
 
 ### getHolidaysByYear
 
-Returns the list of all Colombian holidays for a given year.
+Returns all Colombian holidays for a given year.
 
 ```js
-import { getHolidaysByYear } from "colombian-holidays";
+import { getHolidaysByYear } from "colombian-holidays/getHolidaysByYear";
 
 const holidays = getHolidaysByYear(2025);
 ```
 
-You can also pass the `valueAsDate` option to return native JavaScript `Date` objects instead of ISO strings:
+Return native `Date` values instead of ISO strings:
 
 ```js
 const holidaysAsDates = getHolidaysByYear(2025, { valueAsDate: true });
 ```
 
-This function is equivalent to calling:
+Example output shape (`valueAsDate: false`, default):
 
 ```js
-colombianHolidays({ year: 2025 });
+[
+  {
+    date: "2025-01-01",
+    celebrationDate: "2025-01-01",
+    name: { es: "Año Nuevo", en: "New Year's Day" },
+    nextMonday: false,
+  },
+  {
+    date: "2025-01-06",
+    celebrationDate: "2025-01-13",
+    name: { es: "Reyes Magos", en: "Epiphany" },
+    nextMonday: true,
+  },
+];
 ```
 
-But uses an in-memory cache.
+If you need a specific month, filter by `celebrationDate`:
+
+```js
+const januaryHolidays = getHolidaysByYear(2025).filter((holiday) => {
+  return Number(holiday.celebrationDate.slice(5, 7)) === 1;
+});
+```
 
 > [!TIP]
-> Use `getHolidaysByYear` instead of `colombianHolidays` when possible. It includes built-in caching, which improves performance and avoids redundant computations when accessing holidays by year. It is used under the hood by all other helpers, providing a shared in-memory cache.
+> `getHolidaysByYear` uses an in-memory cache and is also used internally by the other helpers.
 
 ### isHoliday
 
-Returns `true` if the given date is a colombian holiday, otherwise returns `false`.
+Returns `true` if a date is a Colombian holiday, otherwise `false`.
 
 ```js
-import { isHoliday } from "colombian-holidays";
+import { isHoliday } from "colombian-holidays/isHoliday";
 
 const date = new Date("2018-01-01");
 
@@ -300,14 +95,14 @@ if (isHoliday(date)) {
 
 ### getHoliday
 
-Similar to `isHoliday` but will return the corresponding holiday for a given date or `null` if there is no matching holiday.
+Returns the holiday object for a given date, or `null` when there is no match.
 
 ```js
-import { getHoliday } from "colombian-holidays";
+import { getHoliday } from "colombian-holidays/getHoliday";
 
 const date = new Date("2018-01-01");
+const holiday = getHoliday(date);
 
-const newYear = getHoliday(date);
 /*
   {
     celebrationDate: "2018-01-01",
@@ -318,18 +113,18 @@ const newYear = getHoliday(date);
 */
 ```
 
-To get the values as date use the options argument:
+Return native `Date` values:
 
 ```js
-const newYearAsDate = getHoliday(date, { valueAsDate: true });
+const holidayAsDate = getHoliday(date, { valueAsDate: true });
 ```
 
 ### holidaysWithinInterval
 
-Returns an array with the colombian holidays within two dates:
+Returns holidays within an interval (inclusive bounds).
 
 ```js
-import { holidaysWithinInterval } from "colombian-holidays";
+import { holidaysWithinInterval } from "colombian-holidays/holidaysWithinInterval";
 
 const start = new Date("2021-01-01");
 const end = new Date("2021-01-11");
@@ -337,35 +132,62 @@ const holidays = holidaysWithinInterval({ start, end });
 // const holidays = holidaysWithinInterval({ start, end, valueAsDate: true });
 ```
 
-returns:
+Returns:
 
 ```js
 [
   {
     celebrationDate: "2021-01-01",
     date: "2021-01-01",
-    name: {
-      es: "Año Nuevo",
-      en: "New Year's day",
-    },
+    name: { es: "Año Nuevo", en: "New Year's Day" },
     nextMonday: false,
   },
   {
     celebrationDate: "2021-01-11",
     date: "2021-01-06",
-    name: {
-      es: "Reyes Magos",
-      en: "Epiphany",
-    },
+    name: { es: "Reyes Magos", en: "Epiphany" },
     nextMonday: true,
   },
 ];
 ```
 
-### TypeScript
+## Breaking change
 
-The module is written in TypeScript and type definitions files are included.
+As of this major version, the package no longer exports helpers from the root path.
+Use subpath imports instead.
+
+Before:
+
+```js
+import { getHolidaysByYear } from "colombian-holidays";
+```
+
+Now:
+
+```js
+import { getHolidaysByYear } from "colombian-holidays/getHolidaysByYear";
+```
+
+The package is ESM-only.
+
+ESM:
+
+```js
+import { getHolidaysByYear } from "colombian-holidays/getHolidaysByYear";
+```
+
+CommonJS is not exported:
+
+```js
+require("colombian-holidays/getHolidaysByYear");
+```
+
+Builds are generated with `tsup` and published as ESM.
+
+## TypeScript
+
+The package is written in TypeScript and includes type definitions.
 
 ## License
 
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FMauricioRobayo%2Fcolombian-holidays.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FMauricioRobayo%2Fcolombian-holidays?ref=badge_large)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FMauricioRobayo/colombian-holidays.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FMauricioRobayo/colombian-holidays?ref=badge_large)

@@ -2,13 +2,36 @@
 	"name": "colombian-holidays",
 	"version": "5.0.10",
 	"description": "Colombian holidays",
-	"main": "dist/index.js",
-	"types": "dist/index.d.ts",
+	"type": "module",
+	"sideEffects": false,
+	"exports": {
+		"./constants": {
+			"types": "./dist/constants.d.ts",
+			"import": "./dist/constants.js"
+		},
+		"./getHoliday": {
+			"types": "./dist/utils/getHoliday.d.ts",
+			"import": "./dist/utils/getHoliday.js"
+		},
+		"./getHolidaysByYear": {
+			"types": "./dist/utils/getHolidaysByYear.d.ts",
+			"import": "./dist/utils/getHolidaysByYear.js"
+		},
+		"./holidaysWithinInterval": {
+			"types": "./dist/utils/holidaysWithinInterval.d.ts",
+			"import": "./dist/utils/holidaysWithinInterval.js"
+		},
+		"./isHoliday": {
+			"types": "./dist/utils/isHoliday.d.ts",
+			"import": "./dist/utils/isHoliday.js"
+		},
+		"./package.json": "./package.json"
+	},
 	"scripts": {
 		"format": "biome format --write",
 		"lint": "biome lint --write",
 		"test": "vitest run",
-		"build": "tsc",
+		"build": "tsup",
 		"prepublishOnly": "biome check && npm test && npm run build"
 	},
 	"license": "MIT",
@@ -26,6 +49,7 @@
 	],
 	"devDependencies": {
 		"@biomejs/biome": "2.5.1",
+		"tsup": "^8.5.1",
 		"typescript": "^6.0.3",
 		"vitest": "^4.1.0"
 	},
@@ -33,7 +57,7 @@
 		"pascua": "^3.0.8"
 	},
 	"files": [
-		"dist"
+		"dist/**/*"
 	],
 	"repository": {
 		"type": "git",

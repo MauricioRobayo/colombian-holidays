@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
-import colombianHolidays, { FIRST_HOLIDAY_YEAR, LAST_HOLIDAY_YEAR } from ".";
+import { FIRST_HOLIDAY_YEAR, LAST_HOLIDAY_YEAR } from "./constants";
 import type { ColombianHoliday, ColombianHolidayWithNativeDate } from "./types";
+import { getHolidaysByYear } from "./utils/getHolidaysByYear";
 
 const holidaysYears: Record<number, ColombianHoliday[]> = {
 	1976: [
@@ -453,7 +454,9 @@ describe.each(years)("Gets all holidays for %p", (year) => {
 		"Get only corresponding holidays for month %p",
 		(month) => {
 			it("should return all holidays for %p", () => {
-				const holidays = colombianHolidays({ year, month });
+				const holidays = getHolidaysByYear(year).filter(
+					(holiday) => Number(holiday.celebrationDate.slice(5, 7)) === month,
+				);
 				const expected = holidaysYears[year].filter(
 					(holiday) => Number(holiday.celebrationDate.slice(5, 7)) === month,
 				);
@@ -461,11 +464,9 @@ describe.each(years)("Gets all holidays for %p", (year) => {
 			});
 
 			it("should return all holidays for %p when using native dates", () => {
-				const holidays = colombianHolidays({
-					year,
-					month,
-					valueAsDate: true,
-				});
+				const holidays = getHolidaysByYear(year, { valueAsDate: true }).filter(
+					(holiday) => holiday.celebrationDate.getUTCMonth() + 1 === month,
+				);
 				const expected = holidaysYears[year]
 					.filter(
 						(holiday) => Number(holiday.celebrationDate.slice(5, 7)) === month,
@@ -477,44 +478,45 @@ describe.each(years)("Gets all holidays for %p", (year) => {
 	);
 
 	it("Should return holidays formatted as string for %p if no options given", () => {
-		expect(colombianHolidays({ year })).toEqual(holidaysYears[year]);
+		expect(getHolidaysByYear(year)).toEqual(holidaysYears[year]);
 	});
 
 	it("Should return holidays formatted as string for %p if valueAsDate is set to false", () => {
-		expect(colombianHolidays({ year, valueAsDate: false })).toEqual(
+		expect(getHolidaysByYear(year, { valueAsDate: false })).toEqual(
 			holidaysYears[year],
 		);
 	});
 
 	it("Should return holidays with native JS date for %p if valueAsDate is set to true", () => {
-		expect(colombianHolidays({ year, valueAsDate: true })).toEqual(
+		expect(getHolidaysByYear(year, { valueAsDate: true })).toEqual(
 			holidaysYears[year].map(transformStringsToDates),
 		);
 	});
 });
 
 describe("Gets all holidays for the current year", () => {
-	it("Should return holidays for the current year when no year is given", () => {
+	it("Should return holidays for the current year", () => {
 		const currYear = new Date().getFullYear();
-		const currHols = colombianHolidays();
+		const currHols = getHolidaysByYear(currYear);
 		const holidaysInAYear = 18;
-		expect(currHols).toEqual(colombianHolidays({ year: currYear }));
 		expect(Array.isArray(currHols)).toBe(true);
 		expect(currHols.length).toBe(holidaysInAYear);
 	});
 
 	describe("Current year", () => {
-		it("should return 2 holidays for month 1 for current year when no year is given", () => {
-			const holidays = colombianHolidays({ month: 1 });
+		it("should return 2 holidays for month 1 for current year", () => {
+			const currYear = new Date().getFullYear();
+			const holidays = getHolidaysByYear(currYear).filter(
+				(holiday) => Number(holiday.celebrationDate.slice(5, 7)) === 1,
+			);
 			expect(Array.isArray(holidays)).toBe(true);
 			expect(holidays.length).toBe(2);
 		});
 
-		it("Should return holidays for the current year when no year is given", () => {
+		it("Should return holidays for the current year", () => {
 			const currYear = new Date().getFullYear();
-			const currHols = colombianHolidays();
+			const currHols = getHolidaysByYear(currYear);
 			const holidaysInAYear = 18;
-			expect(currHols).toEqual(colombianHolidays({ year: currYear }));
 			expect(Array.isArray(currHols)).toBe(true);
 			expect(currHols.length).toBe(holidaysInAYear);
 		});
@@ -523,12 +525,12 @@ describe("Gets all holidays for the current year", () => {
 
 describe("Should throw an error for a non valid year", () => {
 	it(`should throw an error for a year below ${FIRST_HOLIDAY_YEAR}`, () => {
-		expect(() => colombianHolidays({ year: FIRST_HOLIDAY_YEAR })).not.toThrow();
-		expect(() => colombianHolidays({ year: FIRST_HOLIDAY_YEAR - 1 })).toThrow();
+		expect(() => getHolidaysByYear(FIRST_HOLIDAY_YEAR)).not.toThrow();
+		expect(() => getHolidaysByYear(FIRST_HOLIDAY_YEAR - 1)).toThrow();
 	});
 	it(`should throw an error for a year above ${LAST_HOLIDAY_YEAR}`, () => {
-		expect(() => colombianHolidays({ year: LAST_HOLIDAY_YEAR })).not.toThrow();
-		expect(() => colombianHolidays({ year: LAST_HOLIDAY_YEAR + 1 })).toThrow();
+		expect(() => getHolidaysByYear(LAST_HOLIDAY_YEAR)).not.toThrow();
+		expect(() => getHolidaysByYear(LAST_HOLIDAY_YEAR + 1)).toThrow();
 	});
 });
 

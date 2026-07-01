@@ -1,9 +1,10 @@
 {
 	"compilerOptions": {
+		"ignoreDeprecations": "6.0",
 		"target": "es2019",
 		"module": "CommonJS",
 		"declaration": true,
-		"sourceMap": true,
+		"sourceMap": false,
 		"rootDir": "./src",
 		"outDir": "./dist",
 		"strict": true,
