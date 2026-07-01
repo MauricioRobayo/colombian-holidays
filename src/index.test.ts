@@ -450,32 +450,31 @@ const years = Object.keys(holidaysYears).map(Number);
 const months = Array.from({ length: 12 }, (_, i) => i + 1);
 
 describe.each(years)("Gets all holidays for %p", (year) => {
-	describe.each(months)(
-		"Get only corresponding holidays for month %p",
-		(month) => {
-			it("should return all holidays for %p", () => {
-				const holidays = getHolidaysByYear(year).filter(
-					(holiday) => Number(holiday.celebrationDate.slice(5, 7)) === month,
-				);
-				const expected = holidaysYears[year].filter(
-					(holiday) => Number(holiday.celebrationDate.slice(5, 7)) === month,
-				);
-				expect(holidays).toEqual(expected);
-			});
+	describe.each(
+		months,
+	)("Get only corresponding holidays for month %p", (month) => {
+		it("should return all holidays for %p", () => {
+			const holidays = getHolidaysByYear(year).filter(
+				(holiday) => Number(holiday.celebrationDate.slice(5, 7)) === month,
+			);
+			const expected = holidaysYears[year].filter(
+				(holiday) => Number(holiday.celebrationDate.slice(5, 7)) === month,
+			);
+			expect(holidays).toEqual(expected);
+		});
 
-			it("should return all holidays for %p when using native dates", () => {
-				const holidays = getHolidaysByYear(year, { valueAsDate: true }).filter(
-					(holiday) => holiday.celebrationDate.getUTCMonth() + 1 === month,
-				);
-				const expected = holidaysYears[year]
-					.filter(
-						(holiday) => Number(holiday.celebrationDate.slice(5, 7)) === month,
-					)
-					.map(transformStringsToDates);
-				expect(holidays).toEqual(expected);
-			});
-		},
-	);
+		it("should return all holidays for %p when using native dates", () => {
+			const holidays = getHolidaysByYear(year, { valueAsDate: true }).filter(
+				(holiday) => holiday.celebrationDate.getUTCMonth() + 1 === month,
+			);
+			const expected = holidaysYears[year]
+				.filter(
+					(holiday) => Number(holiday.celebrationDate.slice(5, 7)) === month,
+				)
+				.map(transformStringsToDates);
+			expect(holidays).toEqual(expected);
+		});
+	});
 
 	it("Should return holidays formatted as string for %p if no options given", () => {
 		expect(getHolidaysByYear(year)).toEqual(holidaysYears[year]);

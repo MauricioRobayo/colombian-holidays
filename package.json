@@ -28,8 +28,8 @@
 		"./package.json": "./package.json"
 	},
 	"scripts": {
-		"format": "biome format --write",
-		"lint": "biome lint --write",
+		"check": "biome check",
+		"check:write": "biome check --write",
 		"test": "vitest run",
 		"build": "tsup",
 		"prepublishOnly": "biome check && npm test && npm run build"
