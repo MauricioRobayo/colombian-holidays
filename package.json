@@ -8,7 +8,7 @@
 		"format": "biome format --write",
 		"lint": "biome lint --write",
 		"test": "vitest run",
-		"build": "tsup src/index.ts --dts --format cjs,esm --out-dir dist",
+		"build": "tsc",
 		"prepublishOnly": "biome check && npm test && npm run build"
 	},
 	"license": "MIT",
@@ -26,7 +26,6 @@
 	],
 	"devDependencies": {
 		"@biomejs/biome": "2.5.1",
-		"tsup": "^8.5.0",
 		"typescript": "^6.0.3",
 		"vitest": "^4.1.0"
 	},
