@@ -2,7 +2,7 @@ import type {
 	ColombianHoliday,
 	ColombianHolidayWithNativeDate,
 } from "../types";
-import { getHolidaysForYear } from "./getHolidaysByYear";
+import { getHolidaysByYear } from "./getHolidaysByYear";
 
 export function holidaysWithinInterval(options: {
 	start: Date;
@@ -35,7 +35,7 @@ export function holidaysWithinInterval({
 	const yearStart = start.getUTCFullYear();
 
 	const holidays = Array.from({ length: yearEnd - yearStart + 1 }, (_, i) =>
-		getHolidaysForYear(i + yearStart, { valueAsDate: true }),
+		getHolidaysByYear(i + yearStart, { valueAsDate: true }),
 	).flat();
 
 	const holidaysWithin = holidays.filter(

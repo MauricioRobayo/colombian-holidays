@@ -2,7 +2,7 @@ import type {
 	ColombianHoliday,
 	ColombianHolidayWithNativeDate,
 } from "../types";
-import { getHolidaysForYear } from "./getHolidaysByYear";
+import { getHolidaysByYear } from "./getHolidaysByYear";
 import { isSameDate } from "./helpers";
 
 export function getHoliday(
@@ -18,7 +18,7 @@ export function getHoliday(
 	options: { valueAsDate: boolean } = { valueAsDate: false },
 ): ColombianHoliday | ColombianHolidayWithNativeDate | null {
 	const { valueAsDate } = options;
-	const holiday = getHolidaysForYear(date.getUTCFullYear(), {
+	const holiday = getHolidaysByYear(date.getUTCFullYear(), {
 		valueAsDate: true,
 	}).find(({ celebrationDate }) => isSameDate(celebrationDate, date));
 	if (!holiday) {

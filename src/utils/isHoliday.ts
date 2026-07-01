@@ -1,8 +1,8 @@
-import { getHolidaysForYear } from "./getHolidaysByYear";
+import { getHolidaysByYear } from "./getHolidaysByYear";
 import { isSameDate } from "./helpers";
 
 export function isHoliday(date: Date): boolean {
-	const holidays = getHolidaysForYear(date.getUTCFullYear(), {
+	const holidays = getHolidaysByYear(date.getUTCFullYear(), {
 		valueAsDate: true,
 	});
 	return holidays.some(({ celebrationDate }) =>

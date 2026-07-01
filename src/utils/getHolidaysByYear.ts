@@ -10,15 +10,15 @@ const holidaysWithNativeDateCache = new Map<
 >();
 const holidaysCache = new Map<number, ColombianHoliday[]>();
 
-export function getHolidaysForYear(
+export function getHolidaysByYear(
 	year: number,
 	options?: { valueAsDate: false | undefined },
 ): ColombianHoliday[];
-export function getHolidaysForYear(
+export function getHolidaysByYear(
 	year: number,
 	options?: { valueAsDate: true },
 ): ColombianHolidayWithNativeDate[];
-export function getHolidaysForYear(
+export function getHolidaysByYear(
 	year: number,
 	{ valueAsDate = false }: { valueAsDate?: boolean } = {},
 ) {
