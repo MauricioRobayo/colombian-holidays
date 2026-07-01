@@ -87,7 +87,7 @@ const dateHolidays: DateHoliday[] = [
 		day: 1,
 		name: {
 			es: "Todos los Santos",
-			en: "All Saints’ Day",
+			en: "All Saints' Day",
 		},
 		nextMonday: true,
 	},
