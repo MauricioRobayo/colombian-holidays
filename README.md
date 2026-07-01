@@ -1,8 +1,8 @@
-# Colombian Holidays 🎆
+# Colombian Holidays
 
 [![npm version](https://badge.fury.io/js/colombian-holidays.svg)](https://badge.fury.io/js/colombian-holidays)
 
-TypeScript module to get Colombian holidays for any given year.
+TypeScript module to work with Colombian holidays.
 
 ## Installation
 
@@ -12,7 +12,7 @@ npm install colombian-holidays
 
 ## Usage
 
-Import each helper from its dedicated subpath:
+Import each helper from its dedicated subpath (ESM only):
 
 ```js
 import { FIRST_HOLIDAY_YEAR, LAST_HOLIDAY_YEAR } from "colombian-holidays/constants";
@@ -29,6 +29,8 @@ console.log(FIRST_HOLIDAY_YEAR); // 1583
 console.log(LAST_HOLIDAY_YEAR); // 4099
 ```
 
+All date comparisons are done in UTC.
+
 ## Public API
 
 ### getHolidaysByYear
@@ -39,6 +41,13 @@ Returns all Colombian holidays for a given year.
 import { getHolidaysByYear } from "colombian-holidays/getHolidaysByYear";
 
 const holidays = getHolidaysByYear(2025);
+```
+
+Throws when the year is out of range:
+
+```js
+getHolidaysByYear(1582);
+// Error: The year should be between 1583 and 4099
 ```
 
 Return native `Date` values instead of ISO strings:
@@ -65,6 +74,9 @@ Example output shape (`valueAsDate: false`, default):
   },
 ];
 ```
+
+`nextMonday` indicates whether the holiday is effectively moved to Monday in that year.
+For years before 1984, moved holidays are not shifted.
 
 If you need a specific month, filter by `celebrationDate`:
 
@@ -93,6 +105,8 @@ if (isHoliday(date)) {
 }
 ```
 
+`isHoliday` checks the holiday celebration date (not always the original holiday date).
+
 ### getHoliday
 
 Returns the holiday object for a given date, or `null` when there is no match.
@@ -113,6 +127,8 @@ const holiday = getHoliday(date);
 */
 ```
 
+Returns `null` if the date is not a holiday.
+
 Return native `Date` values:
 
 ```js
@@ -130,6 +146,16 @@ const start = new Date("2021-01-01");
 const end = new Date("2021-01-11");
 const holidays = holidaysWithinInterval({ start, end });
 // const holidays = holidaysWithinInterval({ start, end, valueAsDate: true });
+```
+
+Throws when `start` is equal to or greater than `end`:
+
+```js
+holidaysWithinInterval({
+  start: new Date("2022-01-01"),
+  end: new Date("2022-01-01"),
+});
+// Error: end date should be greater than start date
 ```
 
 Returns:
