@@ -70,7 +70,7 @@ const holidaysYears: Record<number, ColombianHoliday[]> = {
 		{
 			date: "1976-07-09",
 			celebrationDate: "1976-07-09",
-			name: "Nuestra Señora del Rosario de Chiquinquirá",
+			name: "Día de Nuestra Señora del Rosario de Chiquinquirá",
 			nextMonday: false,
 		},
 		{
@@ -186,7 +186,7 @@ const holidaysYears: Record<number, ColombianHoliday[]> = {
 		{
 			date: "1983-07-09",
 			celebrationDate: "1983-07-09",
-			name: "Nuestra Señora del Rosario de Chiquinquirá",
+			name: "Día de Nuestra Señora del Rosario de Chiquinquirá",
 			nextMonday: false,
 		},
 		{
@@ -302,7 +302,7 @@ const holidaysYears: Record<number, ColombianHoliday[]> = {
 		{
 			date: "2015-07-09",
 			celebrationDate: "2015-07-13",
-			name: "Nuestra Señora del Rosario de Chiquinquirá",
+			name: "Día de Nuestra Señora del Rosario de Chiquinquirá",
 			nextMonday: true,
 		},
 		{
@@ -418,7 +418,7 @@ const holidaysYears: Record<number, ColombianHoliday[]> = {
 		{
 			date: "2018-07-09",
 			celebrationDate: "2018-07-09",
-			name: "Nuestra Señora del Rosario de Chiquinquirá",
+			name: "Día de Nuestra Señora del Rosario de Chiquinquirá",
 			nextMonday: true,
 		},
 		{

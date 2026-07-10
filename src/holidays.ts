@@ -34,7 +34,7 @@ const dateHolidays: DateHoliday[] = [
 	{
 		month: 7,
 		day: 9,
-		name: "Nuestra Señora del Rosario de Chiquinquirá",
+		name: "Día de Nuestra Señora del Rosario de Chiquinquirá",
 		nextMonday: true,
 	},
 	{
