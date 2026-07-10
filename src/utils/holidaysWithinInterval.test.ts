@@ -77,7 +77,7 @@ describe("holidaysWithinInterval", () => {
 		const end = new Date("2021-12-31");
 		const result = holidaysWithinInterval({ start, end });
 
-		expect(result.length).toBe(18);
+		expect(result.length).toBe(19);
 		expect(result).toEqual(
 			expect.arrayContaining([
 				expect.objectContaining({
@@ -96,7 +96,7 @@ describe("holidaysWithinInterval", () => {
 			end,
 			valueAsDate: true,
 		});
-		expect(result.length).toBe(18);
+		expect(result.length).toBe(19);
 		expect(result).toEqual(
 			expect.arrayContaining([
 				expect.objectContaining({
@@ -112,6 +112,6 @@ describe("holidaysWithinInterval", () => {
 		const end = new Date("2016-03-25");
 		const result = holidaysWithinInterval({ start, end });
 
-		expect(result.length).toBe(31);
+		expect(result.length).toBe(32);
 	});
 });

@@ -33,6 +33,12 @@ const dateHolidays: DateHoliday[] = [
 	},
 	{
 		month: 7,
+		day: 9,
+		name: "Día de Nuestra Señora del Rosario de Chiquinquirá",
+		nextMonday: true,
+	},
+	{
+		month: 7,
 		day: 20,
 		name: "Grito de la Independencia",
 		nextMonday: false,

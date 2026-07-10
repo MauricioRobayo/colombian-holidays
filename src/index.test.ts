@@ -66,6 +66,12 @@ const holidaysYears: Record<number, ColombianHoliday[]> = {
 			nextMonday: false,
 		},
 		{
+			date: "1976-07-09",
+			celebrationDate: "1976-07-09",
+			name: "Día de Nuestra Señora del Rosario de Chiquinquirá",
+			nextMonday: false,
+		},
+		{
 			date: "1976-07-20",
 			celebrationDate: "1976-07-20",
 			name: "Grito de la Independencia",
@@ -173,6 +179,12 @@ const holidaysYears: Record<number, ColombianHoliday[]> = {
 			date: "1983-06-29",
 			celebrationDate: "1983-06-29",
 			name: "San Pedro y San Pablo",
+			nextMonday: false,
+		},
+		{
+			date: "1983-07-09",
+			celebrationDate: "1983-07-09",
+			name: "Día de Nuestra Señora del Rosario de Chiquinquirá",
 			nextMonday: false,
 		},
 		{
@@ -286,6 +298,12 @@ const holidaysYears: Record<number, ColombianHoliday[]> = {
 			nextMonday: true,
 		},
 		{
+			date: "2015-07-09",
+			celebrationDate: "2015-07-13",
+			name: "Día de Nuestra Señora del Rosario de Chiquinquirá",
+			nextMonday: true,
+		},
+		{
 			date: "2015-07-20",
 			celebrationDate: "2015-07-20",
 			name: "Grito de la Independencia",
@@ -396,6 +414,12 @@ const holidaysYears: Record<number, ColombianHoliday[]> = {
 			nextMonday: true,
 		},
 		{
+			date: "2018-07-09",
+			celebrationDate: "2018-07-09",
+			name: "Día de Nuestra Señora del Rosario de Chiquinquirá",
+			nextMonday: true,
+		},
+		{
 			date: "2018-07-20",
 			celebrationDate: "2018-07-20",
 			name: "Grito de la Independencia",
@@ -497,7 +521,7 @@ describe("Gets all holidays for the current year", () => {
 	it("Should return holidays for the current year", () => {
 		const currYear = new Date().getFullYear();
 		const currHols = getHolidaysByYear(currYear);
-		const holidaysInAYear = 18;
+		const holidaysInAYear = 19;
 		expect(Array.isArray(currHols)).toBe(true);
 		expect(currHols.length).toBe(holidaysInAYear);
 	});
@@ -515,7 +539,7 @@ describe("Gets all holidays for the current year", () => {
 		it("Should return holidays for the current year", () => {
 			const currYear = new Date().getFullYear();
 			const currHols = getHolidaysByYear(currYear);
-			const holidaysInAYear = 18;
+			const holidaysInAYear = 19;
 			expect(Array.isArray(currHols)).toBe(true);
 			expect(currHols.length).toBe(holidaysInAYear);
 		});
