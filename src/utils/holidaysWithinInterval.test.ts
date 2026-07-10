@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { holidaysWithinInterval } from "./holidaysWithinInterval";
 
+const holidaysInAYear = 19;
+
 describe("holidaysWithinInterval", () => {
 	it("should throw an error if end is equal to start", () => {
 		const start = new Date("2022-01-01");
@@ -77,7 +79,7 @@ describe("holidaysWithinInterval", () => {
 		const end = new Date("2021-12-31");
 		const result = holidaysWithinInterval({ start, end });
 
-		expect(result.length).toBe(18);
+		expect(result.length).toBe(holidaysInAYear);
 		expect(result).toEqual(
 			expect.arrayContaining([
 				expect.objectContaining({
@@ -96,7 +98,7 @@ describe("holidaysWithinInterval", () => {
 			end,
 			valueAsDate: true,
 		});
-		expect(result.length).toBe(18);
+		expect(result.length).toBe(holidaysInAYear);
 		expect(result).toEqual(
 			expect.arrayContaining([
 				expect.objectContaining({
@@ -112,6 +114,6 @@ describe("holidaysWithinInterval", () => {
 		const end = new Date("2016-03-25");
 		const result = holidaysWithinInterval({ start, end });
 
-		expect(result.length).toBe(31);
+		expect(result.length).toBe(32);
 	});
 });

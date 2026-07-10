@@ -3,6 +3,8 @@ import { FIRST_HOLIDAY_YEAR, LAST_HOLIDAY_YEAR } from "./constants";
 import type { ColombianHoliday, ColombianHolidayWithNativeDate } from "./types";
 import { getHolidaysByYear } from "./utils/getHolidaysByYear";
 
+const holidaysInAYear = 19;
+
 const holidaysYears: Record<number, ColombianHoliday[]> = {
 	1976: [
 		{
@@ -63,6 +65,12 @@ const holidaysYears: Record<number, ColombianHoliday[]> = {
 			date: "1976-06-29",
 			celebrationDate: "1976-06-29",
 			name: "San Pedro y San Pablo",
+			nextMonday: false,
+		},
+		{
+			date: "1976-07-09",
+			celebrationDate: "1976-07-09",
+			name: "Nuestra Señora del Rosario de Chiquinquirá",
 			nextMonday: false,
 		},
 		{
@@ -176,6 +184,12 @@ const holidaysYears: Record<number, ColombianHoliday[]> = {
 			nextMonday: false,
 		},
 		{
+			date: "1983-07-09",
+			celebrationDate: "1983-07-09",
+			name: "Nuestra Señora del Rosario de Chiquinquirá",
+			nextMonday: false,
+		},
+		{
 			date: "1983-07-20",
 			celebrationDate: "1983-07-20",
 			name: "Grito de la Independencia",
@@ -283,6 +297,12 @@ const holidaysYears: Record<number, ColombianHoliday[]> = {
 			date: "2015-06-29",
 			celebrationDate: "2015-06-29",
 			name: "San Pedro y San Pablo",
+			nextMonday: true,
+		},
+		{
+			date: "2015-07-09",
+			celebrationDate: "2015-07-13",
+			name: "Nuestra Señora del Rosario de Chiquinquirá",
 			nextMonday: true,
 		},
 		{
@@ -396,6 +416,12 @@ const holidaysYears: Record<number, ColombianHoliday[]> = {
 			nextMonday: true,
 		},
 		{
+			date: "2018-07-09",
+			celebrationDate: "2018-07-09",
+			name: "Nuestra Señora del Rosario de Chiquinquirá",
+			nextMonday: true,
+		},
+		{
 			date: "2018-07-20",
 			celebrationDate: "2018-07-20",
 			name: "Grito de la Independencia",
@@ -452,8 +478,8 @@ const months = Array.from({ length: 12 }, (_, i) => i + 1);
 describe.each(years)("Gets all holidays for %p", (year) => {
 	describe.each(
 		months,
-	)("Get only corresponding holidays for month %p", (month) => {
-		it("should return all holidays for %p", () => {
+	)("Get only corresponding holidays for month %s", (month) => {
+		it("should return all holidays for %s", () => {
 			const holidays = getHolidaysByYear(year).filter(
 				(holiday) => Number(holiday.celebrationDate.slice(5, 7)) === month,
 			);
@@ -463,7 +489,7 @@ describe.each(years)("Gets all holidays for %p", (year) => {
 			expect(holidays).toEqual(expected);
 		});
 
-		it("should return all holidays for %p when using native dates", () => {
+		it("should return all holidays for %s when using native dates", () => {
 			const holidays = getHolidaysByYear(year, { valueAsDate: true }).filter(
 				(holiday) => holiday.celebrationDate.getUTCMonth() + 1 === month,
 			);
@@ -476,17 +502,17 @@ describe.each(years)("Gets all holidays for %p", (year) => {
 		});
 	});
 
-	it("Should return holidays formatted as string for %p if no options given", () => {
+	it("Should return holidays formatted as string for %s if no options given", () => {
 		expect(getHolidaysByYear(year)).toEqual(holidaysYears[year]);
 	});
 
-	it("Should return holidays formatted as string for %p if valueAsDate is set to false", () => {
+	it("Should return holidays formatted as string for %s if valueAsDate is set to false", () => {
 		expect(getHolidaysByYear(year, { valueAsDate: false })).toEqual(
 			holidaysYears[year],
 		);
 	});
 
-	it("Should return holidays with native JS date for %p if valueAsDate is set to true", () => {
+	it("Should return holidays with native JS date for %s if valueAsDate is set to true", () => {
 		expect(getHolidaysByYear(year, { valueAsDate: true })).toEqual(
 			holidaysYears[year].map(transformStringsToDates),
 		);
@@ -497,7 +523,6 @@ describe("Gets all holidays for the current year", () => {
 	it("Should return holidays for the current year", () => {
 		const currYear = new Date().getFullYear();
 		const currHols = getHolidaysByYear(currYear);
-		const holidaysInAYear = 18;
 		expect(Array.isArray(currHols)).toBe(true);
 		expect(currHols.length).toBe(holidaysInAYear);
 	});
@@ -515,7 +540,6 @@ describe("Gets all holidays for the current year", () => {
 		it("Should return holidays for the current year", () => {
 			const currYear = new Date().getFullYear();
 			const currHols = getHolidaysByYear(currYear);
-			const holidaysInAYear = 18;
 			expect(Array.isArray(currHols)).toBe(true);
 			expect(currHols.length).toBe(holidaysInAYear);
 		});
