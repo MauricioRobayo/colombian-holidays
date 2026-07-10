@@ -1,6 +1,6 @@
 {
 	"name": "colombian-holidays",
-	"version": "7.1.0",
+	"version": "7.1.1",
 	"description": "Colombian holidays",
 	"type": "module",
 	"sideEffects": false,
